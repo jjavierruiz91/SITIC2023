@@ -1,0 +1,119 @@
+﻿@model IEnumerable<BIOMEDICO.Models.Usuarios>
+@{
+    string V = "1";
+    List<BIOMEDICO.Models.ASignarPermisos> listapermisosasignados = new List<BIOMEDICO.Models.ASignarPermisos>();
+    if (BIOMEDICO.Clases.Utilidades.ActiveUser.IdUsuario != null)
+    {
+        listapermisosasignados = BIOMEDICO.Clases.Utilidades.Getlistapermisos();
+    }
+
+}
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<h2>Listado Usuarios</h2>
+<h1>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</h1>
+<table class="table" id="TableUsuarios">
+    <thead class="">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CedUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApeUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CodRol)
+            </th>
+            <th></th>
+        </tr>
+
+
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CedUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApeUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodRol)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.IdUsuario }) |
+                        @Html.ActionLink("Detalles", "Detalles", new { id = item.IdUsuario }) |
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdUsuario })
+                    </td>*@
+
+            <td>
+                @{
+                    var permisoasignado = listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "USUARIOSEDITAR");
+                    if (permisoasignado != null)
+                    {
+                        <a class="btn btn-primary btn-group-sm" title="Editar" href="@Url.Action("Editar","Usuarios", new { id = item.IdUsuario})">
+                            <i class="icon-pencil"></i>
+                        </a>
+                    }
+                }
+                @{
+                    if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "USUARIOSDETALLES") != null)
+                    {
+                        <a class="btn btn-info btn-group-sm" title="Detalles" href="@Url.Action("Detalles","Usuarios", new { id = item.IdUsuario})">
+                            <i class="icon-newspaper"></i>
+                        </a>
+                    }
+                }
+                @{
+                    if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "USUARIOSELIMINAR") != null)
+                    {
+                        <a class="btn btn-danger btn-group-sm" title="Eliminar" href="@Url.Action("Eliminar","Usuarios", new { id = item.IdUsuario})">
+                            <i class="icon-newspaper"></i>
+                        </a>
+                    }
+                }
+            </td>
+            </tr>
+
+        }
+    </tbody>
+
+
+</table>

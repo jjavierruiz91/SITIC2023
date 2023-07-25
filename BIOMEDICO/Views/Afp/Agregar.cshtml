@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script defer src="~/Scripts/APP/Afp/Afp.js"></script>
+<h2>Agregar</h2>
+<div class="row m-0">
+
+    <form id="FormEps" name="FormEps">
+
+        <div class="row m-0">
+
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label>Codigo Eps</label>
+                <input class="form-control" id="CodEps" name="CodEps" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label>Nombre Eps</label>
+                <input class="form-control" id="NomEps" name="NomEps" />
+            </div>
+
+        </div>
+    </form>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+        <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveEps">Guardar</button>
+    </div>
+</div>

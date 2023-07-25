@@ -1,0 +1,1117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BIOMEDICOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ASignarPermisos">
+          <Key>
+            <PropertyRef Name="IdPermiso" />
+          </Key>
+          <Property Name="IdPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodPermiso" Type="int" Nullable="false" />
+          <Property Name="CodRol" Type="int" />
+        </EntityType>
+        <EntityType Name="CodigoAFP">
+          <Key>
+            <PropertyRef Name="IdAfp" />
+          </Key>
+          <Property Name="IdAfp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoAdministradora" Type="varchar(max)" />
+          <Property Name="Código" Type="varchar(max)" />
+          <Property Name="Administradora" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CondicionesSalud">
+          <Key>
+            <PropertyRef Name="IdCondicionesSalud" />
+          </Key>
+          <Property Name="IdCondicionesSalud" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoSalud" Type="varchar(max)" />
+          <Property Name="SaludFisica" Type="varchar(max)" />
+          <Property Name="SaludMental" Type="varchar(max)" />
+          <Property Name="SaludPsicologica" Type="varchar(max)" />
+          <Property Name="ActividadNormalFisica" Type="varchar(max)" />
+          <Property Name="CausaActividadFisica" Type="varchar(max)" />
+          <Property Name="AccidenteLaborar" Type="varchar(max)" />
+          <Property Name="AccidenteOrigen" Type="varchar(max)" />
+          <Property Name="AccidneteTrabajoActividad" Type="varchar(max)" />
+          <Property Name="EnfermedadOrigen" Type="varchar(max)" />
+          <Property Name="EnfermedadOrigenOcupacional" Type="varchar(max)" />
+          <Property Name="LesionesOcurridad" Type="varchar(max)" />
+          <Property Name="ParteCuerpoLesion" Type="varchar(max)" />
+          <Property Name="AgenteAccidente" Type="varchar(max)" />
+          <Property Name="MecanismoAccidente" Type="varchar(max)" />
+          <Property Name="InformoAccidente" Type="varchar(max)" />
+          <Property Name="NoInformoAccidente" Type="varchar(max)" />
+          <Property Name="ActorInformoAccidente" Type="varchar(max)" />
+          <Property Name="IncapacidadAccidente" Type="varchar(max)" />
+          <Property Name="CostosAccidente" Type="varchar(max)" />
+          <Property Name="TramiteEnfermedad" Type="varchar(max)" />
+          <Property Name="EnfermedadDiagnosticada" Type="varchar(max)" />
+          <Property Name="CausaDiscapacidad" Type="varchar(max)" />
+          <Property Name="TipoDiscapacidad" Type="varchar(max)" />
+          <Property Name="IdSitic" Type="int" />
+        </EntityType>
+        <EntityType Name="CondicionesTrabajo">
+          <Key>
+            <PropertyRef Name="IdCondicionesTrabajo" />
+          </Key>
+          <Property Name="IdCondicionesTrabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CondicionTrabajo" Type="varchar(max)" />
+          <Property Name="PeligrosFisico" Type="varchar(max)" />
+          <Property Name="PeligrosPsicosocial" Type="varchar(max)" />
+          <Property Name="Peligrosbiologico" Type="varchar(max)" />
+          <Property Name="CondicionesSeguridad" Type="varchar(max)" />
+          <Property Name="PeligrosBiomecanicos" Type="varchar(max)" />
+          <Property Name="PeligrosQuimicos" Type="varchar(max)" />
+          <Property Name="FenomenosNatural" Type="varchar(max)" />
+          <Property Name="ElementosProteccion" Type="varchar(max)" />
+          <Property Name="ProteccionCabeza" Type="varchar(max)" />
+          <Property Name="ProteccionOcular" Type="varchar(max)" />
+          <Property Name="ProteccionAuditiva" Type="varchar(max)" />
+          <Property Name="ProteccionRespiratoria" Type="varchar(max)" />
+          <Property Name="ExtremidadesSuperiores" Type="varchar(max)" />
+          <Property Name="ExtremidadesInferiores" Type="varchar(max)" />
+          <Property Name="OtrosElementos" Type="varchar(max)" />
+          <Property Name="RopaTrabajo" Type="varchar(max)" />
+          <Property Name="EmergenciaEncuestado" Type="varchar(max)" />
+          <Property Name="CasoEmergencia" Type="varchar(max)" />
+          <Property Name="Extintores" Type="varchar(max)" />
+          <Property Name="Botiquin" Type="varchar(max)" />
+          <Property Name="RutaEvacuacion" Type="varchar(max)" />
+          <Property Name="SalidaEmergencia" Type="varchar(max)" />
+          <Property Name="LugarCasoEmergencia" Type="varchar(max)" />
+          <Property Name="AguaPotable" Type="varchar(max)" />
+          <Property Name="RecoleccionResiduos" Type="varchar(max)" />
+          <Property Name="HoraTerminacion" Type="time" Precision="7" />
+          <Property Name="NombreEncuestado" Type="varchar(max)" />
+          <Property Name="CedulaEncuestado" Type="bigint" />
+          <Property Name="Firma" Type="varchar(max)" />
+          <Property Name="IdSitic" Type="int" />
+        </EntityType>
+        <EntityType Name="Eps">
+          <Key>
+            <PropertyRef Name="IdePS" />
+          </Key>
+          <Property Name="IdePS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodEps" Type="nvarchar(max)" />
+          <Property Name="NomEps" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="EstiloVida">
+          <Key>
+            <PropertyRef Name="IdEstiloVida" />
+          </Key>
+          <Property Name="IdEstiloVida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Peso" Type="varchar(max)" />
+          <Property Name="Estatura" Type="varchar(max)" />
+          <Property Name="ActividadFisica" Type="varchar(max)" />
+          <Property Name="DiasSemana" Type="varchar(max)" />
+          <Property Name="HorasPractica" Type="varchar(max)" />
+          <Property Name="EncuestadoFuma" Type="varchar(max)" />
+          <Property Name="ConsumeLicor" Type="varchar(max)" />
+          <Property Name="SustanciasPsicoactivas" Type="varchar(max)" />
+          <Property Name="CualSustancia" Type="varchar(max)" />
+          <Property Name="DietaFrutas" Type="varchar(max)" />
+          <Property Name="FrecuenciaFrutas" Type="varchar(max)" />
+          <Property Name="IdSitic" Type="int" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="IdPermiso" />
+          </Key>
+          <Property Name="IdPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodPermiso" Type="int" />
+          <Property Name="NomPermiso" Type="varchar(max)" />
+          <Property Name="EtiquetaPermiso" Type="varchar(max)" />
+          <Property Name="Url" Type="varchar(max)" />
+          <Property Name="DesPermiso" Type="varchar(max)" />
+          <Property Name="TipoPermiso" Type="int" />
+          <Property Name="PadrePermiso" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="CodRol" />
+          </Key>
+          <Property Name="CodRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomRol" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SeguridadSocial">
+          <Key>
+            <PropertyRef Name="IdSeguridadSocial" />
+          </Key>
+          <Property Name="IdSeguridadSocial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AfiliadoSeguridad" Type="varchar(max)" />
+          <Property Name="RegimenAfiliado" Type="varchar(max)" />
+          <Property Name="RegimenSalud" Type="varchar(max)" />
+          <Property Name="EpsAfiliado" Type="varchar(max)" />
+          <Property Name="Pensiones" Type="varchar(max)" />
+          <Property Name="Afp" Type="varchar(max)" />
+          <Property Name="IdSitic" Type="int" />
+        </EntityType>
+        <EntityType Name="SiTic">
+          <Key>
+            <PropertyRef Name="IdSitic" />
+          </Key>
+          <Property Name="IdSitic" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AfiliacionActualEncuestado" Type="varchar(max)" />
+          <Property Name="FechaEncuesta" Type="datetime" />
+          <Property Name="HoraInicioEncuesta" Type="time" Precision="7" />
+          <Property Name="TipoDocumentoEncuestador" Type="varchar(max)" />
+          <Property Name="NumeroIdentificacionEncuestador" Type="bigint" />
+          <Property Name="TrabajadoInformal" Type="varchar(max)" />
+          <Property Name="DepartamentoEncuestador" Type="varchar(max)" />
+          <Property Name="MunicipioEncuestador" Type="varchar(max)" />
+          <Property Name="ClaseMunicipioEncuestador" Type="varchar(max)" />
+          <Property Name="TipoDocumentoEncuestado" Type="varchar(max)" />
+          <Property Name="NumeroIdentificacionEncuestado" Type="bigint" />
+          <Property Name="FechaNacimiento" Type="datetime" />
+          <Property Name="PrimerNombre" Type="varchar(max)" />
+          <Property Name="SegundoNombre" Type="varchar(max)" />
+          <Property Name="PrimerApellido" Type="varchar(max)" />
+          <Property Name="SegundoApellido" Type="varchar(max)" />
+          <Property Name="Direccion" Type="varchar(max)" />
+          <Property Name="UsuarioRegistro" Type="varchar(max)" />
+          <Property Name="FechaRegistro" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SocioDemograficos">
+          <Key>
+            <PropertyRef Name="IdSocioDemograficos" />
+          </Key>
+          <Property Name="IdSocioDemograficos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Genero" Type="varchar(max)" />
+          <Property Name="EstadoCivil" Type="varchar(max)" />
+          <Property Name="NivelEscolar" Type="varchar(max)" />
+          <Property Name="OtroNivelEscolar" Type="varchar(max)" />
+          <Property Name="AñosAprobados" Type="int" />
+          <Property Name="CabezaFamilia" Type="varchar(max)" />
+          <Property Name="EconomiaFamilia" Type="varchar(max)" />
+          <Property Name="DependenciaFamiliar" Type="int" />
+          <Property Name="DependenciaMenores" Type="int" />
+          <Property Name="TipoPoblacion" Type="varchar(max)" />
+          <Property Name="CondicionesTrabajo" Type="varchar(max)" />
+          <Property Name="OcupacionActual" Type="varchar(max)" />
+          <Property Name="MotivoDesplazamiento" Type="varchar(max)" />
+          <Property Name="IdSitic" Type="int" />
+        </EntityType>
+        <EntityType Name="SocioEconomicos">
+          <Key>
+            <PropertyRef Name="IdSocioEconomicos" />
+          </Key>
+          <Property Name="IdSocioEconomicos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ActividadEconomicaEconomico" Type="varchar(max)" />
+          <Property Name="TipoVivienda" Type="varchar(max)" />
+          <Property Name="DireccionOcupacion" Type="varchar(max)" />
+          <Property Name="Energia" Type="varchar(max)" />
+          <Property Name="Acueducto" Type="varchar(max)" />
+          <Property Name="Alcantarillado" Type="varchar(max)" />
+          <Property Name="TelefonoFijo" Type="varchar(max)" />
+          <Property Name="TieneCelular" Type="varchar(max)" />
+          <Property Name="ProductosVenta" Type="varchar(max)" />
+          <Property Name="TiempoOficio" Type="varchar(max)" />
+          <Property Name="JornadaLaborarl" Type="varchar(max)" />
+          <Property Name="HorasTrabajo" Type="int" />
+          <Property Name="DiasSemanal" Type="int" />
+          <Property Name="IngesosMensuales" Type="varchar(max)" />
+          <Property Name="IdSitic" Type="int" />
+        </EntityType>
+        <EntityType Name="TipoPermiso">
+          <Key>
+            <PropertyRef Name="CodPermiso" />
+          </Key>
+          <Property Name="CodPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescPermiso" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CedUsuario" Type="nchar" MaxLength="20" />
+          <Property Name="NomUsuario" Type="varchar(max)" />
+          <Property Name="ApeUsuario" Type="varchar(max)" />
+          <Property Name="Telefono" Type="nchar" MaxLength="10" />
+          <Property Name="Correo" Type="varchar(max)" />
+          <Property Name="Password" Type="varchar(max)" />
+          <Property Name="CodRol" Type="int" />
+        </EntityType>
+        <Association Name="FK_ASignar permisos_Permisos1">
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+          <End Role="ASignarPermisos" Type="Self.ASignarPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="IdPermiso" />
+            </Principal>
+            <Dependent Role="ASignarPermisos">
+              <PropertyRef Name="CodPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASignar permisos_Rol1">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="ASignarPermisos" Type="Self.ASignarPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="CodRol" />
+            </Principal>
+            <Dependent Role="ASignarPermisos">
+              <PropertyRef Name="CodRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CondicionesSalud_SiTic">
+          <End Role="SiTic" Type="Self.SiTic" Multiplicity="0..1" />
+          <End Role="CondicionesSalud" Type="Self.CondicionesSalud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="CondicionesSalud">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CondicionesTrabajo_SiTic">
+          <End Role="SiTic" Type="Self.SiTic" Multiplicity="0..1" />
+          <End Role="CondicionesTrabajo" Type="Self.CondicionesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="CondicionesTrabajo">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EstiloVida_SiTic">
+          <End Role="SiTic" Type="Self.SiTic" Multiplicity="0..1" />
+          <End Role="EstiloVida" Type="Self.EstiloVida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="EstiloVida">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permisos_TipoPermiso">
+          <End Role="TipoPermiso" Type="Self.TipoPermiso" Multiplicity="0..1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPermiso">
+              <PropertyRef Name="CodPermiso" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="TipoPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SeguridadSocial_SiTic">
+          <End Role="SiTic" Type="Self.SiTic" Multiplicity="0..1" />
+          <End Role="SeguridadSocial" Type="Self.SeguridadSocial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="SeguridadSocial">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocioDemograficos_SiTic">
+          <End Role="SiTic" Type="Self.SiTic" Multiplicity="0..1" />
+          <End Role="SocioDemograficos" Type="Self.SocioDemograficos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="SocioDemograficos">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocioEconomicos_SiTic">
+          <End Role="SiTic" Type="Self.SiTic" Multiplicity="0..1" />
+          <End Role="SocioEconomicos" Type="Self.SocioEconomicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="SocioEconomicos">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Rol1">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="CodRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="CodRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BIOMEDICOModelStoreContainer">
+          <EntitySet Name="ASignarPermisos" EntityType="Self.ASignarPermisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodigoAFP" EntityType="Self.CodigoAFP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CondicionesSalud" EntityType="Self.CondicionesSalud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CondicionesTrabajo" EntityType="Self.CondicionesTrabajo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eps" EntityType="Self.Eps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstiloVida" EntityType="Self.EstiloVida" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SeguridadSocial" EntityType="Self.SeguridadSocial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiTic" EntityType="Self.SiTic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SocioDemograficos" EntityType="Self.SocioDemograficos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SocioEconomicos" EntityType="Self.SocioEconomicos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPermiso" EntityType="Self.TipoPermiso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ASignar permisos_Permisos1" Association="Self.FK_ASignar permisos_Permisos1">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="ASignarPermisos" EntitySet="ASignarPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASignar permisos_Rol1" Association="Self.FK_ASignar permisos_Rol1">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="ASignarPermisos" EntitySet="ASignarPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CondicionesSalud_SiTic" Association="Self.FK_CondicionesSalud_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="CondicionesSalud" EntitySet="CondicionesSalud" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CondicionesTrabajo_SiTic" Association="Self.FK_CondicionesTrabajo_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="CondicionesTrabajo" EntitySet="CondicionesTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EstiloVida_SiTic" Association="Self.FK_EstiloVida_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="EstiloVida" EntitySet="EstiloVida" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permisos_TipoPermiso" Association="Self.FK_Permisos_TipoPermiso">
+            <End Role="TipoPermiso" EntitySet="TipoPermiso" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SeguridadSocial_SiTic" Association="Self.FK_SeguridadSocial_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="SeguridadSocial" EntitySet="SeguridadSocial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocioDemograficos_SiTic" Association="Self.FK_SocioDemograficos_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="SocioDemograficos" EntitySet="SocioDemograficos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocioEconomicos_SiTic" Association="Self.FK_SocioEconomicos_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="SocioEconomicos" EntitySet="SocioEconomicos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Rol1" Association="Self.FK_Usuarios_Rol1">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BIOMEDICOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ASignarPermisos">
+          <Key>
+            <PropertyRef Name="IdPermiso" />
+          </Key>
+          <Property Name="IdPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodPermiso" Type="Int32" Nullable="false" />
+          <Property Name="CodRol" Type="Int32" />
+          <NavigationProperty Name="Permisos" Relationship="Self.FK_ASignar_permisos_Permisos1" FromRole="ASignarPermisos" ToRole="Permisos" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_ASignar_permisos_Rol1" FromRole="ASignarPermisos" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="IdPermiso" />
+          </Key>
+          <Property Name="IdPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodPermiso" Type="Int32" />
+          <Property Name="NomPermiso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EtiquetaPermiso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DesPermiso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoPermiso" Type="Int32" />
+          <Property Name="PadrePermiso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ASignarPermisos" Relationship="Self.FK_ASignar_permisos_Permisos1" FromRole="Permisos" ToRole="ASignarPermisos" />
+          <NavigationProperty Name="TipoPermiso1" Relationship="Self.FK_Permisos_TipoPermiso" FromRole="Permisos" ToRole="TipoPermiso" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="CodRol" />
+          </Key>
+          <Property Name="CodRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomRol" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ASignarPermisos" Relationship="Self.FK_ASignar_permisos_Rol1" FromRole="Rol" ToRole="ASignarPermisos" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Rol1" FromRole="Rol" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="TipoPermiso">
+          <Key>
+            <PropertyRef Name="CodPermiso" />
+          </Key>
+          <Property Name="CodPermiso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescPermiso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Permisos" Relationship="Self.FK_Permisos_TipoPermiso" FromRole="TipoPermiso" ToRole="Permisos" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CedUsuario" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="NomUsuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ApeUsuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CodRol" Type="Int32" />
+          <NavigationProperty Name="Rol" Relationship="Self.FK_Usuarios_Rol1" FromRole="Usuarios" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK_ASignar_permisos_Permisos1">
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+          <End Role="ASignarPermisos" Type="Self.ASignarPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="IdPermiso" />
+            </Principal>
+            <Dependent Role="ASignarPermisos">
+              <PropertyRef Name="CodPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ASignar_permisos_Rol1">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="ASignarPermisos" Type="Self.ASignarPermisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="CodRol" />
+            </Principal>
+            <Dependent Role="ASignarPermisos">
+              <PropertyRef Name="CodRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Permisos_TipoPermiso">
+          <End Role="TipoPermiso" Type="Self.TipoPermiso" Multiplicity="0..1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPermiso">
+              <PropertyRef Name="CodPermiso" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="TipoPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Rol1">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="CodRol" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="CodRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BIOMEDICOEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ASignarPermisos" EntityType="Self.ASignarPermisos" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+          <EntitySet Name="TipoPermiso" EntityType="Self.TipoPermiso" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK_ASignar_permisos_Permisos1" Association="Self.FK_ASignar_permisos_Permisos1">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="ASignarPermisos" EntitySet="ASignarPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ASignar_permisos_Rol1" Association="Self.FK_ASignar_permisos_Rol1">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="ASignarPermisos" EntitySet="ASignarPermisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Permisos_TipoPermiso" Association="Self.FK_Permisos_TipoPermiso">
+            <End Role="TipoPermiso" EntitySet="TipoPermiso" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Rol1" Association="Self.FK_Usuarios_Rol1">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="SiTic" EntityType="BIOMEDICOModel.SiTic" />
+          <EntitySet Name="Eps" EntityType="BIOMEDICOModel.Eps" />
+          <EntitySet Name="SeguridadSocial" EntityType="BIOMEDICOModel.SeguridadSocial" />
+          <AssociationSet Name="FK_SeguridadSocial_SiTic" Association="BIOMEDICOModel.FK_SeguridadSocial_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="SeguridadSocial" EntitySet="SeguridadSocial" />
+          </AssociationSet>
+          <EntitySet Name="EstiloVida" EntityType="BIOMEDICOModel.EstiloVida" />
+          <AssociationSet Name="FK_EstiloVida_SiTic" Association="BIOMEDICOModel.FK_EstiloVida_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="EstiloVida" EntitySet="EstiloVida" />
+          </AssociationSet>
+          <EntitySet Name="CondicionesSalud" EntityType="BIOMEDICOModel.CondicionesSalud" />
+          <AssociationSet Name="FK_CondicionesSalud_SiTic" Association="BIOMEDICOModel.FK_CondicionesSalud_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="CondicionesSalud" EntitySet="CondicionesSalud" />
+          </AssociationSet>
+          <EntitySet Name="CondicionesTrabajo" EntityType="BIOMEDICOModel.CondicionesTrabajo" />
+          <AssociationSet Name="FK_CondicionesTrabajo_SiTic" Association="BIOMEDICOModel.FK_CondicionesTrabajo_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="CondicionesTrabajo" EntitySet="CondicionesTrabajo" />
+          </AssociationSet>
+          <EntitySet Name="CodigoAFP" EntityType="BIOMEDICOModel.CodigoAFP" />
+          <EntitySet Name="SocioDemograficos" EntityType="BIOMEDICOModel.SocioDemograficos" />
+          <EntitySet Name="SocioEconomicos" EntityType="BIOMEDICOModel.SocioEconomicos" />
+          <AssociationSet Name="FK_SocioDemograficos_SiTic" Association="BIOMEDICOModel.FK_SocioDemograficos_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="SocioDemograficos" EntitySet="SocioDemograficos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SocioEconomicos_SiTic" Association="BIOMEDICOModel.FK_SocioEconomicos_SiTic">
+            <End Role="SiTic" EntitySet="SiTic" />
+            <End Role="SocioEconomicos" EntitySet="SocioEconomicos" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="SiTic">
+          <Key>
+            <PropertyRef Name="IdSitic" />
+          </Key>
+          <Property Name="IdSitic" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AfiliacionActualEncuestado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEncuesta" Type="DateTime" Precision="3" />
+          <Property Name="HoraInicioEncuesta" Type="Time" Precision="7" />
+          <Property Name="TipoDocumentoEncuestador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroIdentificacionEncuestador" Type="Int64" />
+          <Property Name="TrabajadoInformal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DepartamentoEncuestador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MunicipioEncuestador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ClaseMunicipioEncuestador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDocumentoEncuestado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroIdentificacionEncuestado" Type="Int64" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="PrimerNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioRegistro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SeguridadSocial" Relationship="BIOMEDICOModel.FK_SeguridadSocial_SiTic" FromRole="SiTic" ToRole="SeguridadSocial" />
+          <NavigationProperty Name="EstiloVida" Relationship="BIOMEDICOModel.FK_EstiloVida_SiTic" FromRole="SiTic" ToRole="EstiloVida" />
+          <NavigationProperty Name="CondicionesSalud" Relationship="BIOMEDICOModel.FK_CondicionesSalud_SiTic" FromRole="SiTic" ToRole="CondicionesSalud" />
+          <NavigationProperty Name="CondicionesTrabajo" Relationship="BIOMEDICOModel.FK_CondicionesTrabajo_SiTic" FromRole="SiTic" ToRole="CondicionesTrabajo" />
+          <NavigationProperty Name="SocioDemograficos" Relationship="BIOMEDICOModel.FK_SocioDemograficos_SiTic" FromRole="SiTic" ToRole="SocioDemograficos" />
+          <NavigationProperty Name="SocioEconomicos" Relationship="BIOMEDICOModel.FK_SocioEconomicos_SiTic" FromRole="SiTic" ToRole="SocioEconomicos" />
+        </EntityType>
+        <EntityType Name="Eps">
+          <Key>
+            <PropertyRef Name="IdePS" />
+          </Key>
+          <Property Name="IdePS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodEps" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NomEps" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SeguridadSocial">
+          <Key>
+            <PropertyRef Name="IdSeguridadSocial" />
+          </Key>
+          <Property Name="IdSeguridadSocial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AfiliadoSeguridad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RegimenAfiliado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RegimenSalud" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EpsAfiliado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Pensiones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Afp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdSitic" Type="Int32" />
+          <NavigationProperty Name="SiTic" Relationship="BIOMEDICOModel.FK_SeguridadSocial_SiTic" FromRole="SeguridadSocial" ToRole="SiTic" />
+        </EntityType>
+        <Association Name="FK_SeguridadSocial_SiTic">
+          <End Type="BIOMEDICOModel.SiTic" Role="SiTic" Multiplicity="0..1" />
+          <End Type="BIOMEDICOModel.SeguridadSocial" Role="SeguridadSocial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="SeguridadSocial">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EstiloVida">
+          <Key>
+            <PropertyRef Name="IdEstiloVida" />
+          </Key>
+          <Property Name="IdEstiloVida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Peso" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Estatura" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActividadFisica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DiasSemana" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HorasPractica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EncuestadoFuma" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConsumeLicor" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SustanciasPsicoactivas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CualSustancia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DietaFrutas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FrecuenciaFrutas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdSitic" Type="Int32" />
+          <NavigationProperty Name="SiTic" Relationship="BIOMEDICOModel.FK_EstiloVida_SiTic" FromRole="EstiloVida" ToRole="SiTic" />
+        </EntityType>
+        <Association Name="FK_EstiloVida_SiTic">
+          <End Type="BIOMEDICOModel.SiTic" Role="SiTic" Multiplicity="0..1" />
+          <End Type="BIOMEDICOModel.EstiloVida" Role="EstiloVida" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="EstiloVida">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CondicionesSalud">
+          <Key>
+            <PropertyRef Name="IdCondicionesSalud" />
+          </Key>
+          <Property Name="IdCondicionesSalud" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoSalud" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SaludFisica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SaludMental" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SaludPsicologica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActividadNormalFisica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CausaActividadFisica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AccidenteLaborar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AccidenteOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AccidneteTrabajoActividad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EnfermedadOrigen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EnfermedadOrigenOcupacional" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LesionesOcurridad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ParteCuerpoLesion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AgenteAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MecanismoAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InformoAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NoInformoAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActorInformoAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IncapacidadAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CostosAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TramiteEnfermedad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EnfermedadDiagnosticada" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CausaDiscapacidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDiscapacidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdSitic" Type="Int32" />
+          <NavigationProperty Name="SiTic" Relationship="BIOMEDICOModel.FK_CondicionesSalud_SiTic" FromRole="CondicionesSalud" ToRole="SiTic" />
+        </EntityType>
+        <Association Name="FK_CondicionesSalud_SiTic">
+          <End Type="BIOMEDICOModel.SiTic" Role="SiTic" Multiplicity="0..1" />
+          <End Type="BIOMEDICOModel.CondicionesSalud" Role="CondicionesSalud" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="CondicionesSalud">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CondicionesTrabajo">
+          <Key>
+            <PropertyRef Name="IdCondicionesTrabajo" />
+          </Key>
+          <Property Name="IdCondicionesTrabajo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CondicionTrabajo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligrosFisico" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligrosPsicosocial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Peligrosbiologico" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CondicionesSeguridad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligrosBiomecanicos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligrosQuimicos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FenomenosNatural" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ElementosProteccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProteccionCabeza" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProteccionOcular" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProteccionAuditiva" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProteccionRespiratoria" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExtremidadesSuperiores" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExtremidadesInferiores" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OtrosElementos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RopaTrabajo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmergenciaEncuestado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CasoEmergencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Extintores" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Botiquin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RutaEvacuacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SalidaEmergencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LugarCasoEmergencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AguaPotable" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RecoleccionResiduos" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HoraTerminacion" Type="Time" Precision="7" />
+          <Property Name="NombreEncuestado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CedulaEncuestado" Type="Int64" />
+          <Property Name="Firma" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdSitic" Type="Int32" />
+          <NavigationProperty Name="SiTic" Relationship="BIOMEDICOModel.FK_CondicionesTrabajo_SiTic" FromRole="CondicionesTrabajo" ToRole="SiTic" />
+        </EntityType>
+        <Association Name="FK_CondicionesTrabajo_SiTic">
+          <End Type="BIOMEDICOModel.SiTic" Role="SiTic" Multiplicity="0..1" />
+          <End Type="BIOMEDICOModel.CondicionesTrabajo" Role="CondicionesTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="CondicionesTrabajo">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CodigoAFP">
+          <Key>
+            <PropertyRef Name="IdAfp" />
+          </Key>
+          <Property Name="IdAfp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoAdministradora" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Código" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Administradora" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SocioDemograficos">
+          <Key>
+            <PropertyRef Name="IdSocioDemograficos" />
+          </Key>
+          <Property Name="IdSocioDemograficos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Genero" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NivelEscolar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OtroNivelEscolar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AñosAprobados" Type="Int32" />
+          <Property Name="CabezaFamilia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EconomiaFamilia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DependenciaFamiliar" Type="Int32" />
+          <Property Name="DependenciaMenores" Type="Int32" />
+          <Property Name="TipoPoblacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CondicionesTrabajo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OcupacionActual" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MotivoDesplazamiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdSitic" Type="Int32" />
+          <NavigationProperty Name="SiTic" Relationship="BIOMEDICOModel.FK_SocioDemograficos_SiTic" FromRole="SocioDemograficos" ToRole="SiTic" />
+        </EntityType>
+        <EntityType Name="SocioEconomicos">
+          <Key>
+            <PropertyRef Name="IdSocioEconomicos" />
+          </Key>
+          <Property Name="IdSocioEconomicos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActividadEconomicaEconomico" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoVivienda" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionOcupacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Energia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Acueducto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Alcantarillado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoFijo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TieneCelular" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProductosVenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoOficio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JornadaLaborarl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HorasTrabajo" Type="Int32" />
+          <Property Name="DiasSemanal" Type="Int32" />
+          <Property Name="IngesosMensuales" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdSitic" Type="Int32" />
+          <NavigationProperty Name="SiTic" Relationship="BIOMEDICOModel.FK_SocioEconomicos_SiTic" FromRole="SocioEconomicos" ToRole="SiTic" />
+        </EntityType>
+        <Association Name="FK_SocioDemograficos_SiTic">
+          <End Type="BIOMEDICOModel.SiTic" Role="SiTic" Multiplicity="0..1" />
+          <End Type="BIOMEDICOModel.SocioDemograficos" Role="SocioDemograficos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="SocioDemograficos">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SocioEconomicos_SiTic">
+          <End Type="BIOMEDICOModel.SiTic" Role="SiTic" Multiplicity="0..1" />
+          <End Type="BIOMEDICOModel.SocioEconomicos" Role="SocioEconomicos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SiTic">
+              <PropertyRef Name="IdSitic" />
+            </Principal>
+            <Dependent Role="SocioEconomicos">
+              <PropertyRef Name="IdSitic" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BIOMEDICOModelStoreContainer" CdmEntityContainer="BIOMEDICOEntities5">
+          <EntitySetMapping Name="ASignarPermisos">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.ASignarPermisos">
+              <MappingFragment StoreEntitySet="ASignarPermisos">
+                <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
+                <ScalarProperty Name="CodPermiso" ColumnName="CodPermiso" />
+                <ScalarProperty Name="CodRol" ColumnName="CodRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="IdPermiso" ColumnName="IdPermiso" />
+                <ScalarProperty Name="CodPermiso" ColumnName="CodPermiso" />
+                <ScalarProperty Name="NomPermiso" ColumnName="NomPermiso" />
+                <ScalarProperty Name="EtiquetaPermiso" ColumnName="EtiquetaPermiso" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="DesPermiso" ColumnName="DesPermiso" />
+                <ScalarProperty Name="TipoPermiso" ColumnName="TipoPermiso" />
+                <ScalarProperty Name="PadrePermiso" ColumnName="PadrePermiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="CodRol" ColumnName="CodRol" />
+                <ScalarProperty Name="NomRol" ColumnName="NomRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPermiso">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.TipoPermiso">
+              <MappingFragment StoreEntitySet="TipoPermiso">
+                <ScalarProperty Name="CodPermiso" ColumnName="CodPermiso" />
+                <ScalarProperty Name="DescPermiso" ColumnName="DescPermiso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="CedUsuario" ColumnName="CedUsuario" />
+                <ScalarProperty Name="NomUsuario" ColumnName="NomUsuario" />
+                <ScalarProperty Name="ApeUsuario" ColumnName="ApeUsuario" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CodRol" ColumnName="CodRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiTic">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.SiTic">
+              <MappingFragment StoreEntitySet="SiTic">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="UsuarioRegistro" ColumnName="UsuarioRegistro" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="NumeroIdentificacionEncuestado" ColumnName="NumeroIdentificacionEncuestado" />
+                <ScalarProperty Name="TipoDocumentoEncuestado" ColumnName="TipoDocumentoEncuestado" />
+                <ScalarProperty Name="ClaseMunicipioEncuestador" ColumnName="ClaseMunicipioEncuestador" />
+                <ScalarProperty Name="MunicipioEncuestador" ColumnName="MunicipioEncuestador" />
+                <ScalarProperty Name="DepartamentoEncuestador" ColumnName="DepartamentoEncuestador" />
+                <ScalarProperty Name="TrabajadoInformal" ColumnName="TrabajadoInformal" />
+                <ScalarProperty Name="NumeroIdentificacionEncuestador" ColumnName="NumeroIdentificacionEncuestador" />
+                <ScalarProperty Name="TipoDocumentoEncuestador" ColumnName="TipoDocumentoEncuestador" />
+                <ScalarProperty Name="HoraInicioEncuesta" ColumnName="HoraInicioEncuesta" />
+                <ScalarProperty Name="FechaEncuesta" ColumnName="FechaEncuesta" />
+                <ScalarProperty Name="AfiliacionActualEncuestado" ColumnName="AfiliacionActualEncuestado" />
+                <ScalarProperty Name="IdSitic" ColumnName="IdSitic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eps">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.Eps">
+              <MappingFragment StoreEntitySet="Eps">
+                <ScalarProperty Name="NomEps" ColumnName="NomEps" />
+                <ScalarProperty Name="CodEps" ColumnName="CodEps" />
+                <ScalarProperty Name="IdePS" ColumnName="IdePS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SeguridadSocial">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.SeguridadSocial">
+              <MappingFragment StoreEntitySet="SeguridadSocial">
+                <ScalarProperty Name="IdSitic" ColumnName="IdSitic" />
+                <ScalarProperty Name="Afp" ColumnName="Afp" />
+                <ScalarProperty Name="Pensiones" ColumnName="Pensiones" />
+                <ScalarProperty Name="EpsAfiliado" ColumnName="EpsAfiliado" />
+                <ScalarProperty Name="RegimenSalud" ColumnName="RegimenSalud" />
+                <ScalarProperty Name="RegimenAfiliado" ColumnName="RegimenAfiliado" />
+                <ScalarProperty Name="AfiliadoSeguridad" ColumnName="AfiliadoSeguridad" />
+                <ScalarProperty Name="IdSeguridadSocial" ColumnName="IdSeguridadSocial" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstiloVida">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.EstiloVida">
+              <MappingFragment StoreEntitySet="EstiloVida">
+                <ScalarProperty Name="IdSitic" ColumnName="IdSitic" />
+                <ScalarProperty Name="FrecuenciaFrutas" ColumnName="FrecuenciaFrutas" />
+                <ScalarProperty Name="DietaFrutas" ColumnName="DietaFrutas" />
+                <ScalarProperty Name="CualSustancia" ColumnName="CualSustancia" />
+                <ScalarProperty Name="SustanciasPsicoactivas" ColumnName="SustanciasPsicoactivas" />
+                <ScalarProperty Name="ConsumeLicor" ColumnName="ConsumeLicor" />
+                <ScalarProperty Name="EncuestadoFuma" ColumnName="EncuestadoFuma" />
+                <ScalarProperty Name="HorasPractica" ColumnName="HorasPractica" />
+                <ScalarProperty Name="DiasSemana" ColumnName="DiasSemana" />
+                <ScalarProperty Name="ActividadFisica" ColumnName="ActividadFisica" />
+                <ScalarProperty Name="Estatura" ColumnName="Estatura" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="IdEstiloVida" ColumnName="IdEstiloVida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CondicionesSalud">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.CondicionesSalud">
+              <MappingFragment StoreEntitySet="CondicionesSalud">
+                <ScalarProperty Name="IdSitic" ColumnName="IdSitic" />
+                <ScalarProperty Name="TipoDiscapacidad" ColumnName="TipoDiscapacidad" />
+                <ScalarProperty Name="CausaDiscapacidad" ColumnName="CausaDiscapacidad" />
+                <ScalarProperty Name="EnfermedadDiagnosticada" ColumnName="EnfermedadDiagnosticada" />
+                <ScalarProperty Name="TramiteEnfermedad" ColumnName="TramiteEnfermedad" />
+                <ScalarProperty Name="CostosAccidente" ColumnName="CostosAccidente" />
+                <ScalarProperty Name="IncapacidadAccidente" ColumnName="IncapacidadAccidente" />
+                <ScalarProperty Name="ActorInformoAccidente" ColumnName="ActorInformoAccidente" />
+                <ScalarProperty Name="NoInformoAccidente" ColumnName="NoInformoAccidente" />
+                <ScalarProperty Name="InformoAccidente" ColumnName="InformoAccidente" />
+                <ScalarProperty Name="MecanismoAccidente" ColumnName="MecanismoAccidente" />
+                <ScalarProperty Name="AgenteAccidente" ColumnName="AgenteAccidente" />
+                <ScalarProperty Name="ParteCuerpoLesion" ColumnName="ParteCuerpoLesion" />
+                <ScalarProperty Name="LesionesOcurridad" ColumnName="LesionesOcurridad" />
+                <ScalarProperty Name="EnfermedadOrigenOcupacional" ColumnName="EnfermedadOrigenOcupacional" />
+                <ScalarProperty Name="EnfermedadOrigen" ColumnName="EnfermedadOrigen" />
+                <ScalarProperty Name="AccidneteTrabajoActividad" ColumnName="AccidneteTrabajoActividad" />
+                <ScalarProperty Name="AccidenteOrigen" ColumnName="AccidenteOrigen" />
+                <ScalarProperty Name="AccidenteLaborar" ColumnName="AccidenteLaborar" />
+                <ScalarProperty Name="CausaActividadFisica" ColumnName="CausaActividadFisica" />
+                <ScalarProperty Name="ActividadNormalFisica" ColumnName="ActividadNormalFisica" />
+                <ScalarProperty Name="SaludPsicologica" ColumnName="SaludPsicologica" />
+                <ScalarProperty Name="SaludMental" ColumnName="SaludMental" />
+                <ScalarProperty Name="SaludFisica" ColumnName="SaludFisica" />
+                <ScalarProperty Name="EstadoSalud" ColumnName="EstadoSalud" />
+                <ScalarProperty Name="IdCondicionesSalud" ColumnName="IdCondicionesSalud" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CondicionesTrabajo">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.CondicionesTrabajo">
+              <MappingFragment StoreEntitySet="CondicionesTrabajo">
+                <ScalarProperty Name="IdSitic" ColumnName="IdSitic" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="CedulaEncuestado" ColumnName="CedulaEncuestado" />
+                <ScalarProperty Name="NombreEncuestado" ColumnName="NombreEncuestado" />
+                <ScalarProperty Name="HoraTerminacion" ColumnName="HoraTerminacion" />
+                <ScalarProperty Name="RecoleccionResiduos" ColumnName="RecoleccionResiduos" />
+                <ScalarProperty Name="AguaPotable" ColumnName="AguaPotable" />
+                <ScalarProperty Name="LugarCasoEmergencia" ColumnName="LugarCasoEmergencia" />
+                <ScalarProperty Name="SalidaEmergencia" ColumnName="SalidaEmergencia" />
+                <ScalarProperty Name="RutaEvacuacion" ColumnName="RutaEvacuacion" />
+                <ScalarProperty Name="Botiquin" ColumnName="Botiquin" />
+                <ScalarProperty Name="Extintores" ColumnName="Extintores" />
+                <ScalarProperty Name="CasoEmergencia" ColumnName="CasoEmergencia" />
+                <ScalarProperty Name="EmergenciaEncuestado" ColumnName="EmergenciaEncuestado" />
+                <ScalarProperty Name="RopaTrabajo" ColumnName="RopaTrabajo" />
+                <ScalarProperty Name="OtrosElementos" ColumnName="OtrosElementos" />
+                <ScalarProperty Name="ExtremidadesInferiores" ColumnName="ExtremidadesInferiores" />
+                <ScalarProperty Name="ExtremidadesSuperiores" ColumnName="ExtremidadesSuperiores" />
+                <ScalarProperty Name="ProteccionRespiratoria" ColumnName="ProteccionRespiratoria" />
+                <ScalarProperty Name="ProteccionAuditiva" ColumnName="ProteccionAuditiva" />
+                <ScalarProperty Name="ProteccionOcular" ColumnName="ProteccionOcular" />
+                <ScalarProperty Name="ProteccionCabeza" ColumnName="ProteccionCabeza" />
+                <ScalarProperty Name="ElementosProteccion" ColumnName="ElementosProteccion" />
+                <ScalarProperty Name="FenomenosNatural" ColumnName="FenomenosNatural" />
+                <ScalarProperty Name="PeligrosQuimicos" ColumnName="PeligrosQuimicos" />
+                <ScalarProperty Name="PeligrosBiomecanicos" ColumnName="PeligrosBiomecanicos" />
+                <ScalarProperty Name="CondicionesSeguridad" ColumnName="CondicionesSeguridad" />
+                <ScalarProperty Name="Peligrosbiologico" ColumnName="Peligrosbiologico" />
+                <ScalarProperty Name="PeligrosPsicosocial" ColumnName="PeligrosPsicosocial" />
+                <ScalarProperty Name="PeligrosFisico" ColumnName="PeligrosFisico" />
+                <ScalarProperty Name="CondicionTrabajo" ColumnName="CondicionTrabajo" />
+                <ScalarProperty Name="IdCondicionesTrabajo" ColumnName="IdCondicionesTrabajo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodigoAFP">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.CodigoAFP">
+              <MappingFragment StoreEntitySet="CodigoAFP">
+                <ScalarProperty Name="Administradora" ColumnName="Administradora" />
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="TipoAdministradora" ColumnName="TipoAdministradora" />
+                <ScalarProperty Name="IdAfp" ColumnName="IdAfp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SocioDemograficos">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.SocioDemograficos">
+              <MappingFragment StoreEntitySet="SocioDemograficos">
+                <ScalarProperty Name="IdSitic" ColumnName="IdSitic" />
+                <ScalarProperty Name="MotivoDesplazamiento" ColumnName="MotivoDesplazamiento" />
+                <ScalarProperty Name="OcupacionActual" ColumnName="OcupacionActual" />
+                <ScalarProperty Name="CondicionesTrabajo" ColumnName="CondicionesTrabajo" />
+                <ScalarProperty Name="TipoPoblacion" ColumnName="TipoPoblacion" />
+                <ScalarProperty Name="DependenciaMenores" ColumnName="DependenciaMenores" />
+                <ScalarProperty Name="DependenciaFamiliar" ColumnName="DependenciaFamiliar" />
+                <ScalarProperty Name="EconomiaFamilia" ColumnName="EconomiaFamilia" />
+                <ScalarProperty Name="CabezaFamilia" ColumnName="CabezaFamilia" />
+                <ScalarProperty Name="AñosAprobados" ColumnName="AñosAprobados" />
+                <ScalarProperty Name="OtroNivelEscolar" ColumnName="OtroNivelEscolar" />
+                <ScalarProperty Name="NivelEscolar" ColumnName="NivelEscolar" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="IdSocioDemograficos" ColumnName="IdSocioDemograficos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SocioEconomicos">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.SocioEconomicos">
+              <MappingFragment StoreEntitySet="SocioEconomicos">
+                <ScalarProperty Name="IdSitic" ColumnName="IdSitic" />
+                <ScalarProperty Name="IngesosMensuales" ColumnName="IngesosMensuales" />
+                <ScalarProperty Name="DiasSemanal" ColumnName="DiasSemanal" />
+                <ScalarProperty Name="HorasTrabajo" ColumnName="HorasTrabajo" />
+                <ScalarProperty Name="JornadaLaborarl" ColumnName="JornadaLaborarl" />
+                <ScalarProperty Name="TiempoOficio" ColumnName="TiempoOficio" />
+                <ScalarProperty Name="ProductosVenta" ColumnName="ProductosVenta" />
+                <ScalarProperty Name="TieneCelular" ColumnName="TieneCelular" />
+                <ScalarProperty Name="TelefonoFijo" ColumnName="TelefonoFijo" />
+                <ScalarProperty Name="Alcantarillado" ColumnName="Alcantarillado" />
+                <ScalarProperty Name="Acueducto" ColumnName="Acueducto" />
+                <ScalarProperty Name="Energia" ColumnName="Energia" />
+                <ScalarProperty Name="DireccionOcupacion" ColumnName="DireccionOcupacion" />
+                <ScalarProperty Name="TipoVivienda" ColumnName="TipoVivienda" />
+                <ScalarProperty Name="ActividadEconomicaEconomico" ColumnName="ActividadEconomicaEconomico" />
+                <ScalarProperty Name="IdSocioEconomicos" ColumnName="IdSocioEconomicos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

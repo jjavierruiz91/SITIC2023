@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "ListaTrabajadoresIndependientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script defer src="~/Scripts/APP/TrabajadoresEncuestados/ListaTrabajadores.js?v=1"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<h2>Listado Encuesta Trabajadores Independientes</h2>
+@*<div>
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Fecha inicio</strong></label>
+            @{
+                //var listaSocioDemograficos = BIOMEDICO.Controllers.DeporteController.ListDeporte();
+                var listaSiticFechas = BIOMEDICO.Controllers.TrabajadoresIndependientesController.listaSiticFechas();
+
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="FechaInicio" name="FechaInicio">
+                    <option value="">Seleccionar</option>
+                    @foreach (var item in listaSiticFechas)
+                    {
+                        <option value="@item.FechaEncuesta">@item.FechaEncuesta</option>
+                    }
+
+                </select>
+            }
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Fecha fin</strong></label>
+            @{
+                //var listaSocioDemograficos = BIOMEDICO.Controllers.DeporteController.ListDeporte();
+
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="FechaFin" name="FechaFin">
+                    <option value="">Seleccionar</option>
+                    @foreach (var item in listaSiticFechas)
+                    {
+                        <option value="@item.FechaEncuesta">@item.FechaEncuesta</option>
+                    }
+
+                </select>
+            }
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-4">
+            <label><strong>Municipio</strong></label>
+            @{
+                //var listaSocioDemograficos = BIOMEDICO.Controllers.DeporteController.ListDeporte();
+                var listaSiticDepartamento = BIOMEDICO.Controllers.TrabajadoresIndependientesController.listaSiticDepartamento();
+
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Municipio" name="Municipio">
+                    <option value="">Seleccionar</option>
+                    @foreach (var item in listaSiticDepartamento)
+                    {
+                        <option value="@item.MunicipioEncuestador">@item.MunicipioEncuestador</option>
+                    }
+
+                </select>
+            }
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4">
+
+            <button type="button" onclick="Buscar()" style="margin-top:15%" class="btn btn-outline-primary btn-lg">Buscar</button>
+        </div>
+    </div>
+
+</div>*@
+
+
+<div class="table-responsive row col-xl-12 ">
+    @*<button class="btn btn-primary btn-sm active" type="button" onclick="PDFBLANK()">Formulario</button>*@
+    @*<a href="~/Descargar/COMPONENTE II INST.  CARACTERIZACIÓN DEMOGRÁFICA EPIDEMIOL_ESTE.pdf" target="_blank"><h1><strong>Formulario.pdf</strong></h1></a>*@
+
+    <a href="~/Descargar/COMPONENTE II INST.  CARACTERIZACIÓN DEMOGRÁFICA EPIDEMIOL_ESTE (1).pdf" target="_blank"><h1><strong>Formulario.pdf</strong></h1></a>
+    <table class="table" id="datatable-TrabajadoresIndependientes">
+
+        <thead>
+            <tr class="ColorTabla">
+                <th>ID SITIC</th>
+                <th>AFILIACIÓN ACTUAL ENCUESTADO</th>
+                <th>HORA INICIO ENCUESTA </th>
+                <th>TIPO DOCUMENTO ENCUESTADOR</th>
+                <th>IDENTIFICACIÓN ENCUESTADOR</th>
+                <th>FECHA ENCUESTA </th>
+                <th>TIPO DOCUMENTO ENCUESTADO</th>
+                <th>NÚMERO IDENTIFICACIÓN ENCUESTADO</th>
+                <th>NOMBRE ENCUESTADO</th>
+
+                <th>TRABAJADO INFORMAL</th>
+                <th>DEPARTAMENTO ENCUESTADOR</th>
+                <th>MUNICIPIO ENCUESTADOR</th>
+                <th>CLASE MUNICIPIO ENCUESTADOR</th>
+                <th>TIPO DOCUMENTO ENCUESTADO</th>
+                <th>NUMERO IDENTIFICACION ENCUESTADO</th>
+                <th>FECHA NACIMIENTO DEL ENCUESTADO</th>
+                <th>PRIMER NOMBRE DEL ENCUESTADO</th>
+                <th>SEGUNDO NOMBRE DEL ENCUESTADO</th>
+                <th>PRIMERA PELLIDO DEL ENCUESTADO</th>
+                <th>SEGUNDO APELLIDO DEL ENCUESTADO</th>
+                <th>DIRECCION RESIDENCIA DEL ENCUESTADO</th>
+                <th>SEXO DEL TRABAJADOR ENCUESTADO</th>
+                <th>ESTADO CIVIL DEL ENCUESTADO</th>
+                <th>NIVEL ESCOLAR DEL ENCUESTADO</th>
+                <th>OTRO NIVEL ESCOLAR DEL ENCUESTADO</th>
+                <th>AÑOS APROBADOS DEL ENCUESTADO</th>
+                <th>CABEZA DE FAMILIA</th>
+                <th>CON QUIEN COMPARTE RESPONSABILIDAD EL ENCUESTADO</th>
+                <th>PERSONAS QUE DEPENDEN ECONOMICAMENTE DEL ENCUESTADO</th>
+                <th>MENORES QUE DEPENDEN ECONÓMICAMENTE DEL ENCUESTADO</th>
+                <th>POBLACION A LA QUE PERTENECE EL ENCUESTADO</th>
+                @*<th>OTRA POBLACION DEL ENCUESTADO</th>*@
+                <th>CONDICIÓN EN QUE SE ENCUENTRA ACTUALMENTE EL TRABAJADOR ENCUESTADO</th>
+                <th>OCUPACION ACTUAL DEL ENCUESTADO</th>
+                <th>MOTIVO DEL DESPLAZAMIENTO DEL TRABAJADOR ENCUESTADO</th>
+                @*<th>OTRO DESPLAZAMIENTO</th>*@
+                <th>CÓDIGO TIPO DE LA ACTIVIDAD ECONÓMICA</th>
+                @*<th>CUAL ACTIVIDAD ECONOMICA</th>*@
+                <th>TIPO VIVIENDA DONDE EL ENCUESTADO REALIZA EL OFICI U OCUPACIÓN</th>
+                <th>DIRECCION DONDE EL TRABAJADOR ENCUESTADO LLEVA A CABO EL OFICIO</th>
+                <th>EL LUGAR DONDE EL ENCUESTADO DESARROLLA EL OFICIO U OCUPACIÓN CUENTA CON ENERGIA</th>
+                <th>EL LUGAR DONDE EL ENCUESTADO DESARROLLA EL OFICIO U OCUPACIÓN CUENTA CON ACUEDUCTO</th>
+                <th>EL LUGAR DONDE EL ENCUESTADO DESARROLLA EL OFICIO U OCUPACIÓN CUENTA CON ALCANTARILLADO</th>
+                <th>EL LUGAR DONDE EL ENCUESTADO DESARROLLA EL OFICIO U OCUPACIÓN CUENTA CON TELEFONO FIJO</th>
+                <th> EL ENCUESTADO CUENTA CON CELULAR</th>
+                <th> EL ENCUESTADO ES PROPIETARIO DE LOS PRODUCTOS QUE VENDE</th>
+                <th>TIEMPO QUE EL ENCUESTADO LLEVA EJERCIENDO EL OFICIO U OCUPACIÓN</th>
+                <th>JORNADA EN EL QUE EL ENCUESTADO REALIZA SU OFICIO U OCUPACIÓN</th>
+                <th>HORAS QUE EL ENCUESTADO TRABAJA AL DIA</th>
+                <th>DIAS QUE EL ENCUESTADO TRABAJA A LA SEMANAL</th>
+                <th>RANGOS DE INGRESOS MENSUALES PERCIBIDOS POR EL ENCUESTADO</th>
+                <th>EL ENCUESTADO ESTÁ AFILIADO AL SISTEMA GENERAL DE SEGURIDAD SOCIAL EN SALUD</th>
+                <th>RÉGIMEN DE SALUD AL QUE PERTENECE EL ENCUESTADO</th>
+                <th>CONDICIÓN DENTRO DEL RÉGIMEN DE SALUD EL ENCUESTADO</th>
+                <th>EPS A LA CUAL SE ENCUENTRA AFILIADO EL ENCUESTADO</th>
+                <th>EL ENCUESTADO ESTÁ AFILIADO AL SISTEMA GENERAL DE SEGURIDAD SOCIAL EN PENSIONES</th>
+                <th>AFP A LA CUAL SE ENCUENTRA AFILIADO EL ENCUESTADO</th>
+                <th>PESO DEL ENCUESTADO</th>
+                <th>ESTATURA DEL ENCUESTADO</th>
+                <th>DESARROLA ALGUNA ACTIVIDAD FISICA EL ENCUESTADO</th>
+                <th>DIAS QUE DESARROLLA LA ACTIVIDAD FISICA EL ENCUESTADO</th>
+                <th>HORAS QUE DESARROLLA ACTIVIDAD FISICA</th>
+                <th>EL ENCUESTADO FUMA O FUMO</th>
+                <th>EL ENCUESTADO BEBE O BEBIO ALCOHOL</th>
+                <th>NOMBRE DE LA SUSTANCIA PSICOACTIVAS</th>
+                <th>OTRA SUSTANCIA PSICOACTIVAS</th>
+                <th>EL ENCUESTADO INCLUYE EN SU DIETA LA INGESTA DE FRUTAS Y VERDURAS</th>
+                <th>FRECUENCIA CON QUÉ CONSUME FRUTAS Y VERDURAS</th>
+                <th>LA SALUD DEL ENCUESTADO ES</th>
+                <th>LA SALUD FISICA DEL ENCUESTADO HA SIDO BUENA EN LOS ÚLTIMOS 30 DÍAS</th>
+                <th>LA SALUD MENTAL DEL ENCUESTADO HA SIDO BUENA EN LOS ÚLTIMOS 30 DÍAS</th>
+                <th>EL ENCUESTADO CONSULTÓ AL PSICÓLOGO O AL PSIQUIATRA EN LOS ÚLTIMOS 6 MESES</th>
+                <th>NÚMERO DE DIAS EN LOS CUALES LA MALA SALUD FISICA O MENTAL LE IMPIDÍO AL ENCUESTADO REALIZAR LAS ACTIVIDADES</th>
+                <th>SITIO EN EL CUAL OCURRIÓ EL EVENTO QUE LE IMPIDIÓ AL ENCUESTADO REALIZAR SUS ACTIVIDADES NORMALES</th>
+                <th>ACCIDENTES SUFRIDOS POR EL ENCUESTADO EN LOS ÚLTIMOS 12 MESES</th>
+                <th>UN ACCIDENTE DE ORIGEN COMÚN FUE LO QUE LE IMPIDIÓ AL ENCUESTADO REALIZAR LAS ACTIVIDADES NORMALES</th>
+                <th> UN ACCIDENTE DE TRABAJO FUE LO QUE LE IMPIDIÓ AL ENCUESTADO</th>
+                <th>UNA ENFERMEDAD DE ORIGEN COMÚN FUE LO QUE LE IMPIDIÓ AL ENCUESTADO REALIZAR LAS ACTIVIDADES NORMALES</th>
+                <th>UNA ENFERMEDAD DE ORIGEN OCUPACIONAL FUE LO QUE LE IMPIDIÓ AL ENCUESTADO REALIZAR LAS ACTIVIDADES NORMALES</th>
+                <th>LESIONES OCURRIDAS AL ENCUESTADO EN EL ACCIDENTE MÁS GRAVE RELACIONADO CON LA OCUPACIÓN U OFICIO DURANTE LOS ÚLTIMOS 12 MESES</th>
+                <th>PARTES DEL CUERPO DEL ENCUESTADO AFECTADAS EN EL ACCIDENTE RELACIONADO CON SU OFICIO U OCUPACIÓN</th>
+                <th>AGENTE QUE LE OCASIONÓ AL ENCUESTADO EL ACCIDENTE RELACIONADO CON SU OFICIO U OCUPACIÓN</th>
+                <th>MECANISMO QUE LE OCASIONÓ AL ENCUESTADO EL ACCIDENTE RELACIONADO CON SU OFICIO U OCUPACIÓN</th>
+                <th>INFORMÓ DEL ACCIDENTE RELACIONADO CON SU OFICIO U OCUPACIÓN</th>
+                <th>CAUSA POR LA QUE EL ENCUESTADO NO INFORMÓ EL ACCIDENTE RELACIONADO CON EL TRABAJO</th>
+                <th>ACTOR AL CUAL EL ENCUESTADO INFORMÓ DEL ACCIDENTE OCURRIDO DURANTE LA REALIZACIÓN DE SU OFICIO U OCUPACIÓN</th>
+                <th>DÍAS EN QUE EL ENCUESTADO DEJÓ DE REALIZAR EL OFICIO O LA OCUPACIÓN POR CAUSA DEL ACCIDENTE</th>
+                <th>ACTOR QUE ASUMIÓ LOS COSTOS DEL ACCIDENTE RELACIONADO CON EL OFICIO U LA OCUPACIÓN DEL ENCUESTADO</th>
+                <th>INDICADOR DE DIAGNÓSTICO O TRÁMITE DE RECONOCIMIENTO DE ALGUNA ENFERMEDAD RELACIONADA CON EL OFICIO U OCUPACIÓN DEL ENCUESTADO</th>
+                <th>ENFERMEDAD DIAGNOSTICADA</th>
+                <th>EL ACCIDENTE O ENFERMEDAD RELACIONADOS CON EL OFICIO O LA OCUPACIÓN CAUSÓ ALGÚN TIPO DE DISCAPACIDAD AL ENCUESTADO</th>
+                <th>TIPO DISCAPACIDAD CAUSADA AL ENCUESTADO</th>
+                <th>EL ENCUESTADO CONSIDERA SEGURO EL LUGAR DONDE DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th>PELIGROS FÍSICOS A LOS CUALES SE EXPONE EL ENCUESTADO AL REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th>PELIGROS PSICOSOCIALES A LOS CUALES SE EXPONE EL ENCUESTADO AL REALIZAR EL OFICIO U OCUPACIÓN.</th>
+                <th> PELIGROS BIOLÓGICOS A LOS CUALES SE EXPONE EL ENCUESTADO AL REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> CONDICIONES DE SEGURIDAD A LOS CUALES SE EXPONE EL ENCUESTADO AL REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> PELIGROS BIOMECÁNICOS A LOS CUALES SE EXPONE EL ENCUESTADO AL REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> PELIGROS QUÍMICOS A LOS CUALES SE EXPONE EL ENCUESTADO AL REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th>FENÓMENOS NATURALES A LOS CUALES SE EXPONE EL ENCUESTADO AL REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th>USO DE ELEMENTOS DE PROTECCIÓN PERSONAL PARA REALIZAR EL OFICIO U OCUPACIÓN HABITUAL</th>
+                <th>USO DE ELEMENTOS DE PROTECCIÓN PARA LA CABEZA AL REALIZAR EL OFICIO U OCUPACIÓN. </th>
+                <th>USO DE ELEMENTOS DE PROTECCIÓN OCULAR PARA REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> USO DE ELEMENTOS DE PROTECCIÓN AUDITIVA PARA REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> USO DE ELEMENTOS DE PROTECCIÓN RESPIRATORIA PARA REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> USO DE ELEMENTOS DE PROTECCIÓN DE EXTREMIDADES SUPERIORES PARA REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> USO DE ELEMENTOS DE PROTECCIÓN DE EXTREMIDADES INFERIORES PARA REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th>USO DE OTROS ELEMENTOS DE PROTECCIÓN PERSONAL PARA REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> USO DE ROPA DE TRABAJO PARA REALIZAR EL OFICIO U OCUPACIÓN</th>
+                <th> IDENTIFICACIÓN DE POSIBLES EMERGENCIAS QUE SE PUEDEN PRESENTAR EN EL LUGAR DONDE EL ENCUESTADO DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th> CONOCIMIENTO PARA ACTUAR EN CASO DE PRESENTARSE UNA EMERGENCIA EN EL LUGAR DONDE DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th>DISPOSICIÓN DE EXTINTOR PARA ATENDER UNA EMERGENCIA EN EL LUGAR DONDE DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th>DISPOSICIÓN DE BOTIQUÍN DE PRIMEROS AUXILIOS PARA ATENDER UNA EMERGENCIA EN EL LUGAR DONDE DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th> DISPOSICIÓN DE RUTA DE EVACUACIÓN PARA ATENDER UNA EMERGENCIA EN EL LUGAR DONDE DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th> DISPOSICIÓN DE SALIDAS DE EMERGENCIA PARA ATENDER UNA EMERGENCIA EN EL LUGAR DONDE DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th>  CONOCIMIENTO DEL LUGAR A DONDE DIRIGIRSE EN CASO DE EMERGENCIA</th>
+                <th>DISPOSICIÓN DE AGUA POTABLE EN EL LUGAR DONDE DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th>DISPOSICIÓN DE UN SISTEMA DE RECOLECCIÓN DE RESIDUOS EN EL LUGAR DONDE DESARROLLA EL OFICIO U OCUPACIÓN</th>
+                <th>HORA TERMINACION</th>
+                <th>NOMBRE ENCUESTADO</th>
+                <th>CEDULA ENCUESTADO</th>
+                @*<th>FIRMA</th>*@
+
+
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+

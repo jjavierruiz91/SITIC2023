@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb5b5bd990d84e29bb64744b167a343a" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="BIOMEDICOModel.ASignarPermisos" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Permisos" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Rol" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.TipoPermiso" Width="1.5" PointX="1.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Usuarios" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_ASignar_permisos_Permisos1" ManuallyRouted="false" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_ASignar_permisos_Rol1" ManuallyRouted="false" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_Permisos_TipoPermiso" ManuallyRouted="false" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_Usuarios_Rol1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.SiTic" Width="1.5" PointX="5.375" PointY="15.875" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Eps" Width="1.5" PointX="11.25" PointY="1.875" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.SeguridadSocial" Width="1.5" PointX="7.625" PointY="36.5" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_SeguridadSocial_SiTic" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.EstiloVida" Width="1.5" PointX="7.625" PointY="22" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_EstiloVida_SiTic" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.CondicionesSalud" Width="1.5" PointX="7.625" PointY="26.75" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_CondicionesSalud_SiTic" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.CondicionesTrabajo" Width="1.5" PointX="7.625" PointY="40.25" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_CondicionesTrabajo_SiTic" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.CodigoAFP" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.SocioDemograficos" Width="1.5" PointX="7.625" PointY="9.375" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.SocioEconomicos" Width="1.5" PointX="7.625" PointY="14.375" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_SocioDemograficos_SiTic" />
+        <AssociationConnector Association="BIOMEDICOModel.FK_SocioEconomicos_SiTic" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

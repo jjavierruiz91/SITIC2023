@@ -27,8 +27,7 @@
                                 swal.close()
                             }
                         });
-                    
-                    
+                                        
                 }
                 else {
                     //SwalErrorMsj(data.mensaje);
@@ -141,8 +140,8 @@ function Get_Data(callbacksussces, Url) {
         });
 }
 
-//function Get_Data(callbacksussces, Url, Async) {
-//    var form_data = new FormData();
+//async function ExisteEncuesta(callbacksussces, Url) {
+//    let Resultado
 //    //var Obj = { UserName: DataUser.UserName, Password: DataUser.Password, Telefono: ParametroString, IdUser: DataUser.IdUser };
 //    var formURL = SetUrlForQueryLocal(Url);
 //    $.ajax( //con json
@@ -150,23 +149,38 @@ function Get_Data(callbacksussces, Url) {
 //            url: formURL,
 //            type: "GET",
 //            dataType: "json",
-//            async: Async,
+//            //data: JSON.stringify(Obj),
 //            contentType: "application/json",
-//            processData: false,
-//            success: function (data, textStatus, jqXHR) {
-//                if (!data.Error) {
-//                    callbacksussces(data)
-//                } else {
-//                    //if (IsCargandoOn)
-//                    //    CloseLoading();
-//                    SwalErrorMsj(data);
-//                }
+//           success: async function (data, textStatus, jqXHR) {
+//                    Resultado = data
+                               
+                
 //            },
 //            error: function (jqXHR, textStatus, errorThrown) {
 //                console.log(errorThrown);
+//                Resultado=null
 //            }
 //        });
+//        return (Resultado)
 //}
+
+async function ExisteEncuesta(callbacksussces, Url) {
+    var formURL = SetUrlForQueryLocal(Url);
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: formURL,
+            type: "GET",
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                resolve(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                reject(null);
+            }
+        });
+    });
+};
 
 function SetUrlForQueryLocal(stringrelativeserver) {
 

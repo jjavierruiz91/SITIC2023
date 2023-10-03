@@ -658,19 +658,28 @@ function getQueryVariable(variable) {//saca los valores de la uRL
         window.history.back();
     }
 
-function CreateobjEncuesta() {
-   
+async function CreateobjEncuesta() {
+
     let Cedula = $('#NumeroIdentificacionEncuestado').val();
-    Get_Data(Guardar, '/TrabajadoresIndependientes/BuscarEncuestador?Identificacion=' + Cedula);
-        /*console.log(validadorFormUsuario.form())*/
+    //Get_Data(Guardar, '/TrabajadoresIndependientes/BuscarEncuestador?Identificacion=' + Cedula);
+    let data = await ExisteEncuesta(Guardar, '/TrabajadoresIndependientes/BuscarEncuestador?Identificacion=' + Cedula);
+    if (!data.Error) {
+        Guardar();
+    } else
+        Swal({
+            icon: 'error',
+            title: 'Error...',
+            text: 'Ha ocurrido un error, esta encuesta no existe!',
+        })
         
 
     
 }
 
+
 function Guardar(data) {
 
-    if (data.objeto != null || data.objeto != undefined) {
+    if (data?.objeto != null || data?.objeto != undefined) {
         swal({
             title: "Atención",
             text: "El usuario ya fue encuestado",

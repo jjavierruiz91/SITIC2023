@@ -86,14 +86,14 @@ function CargarSelectAfp(data) {
 
 function LlenarCampos(data) {
 
-    let Horaencuesta = data.objeto.HoraInicioEncuesta.Hours + ":" + data.objeto.HoraInicioEncuesta.Minutes + ":" ;
-    let HoraFin = data.objeto.CondicionesTrabajo[0].HoraTerminacion.Hours + ":" + data.objeto.CondicionesTrabajo[0].HoraTerminacion.Minutes + ":" ;
+    //let Horaencuesta = data.objeto.HoraInicioEncuesta.Hours + ":" + data.objeto.HoraInicioEncuesta.Minutes + ":" ;
+    //let HoraFin = data.objeto.CondicionesTrabajo[0].HoraTerminacion.Hours + ":" + data.objeto.CondicionesTrabajo[0].HoraTerminacion.Minutes + ":" ;
 
 
     $('#IdSitic').val(data.objeto.IdSitic);
     $('#AfiliacionActualEncuestado').val(data.objeto.AfiliacionActualEncuestado);
     $('#FechaEncuesta').val(JSONDateconverter(data.objeto.FechaEncuesta));
-    $('#HoraInicioEncuesta').val(Horaencuesta+"00");
+    //$('#HoraInicioEncuesta').val(Horaencuesta+"00");
     $('#TipoDocumentoEncuestador').val(data.objeto.TipoDocumentoEncuestador);
     $('#NumeroIdentificacionEncuestador').val(data.objeto.NumeroIdentificacionEncuestador);
     $('#TrabajadoInformal').val(data.objeto.TrabajadoInformal);
@@ -236,7 +236,7 @@ function LlenarCampos(data) {
     $('#LugarCasoEmergencia').val(data.objeto.CondicionesTrabajo[0].LugarCasoEmergencia);
     $('#AguaPotable').val(data.objeto.CondicionesTrabajo[0].AguaPotable);
     $('#RecoleccionResiduos').val(data.objeto.CondicionesTrabajo[0].RecoleccionResiduos);
-    $('#HoraTerminacion').val(HoraFin + "00");
+    
     $('#NombreEncuestado').val(data.objeto.CondicionesTrabajo[0].NombreEncuestado);
     $('#CedulaEncuestado').val(data.objeto.CondicionesTrabajo[0].CedulaEncuestado);
     $('#Firma').prop('src', data.objeto.CondicionesTrabajo[0].Firma);

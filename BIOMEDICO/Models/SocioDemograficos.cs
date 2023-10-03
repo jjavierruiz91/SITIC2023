@@ -30,6 +30,7 @@ namespace BIOMEDICO.Models
         public string MotivoDesplazamiento { get; set; }
         public Nullable<int> IdSitic { get; set; }
     
-        public virtual SiTic SiTic { get; set; }
+        public virtual SiTic SiTic { get; set; }= new SiTic();
+       
     }
 }

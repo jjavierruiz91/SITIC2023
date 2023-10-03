@@ -70,7 +70,8 @@ namespace BIOMEDICO.Controllers
 
 
         [HttpGet]
-        public JsonResult GetListEncuestaTrabajadores(int page, DateTime? Fechainicio = null, DateTime? Fechafin = null, string Municipio = null)
+        public JsonResult GetListEncuestaTrabajadores(int? page, DateTime? Fechainicio = null, DateTime? Fechafin = null, string Municipio = null)
+        //public JsonResult GetListEncuestaTrabajadores(int? page, DateTime? Fechainicio = null, DateTime? Fechafin = null, string Municipio = null)
         {
             Respuesta ret = new Respuesta();
             List<SiTic> SiticEncuestaTrabajadores = new List<SiTic>();
@@ -78,6 +79,9 @@ namespace BIOMEDICO.Controllers
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
             {
+                db.Configuration.LazyLoadingEnabled = false;
+                db.Configuration.ProxyCreationEnabled = false;
+
                 //var SiticEncuestaTrabajadores = db.SiTic.ToList().OrderBy(o => o.IdSitic).ToList();
 
                 if (Fechafin == null && Fechafin == null && Municipio == null)
@@ -89,18 +93,18 @@ namespace BIOMEDICO.Controllers
                     SiticEncuestaTrabajadores = db.SiTic.Where(P => (Fechainicio >= P.FechaEncuesta && Fechafin <= P.FechaEncuesta) || P.MunicipioEncuestador == Municipio).ToList().OrderByDescending(o => o.IdSitic).ToList();
                     
                 }
-                ret.PageAll = (int)Math.Ceiling((double)SiticEncuestaTrabajadores.Count / 300); ;
-                ret.PageCurrent = page;
+                ret.PageAll = (int)Math.Ceiling((double)SiticEncuestaTrabajadores.Count / 500); ;
+                ret.PageCurrent = (int) page;
 
-                if (page == ret.PageAll || ret.PageAll == 0)
+                if ((int)page == ret.PageAll || ret.PageAll == 0)
                 {
                     ret.PageNext = 0;
                 }
                 else
                 {
-                    ret.PageNext = page + 1;
+                    ret.PageNext = (int)page + 1;
                 }
-                SiticEncuestaTrabajadores = SiticEncuestaTrabajadores.Page(page, 300).ToList();
+                SiticEncuestaTrabajadores = SiticEncuestaTrabajadores.Page((int)page, 500).ToList();
 
 
                 var SocioDemograficos = db.SocioDemograficos.ToList();
@@ -147,6 +151,8 @@ namespace BIOMEDICO.Controllers
             using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
             {
+                db.Configuration.LazyLoadingEnabled = false;
+                db.Configuration.ProxyCreationEnabled = false;
                 var EncuestaUpdate = db.SiTic.FirstOrDefault(w => w.IdSitic == IdEncTrabajadores);
                 if (EncuestaUpdate != null)
                 {
@@ -287,8 +293,11 @@ namespace BIOMEDICO.Controllers
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
 
                 {
+                    
                     try
                     {
+                        db.Configuration.LazyLoadingEnabled = false;
+                        db.Configuration.ProxyCreationEnabled = false;
                         var SiticTrabajadoresExiste = db.SiTic.FirstOrDefault(w => w.IdSitic == a.SiticEncuestaTrabajadores.IdSitic);
                         if (SiticTrabajadoresExiste != null)
                         {
@@ -548,7 +557,7 @@ namespace BIOMEDICO.Controllers
                 {
                     //var SiticEncuestaTrabajadores = db.SiTic.ToList().OrderBy(o => o.IdSitic).ToList();
                     var SiticEncuestaTrabajadores = db.SiTic.Where(P => (Fechainicio >= P.FechaEncuesta && Fechafin <= P.FechaEncuesta) || P.MunicipioEncuestador == Municipio).ToList().OrderByDescending(o => o.IdSitic).ToList();
-                    ret.PageAll = (int)Math.Ceiling((double)SiticEncuestaTrabajadores.Count / 300); ;
+                    ret.PageAll = (int)Math.Ceiling((double)SiticEncuestaTrabajadores.Count / 500); ;
                     ret.PageCurrent = page;
 
                     if (page == ret.PageAll || ret.PageAll == 0)
@@ -559,7 +568,7 @@ namespace BIOMEDICO.Controllers
                     {
                         ret.PageNext = page + 1;
                     }
-                    SiticEncuestaTrabajadores = SiticEncuestaTrabajadores.Page(page, 300).ToList();
+                    SiticEncuestaTrabajadores = SiticEncuestaTrabajadores.Page(page, 500).ToList();
 
 
                     var SocioDemograficos = db.SocioDemograficos.ToList();

@@ -1,4 +1,7 @@
 ﻿function JSONDateconverter(fecha, withtime, getjsdate, real) {
+    if (fecha === null) {
+        return null; // Retorna directamente null si el valor es nulo
+    }
     var strdate = fecha.substr(6, fecha.length - 8);
     var myDate = "";
     if (real == true)

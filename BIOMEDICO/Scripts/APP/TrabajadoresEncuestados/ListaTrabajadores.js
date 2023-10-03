@@ -80,7 +80,7 @@ function CargarTabla() {
                  item.SegundoNombre,
                  item.PrimerApellido,
                  item.SegundoApellido,
-            item.Direccion,
+                 item.Direccion,
 
             item.SocioDemograficos.length > 0 ? item.SocioDemograficos[0].Genero : "",
 

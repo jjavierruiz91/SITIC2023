@@ -39,5 +39,6 @@ namespace BIOMEDICO.Models
         public virtual DbSet<CodigoAFP> CodigoAFP { get; set; }
         public virtual DbSet<SocioDemograficos> SocioDemograficos { get; set; }
         public virtual DbSet<SocioEconomicos> SocioEconomicos { get; set; }
+        public virtual DbSet<InformeAccidenteTrabajo> InformeAccidenteTrabajo { get; set; }
     }
 }

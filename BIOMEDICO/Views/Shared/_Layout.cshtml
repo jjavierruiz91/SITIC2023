@@ -168,9 +168,9 @@
                             </a>
                         </li>
                         @{
-                                var permisoasignado = listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "USUARIOS");
-                                if (permisoasignado != null)
-                                {
+                            var permisoasignado = listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "USUARIOS");
+                            if (permisoasignado != null)
+                            {
 
                                 <li id="C0003" class="nav-item nav-item-submenu">
                                     <a href="#" class="nav-link"><i class="icon-users4"></i> <span>GESTIÓN USUARIOS</span></a>
@@ -198,79 +198,92 @@
                                 </li>
                             }
                         }
-                        @*@{
-                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "ESPECIALIDAD") != null)
+                        @{
+                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "ENCUESTADOR") != null)
                             {
                                 <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>ESPECIALISTAS</span></a>
+                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>ACCIDENTE TRABAJO</span></a>
                                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a href="/Medicos/Agregar" class="nav-link">AGREGAR</a></li>
-                                        <li class="nav-item"><a href="/Medicos/ListaMedicosDeportiva" class="nav-link">LISTADO</a></li>
+                                        <li class="nav-item"><a href="/InformeAccidenteTrabajo/Agregar" class="nav-link">REGISTRAR ACCIDENTE DE TRABAJO</a></li>
+                                        <li class="nav-item"><a href="/InformeAccidenteTrabajo/ListaInformeAccidenteTrabajo" class="nav-link">LISTADO</a></li>
 
-                                    </ul>
-                                </li>
-                            }
-                        }*@
-                        <!--@{
-                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "MEDICINA") != null)
-                            {
-                                <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>MEDICINA DEL DEPORTE</span></a>
-                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a href="/MedicinaDeportiva/Agregar" class="nav-link">AGREGAR</a></li>
-                                        <li class="nav-item"><a href="/MedicinaDeportiva/ListaMedicinaDeportiva" class="nav-link">LISTADO</a></li>
-
-                                    </ul>
-                                </li>
-                            }
-                        }-->
-                        @*@{
-                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "FISIOTERAPIA") != null)
-                            {
-                                <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>FISIOTERAPIA</span></a>
-                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a href="/Fisioterapia/Agregar" class="nav-link">AGREGAR</a></li>
-                                        <li class="nav-item"><a href="/Fisioterapia/ListaDeporFisioterapia" class="nav-link">LISTADO</a></li>
-                                    </ul>
-                                </li>
-                            }
-                        }*@
-                        @*@{
-                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "NUTRICIÓN") != null)
-                            {
-                                <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>NUTRICIÓN</span></a>
-                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a href="/Nutricion/Agregar" class="nav-link">AGREGAR</a></li>
-                                        <li class="nav-item"><a href="/Nutricion/ListaNutricionDeportiva" class="nav-link">LISTADO</a></li>
-                                    </ul>
-                                </li>
-                            }
-                        }*@
-                        @*@{
-                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "PSICOLOGIA") != null)
-                            {
-                                <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>PSICOLOGIA</span></a>
-                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a href="/Psicologia/Agregar" class="nav-link">AGREGAR</a></li>
-                                        <li class="nav-item"><a href="/Psicologia/ListaPsicologiaDeportiva" class="nav-link">LISTADO</a></li>
                                     </ul>
                                 </li>
                             }
                         }
-                        @{*@
-                            <!--if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "VERCITAS") != null)
-                            {
-                                <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>CITAS MEDICAS</span></a>
-                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a href="/CitasMedicas/Agregar" class="nav-link">CITAS</a></li>
-                                        <li class="nav-item"><a href="/CitasMedicas/ListaCitasMedicasDeportiva" class="nav-link">LISTADO</a></li>
-                                    </ul>
-                                </li>
-                            }-->
+                        @*@{
+            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "ESPECIALIDAD") != null)
+            {
+                <li id="C0001" class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>ESPECIALISTAS</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="/Medicos/Agregar" class="nav-link">AGREGAR</a></li>
+                        <li class="nav-item"><a href="/Medicos/ListaMedicosDeportiva" class="nav-link">LISTADO</a></li>
+
+                    </ul>
+                </li>
+            }
+        }*@
+                        <!--@{
+        if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "MEDICINA") != null)
+        {
+            <li id="C0001" class="nav-item nav-item-submenu">
+                <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>MEDICINA DEL DEPORTE</span></a>
+                <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                    <li class="nav-item"><a href="/MedicinaDeportiva/Agregar" class="nav-link">AGREGAR</a></li>
+                    <li class="nav-item"><a href="/MedicinaDeportiva/ListaMedicinaDeportiva" class="nav-link">LISTADO</a></li>
+
+                </ul>
+            </li>
+        }
+    }-->
+                        @*@{
+            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "FISIOTERAPIA") != null)
+            {
+                <li id="C0001" class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>FISIOTERAPIA</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="/Fisioterapia/Agregar" class="nav-link">AGREGAR</a></li>
+                        <li class="nav-item"><a href="/Fisioterapia/ListaDeporFisioterapia" class="nav-link">LISTADO</a></li>
+                    </ul>
+                </li>
+            }
+        }*@
+                        @*@{
+            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "NUTRICIÓN") != null)
+            {
+                <li id="C0001" class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>NUTRICIÓN</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="/Nutricion/Agregar" class="nav-link">AGREGAR</a></li>
+                        <li class="nav-item"><a href="/Nutricion/ListaNutricionDeportiva" class="nav-link">LISTADO</a></li>
+                    </ul>
+                </li>
+            }
+        }*@
+                        @*@{
+            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "PSICOLOGIA") != null)
+            {
+                <li id="C0001" class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>PSICOLOGIA</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="/Psicologia/Agregar" class="nav-link">AGREGAR</a></li>
+                        <li class="nav-item"><a href="/Psicologia/ListaPsicologiaDeportiva" class="nav-link">LISTADO</a></li>
+                    </ul>
+                </li>
+            }
+        }
+        @{*@
+                        <!--if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "VERCITAS") != null)
+    {
+        <li id="C0001" class="nav-item nav-item-submenu">
+            <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>CITAS MEDICAS</span></a>
+            <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                <li class="nav-item"><a href="/CitasMedicas/Agregar" class="nav-link">CITAS</a></li>
+                <li class="nav-item"><a href="/CitasMedicas/ListaCitasMedicasDeportiva" class="nav-link">LISTADO</a></li>
+            </ul>
+        </li>
+    }-->
                         <!--}-->
                     </ul>
                         

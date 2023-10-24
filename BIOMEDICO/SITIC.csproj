@@ -172,6 +172,7 @@
     <Compile Include="Controllers\CerrarSesionController.cs" />
     <Compile Include="Controllers\EpsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformeAccidenteTrabajoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RolController.cs" />
@@ -198,6 +199,9 @@
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EstiloVida.cs">
+      <DependentUpon>ModelBiomedico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\InformeAccidenteTrabajo.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelBiomedico.Context.cs">
@@ -2565,6 +2569,8 @@
     <Content Include="Scripts\APP\Afp\ListaAfp.js" />
     <Content Include="Scripts\APP\Eps\Eps.js" />
     <Content Include="Scripts\APP\Eps\ListaEps.js" />
+    <Content Include="Scripts\APP\InformeAccidenteTrabajo\ListaInformeAccidenteTrabajo.js" />
+    <Content Include="Scripts\APP\InformeAccidenteTrabajo\InformeAccidenteTrabajo.js" />
     <Content Include="Scripts\APP\JavaScript.js" />
     <Content Include="Scripts\APP\TrabajadoresEncuestados\ListaTrabajadores.js" />
     <Content Include="Scripts\APP\TrabajadoresEncuestados\TrabajadoresEncuestados.js" />
@@ -2917,6 +2923,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\InformeAccidenteTrabajo\ListaInformeAccidenteTrabajo.cshtml" />
+    <Content Include="Views\InformeAccidenteTrabajo\Agregar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

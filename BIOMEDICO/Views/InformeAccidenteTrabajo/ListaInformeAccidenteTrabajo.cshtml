@@ -3,6 +3,27 @@
     ViewBag.Title = "ListaInformeAccidenteTrabajo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script defer src="~/Scripts/APP/InformeAccidenteTrabajo/ListaInformeAccidenteTrabajo.js"></script>
+<h2>Listado Informe Accidente Trabajo</h2>
 
-<h2>ListaInformeAccidenteTrabajo</h2>
+<div class="table-responsive row col-xl-12 ">
+    @*<button class="btn btn-primary btn-sm active" type="button" onclick="PDFBLANK()">Formulario</button>*@
+    @*<a href="~/Descargar/COMPONENTE II INST.  CARACTERIZACIÓN DEMOGRÁFICA EPIDEMIOL_ESTE.pdf" target="_blank"><h1><strong>Formulario.pdf</strong></h1></a>*@
 
+    @*<*@<!--a href="~/Descargar/COMPONENTE II INST.  CARACTERIZACIÓN DEMOGRÁFICA EPIDEMIOL_ESTE (1).pdf" target="_blank"><h1><strong>Formulario.pdf</strong></h1></a>-->
+    <table class="table" id="datatable-InformeAccidnete">
+
+        <thead>
+            <tr class="ColorTabla">
+                <th>PRIMER NOMBRE</th>
+                <th>SEGUNDO NOMBRE </th>
+                <th>PRIMER APELLIDO</th>
+                <th>SEGUNDO APELLIDO</th>
+                <th>TIPO IDENTIFICACION </th>
+                <th>NUMERO IDENTIFICACION</th>
+              
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>

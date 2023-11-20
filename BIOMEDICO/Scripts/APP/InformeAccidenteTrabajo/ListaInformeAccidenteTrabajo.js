@@ -3,7 +3,7 @@
 var TablaInformeAccidenteTrabajo = [];
 $(document).ready(function () {
 
-    RenderTable('datatable-politicasocial', [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23], null, {
+    RenderTable('datatable-InformeAccidnete', [0, 1, 2, 3, 4, 5,6], null, {
         "paging": true,
         "ordering": false,
         "info": true,
@@ -16,13 +16,13 @@ $(document).ready(function () {
             {
                 extend: 'excelHtml5',
                 text: " <b>&ensp;<i class=' icon-download4 position-left'></i></b> Excel ",
-                filename: "PoliticaSocial",
+                filename: "InformeAccidente",
                 titleAttr: 'Excel',
             },
             {
                 extend: 'pdfHtml5',
                 text: " <b>&ensp;<i class=' icon-download4 position-left'></i></b> PDF ",
-                filename: "PoliticaSocial",
+                filename: "InformeAccidente",
                 titleAttr: 'Pdf',
             },
 
@@ -30,80 +30,65 @@ $(document).ready(function () {
     });
 
 
-    TablaInformeAccidenteTrabajo = $('#datatable-politicasocial').DataTable();
+    TablaInformeAccidenteTrabajo = $('#datatable-InformeAccidnete').DataTable();
     Get_Data(CargarTabla, '/InformeAccidenteTrabajo/GetListInformeAccidenteTrabajo')
 
 });
 var Arraycitasglobal = [];
 function CargarTabla(data) {
     TablaInformeAccidenteTrabajo.clear().draw();
-    let PoliticaSocialsport = data.objeto;
-    Arraycitasglobal = PoliticaSocialsport;
-    console.log(PoliticaSocialsport);
-    $.each(PoliticaSocialsport, function (index, item) {
+    let InformeAccidenteTrabajoSport = data.objeto;
+    Arraycitasglobal = InformeAccidenteTrabajoSport;
+    console.log(InformeAccidenteTrabajoSport);
+    $.each(InformeAccidenteTrabajoSport, function (index, item) {
        
             TablaInformeAccidenteTrabajo.row.add([
                 /* item.IdCitasPasaporte,*/
-                item.TipoDocumento,
-                item.NumeroDocumento,
-                item.NombresPolitica,
-                item.ApellidosPolitica,
-                item.FechaNacimiento == undefined ? '' : JSONDateconverter(item.FechaNacimiento),
-                item.EdadPolitica,                
-                item.SexoNacimiento,
-                item.IdentidadGenero,
-                item.OrientacionSexual,
-                item.Discapacidad,
-                item.GrupoEtnico,
-                item.VictimaConflictoArmado,
-                item.PoblacionPriorizada,
-                item.CorreoElectronico,
-                item.TelefonoContacto,
-                item.Municipios,
-                item.Zona,
-                item.NivelEscolaridad,
-                item.Profesion,
-                item.AmbienteLudico,
-                item.AmbienteLudicoExpresa,
-                item.AmbienteLudicoCorporal,
-                item.FechaRegistro == undefined ? '' : JSONDateconverter(item.FechaRegistro),
+                item.PrimerNombre,
+                item.SegundoNombre,
+                item.PrimerApellido,
+                item.SegundoApellido,
+                //item.FechaNacimiento == undefined ? '' : JSONDateconverter(item.FechaNacimiento),
+                item.TipoIdentificacion,
+                item.NumeroIdentificacion,
 
 
-                '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdPoliticaSocial + ')" ></i>&ensp;' +
-                '<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardPoliticaSocial(' + item.IdPoliticaSocial + ')"></i>&ensp;' +
-                '<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdPoliticaSocial + ')" ></i>&ensp;'
+
+                '<i class="btn btn-danger btn-group-sm icon-trash" title="Eliminar" onclick="Eliminar(' + item.IdAccidenteTrabajo + ')" ></i>&ensp;' +
+                '<i class="btn btn-primary btn-group-sm fa fa-pencil-square-o" id="edit_ActEco_' + index + '" title="Modificar" style="fontsize:90px !important" onclick="ActualizardPoliticaSocial(' + item.IdAccidenteTrabajo + ')"></i>&ensp;' +
+                '<i class="btn btn-info btn-group-sm icon-magazine" title="Detalle" onclick="DetalleData(' + item.IdAccidenteTrabajo + ')" ></i>&ensp;'
             ]).draw(false);
 
-            var Discapacidad = TablaInformeAccidenteTrabajo.column(9);
-            var GrupoEtnico = TablaInformeAccidenteTrabajo.column(10);
-            var VictimaConflictoArmado = TablaInformeAccidenteTrabajo.column(11);
-            var PoblacionPriorizada = TablaInformeAccidenteTrabajo.column(12);
-            var CorreoElectronico = TablaInformeAccidenteTrabajo.column(13);
-            var TelefonoContacto = TablaInformeAccidenteTrabajo.column(14);
-            var Municipios = TablaInformeAccidenteTrabajo.column(15);
-            var Zona = TablaInformeAccidenteTrabajo.column(16);
-            var NivelEscolaridad = TablaInformeAccidenteTrabajo.column(17);
-            var Profesion = TablaInformeAccidenteTrabajo.column(18);
-            var AmbienteLudico = TablaInformeAccidenteTrabajo.column(19);
-            var AmbienteLudicoExpresa = TablaInformeAccidenteTrabajo.column(20);
-            var AmbienteLudicoCorporal = TablaInformeAccidenteTrabajo.column(21);
-            var FechaRegistro = TablaInformeAccidenteTrabajo.column(22);
+            //var Discapacidad = TablaInformeAccidenteTrabajo.column(9);
+            //var GrupoEtnico = TablaInformeAccidenteTrabajo.column(10);
+            //var VictimaConflictoArmado = TablaInformeAccidenteTrabajo.column(11);
+            //var PoblacionPriorizada = TablaInformeAccidenteTrabajo.column(12);
+            //var CorreoElectronico = TablaInformeAccidenteTrabajo.column(13);
+            //var TelefonoContacto = TablaInformeAccidenteTrabajo.column(14);
+            //var Municipios = TablaInformeAccidenteTrabajo.column(15);
+            //var Zona = TablaInformeAccidenteTrabajo.column(16);
+            //var NivelEscolaridad = TablaInformeAccidenteTrabajo.column(17);
+            //var Profesion = TablaInformeAccidenteTrabajo.column(18);
+            //var AmbienteLudico = TablaInformeAccidenteTrabajo.column(19);
+            //var AmbienteLudicoExpresa = TablaInformeAccidenteTrabajo.column(20);
+            //var AmbienteLudicoCorporal = TablaInformeAccidenteTrabajo.column(21);
+            //var FechaRegistro = TablaInformeAccidenteTrabajo.column(22);
 
         
-        Discapacidad.visible(false);
-         GrupoEtnico.visible(false);
-          VictimaConflictoArmado.visible(false);
-          PoblacionPriorizada.visible(false);
-          CorreoElectronico.visible(false);
-          TelefonoContacto.visible(false);
-          Municipios.visible(false);
-          Zona.visible(false);
-          NivelEscolaridad.visible(false);
-          Profesion.visible(false);
-          AmbienteLudico.visible(false);
-          AmbienteLudicoExpresa.visible(false);
-          AmbienteLudicoCorporal.visible(false);
-          FechaRegistro.visible(false);
+        //Discapacidad.visible(false);
+        // GrupoEtnico.visible(false);
+        //  VictimaConflictoArmado.visible(false);
+        //  PoblacionPriorizada.visible(false);
+        //  CorreoElectronico.visible(false);
+        //  TelefonoContacto.visible(false);
+        //  Municipios.visible(false);
+        //  Zona.visible(false);
+        //  NivelEscolaridad.visible(false);
+        //  Profesion.visible(false);
+        //  AmbienteLudico.visible(false);
+        //  AmbienteLudicoExpresa.visible(false);
+        //  AmbienteLudicoCorporal.visible(false);
+        //  FechaRegistro.visible(false);
 
         
         

@@ -1,0 +1,598 @@
+﻿
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<link href="~/Content/css/layout.css" rel="stylesheet" />
+<script defer src="~/Scripts/APP/InformeAccidenteTrabajo/InformeAccidenteTrabajo.js"></script>
+
+
+
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
+    <strong>
+        INSTRUMENTO PARA LA CARACTERIZACIÓN DE LOS TRABAJADORES DE LA ECONOMÍA POPULAR Y COMUNITARIA - ESTACIONARIO 
+    </strong>
+</h1>
+<hr width=100% align="right" size=200 color="black">
+
+<div class="row m-0">
+
+    @Html.AntiForgeryToken()
+    <form id="FormPolitica" name="FormPolitica">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Tipo Documento <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
+                    <option value="Registro Civil">Registro Civil</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                    <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Numero Documento <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumeroIdentificacion" name="NumeroIdentificacion" placeholder="Digite su numero de documento" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Primer Nombres <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PrimerNombre" name="PrimerNombre" placeholder="Digite su nombre completo" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Segundo Nombre<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="SegundoNombre" name="SegundoNombre" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Primer Apellido <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PrimerApellido" name="PrimerApellido" placeholder="Digite su nombre completo" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Segundo Apellido<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="SegundoApellido" name="SegundoApellido" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Fecha Nacimiento<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" placeholder="Digite la fecha de nacimiento" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Edad<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="EdadPolitica" name="EdadPolitica" placeholder="Digite su edad" disabled />
+            </div>
+
+            <script>
+                // Obtener los elementos del DOM
+                const fechaNacimientoInput = document.getElementById('FechaNacimiento');
+                const edadPoliticaInput = document.getElementById('EdadPolitica');
+
+                // Agregar un evento de escucha al cambio en el campo de fecha de nacimiento
+                fechaNacimientoInput.addEventListener('change', function () {
+                    // Obtener la fecha seleccionada
+                    const fechaNacimiento = new Date(this.value);
+
+                    // Obtener la fecha actual
+                    const fechaActual = new Date();
+
+                    // Calcular la edad en años
+                    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+
+                    // Verificar si el cumpleaños aún no ha pasado este año
+                    if (fechaNacimiento.getMonth() > fechaActual.getMonth() || (fechaNacimiento.getMonth() === fechaActual.getMonth() && fechaNacimiento.getDate() > fechaActual.getDate())) {
+                        edad--;
+                    }
+
+                    // Actualizar el valor del campo de edad
+                    edadPoliticaInput.value = edad;
+                });
+            </script>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Sexo Nacimiento <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="SexoNacimiento" name="SexoNacimiento">
+                    <option value="">Seleccionar</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="Intersexual">Intersexual</option>
+                    <option value="Prefiero no Decirlo">Prefiero no Decirlo</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Direcciòn<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Telefono<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Fax<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label>
+                    <strong>
+                        Departamento
+                        <span style="color: red;"> *</span>
+                    </strong>
+                </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Municipios" name="Municipios">
+                    <option value="">Seleccionar</option>
+                    <option value="Cesar">Cesar</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label>
+                    <strong>
+                        Municipio
+                        <span style="color: red;"> *</span>
+                    </strong>
+                </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Municipios" name="Municipios">
+                    <option value="">Seleccionar</option>
+                    <option value="Valledupar">Valledupar</option>
+                    <option value="Aguachica">Aguachica</option>
+                    <option value="Agustín Codazzi">Agustín Codazzi</option>
+                    <option value="Astrea">Astrea</option>
+                    <option value="Becerril">Becerril</option>
+                    <option value="Bosconia">Bosconia</option>
+                    <option value="Chimichagua">Chimichagua</option>
+                    <option value="Chiriguaná">Chiriguaná</option>
+                    <option value="Curumaní">Curumaní</option>
+                    <option value="El Copey">El Copey</option>
+                    <option value="El Paso">El Paso</option>
+                    <option value="Gamarra">Gamarra</option>
+                    <option value="González">González</option>
+                    <option value="La Gloria">La Gloria</option>
+                    <option value="La Jagua de Ibirico">La Jagua de Ibirico</option>
+                    <option value="La Paz">La Paz</option>
+                    <option value="Manaure">Manaure</option>
+                    <option value="Pailitas">Pailitas</option>
+                    <option value="Pelaya">Pelaya</option>
+                    <option value="Pueblo Bello">Pueblo Bello</option>
+                    <option value="Río de Oro">Río de Oro</option>
+                    <option value="San Alberto">San Alberto</option>
+                    <option value="San Diego">San Diego</option>
+                    <option value="San Martín">San Martín</option>
+                    <option value="Tamalameque">Tamalameque</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label>
+                    <strong>
+                        zona
+                        <span style="color: red;"> *</span>
+                    </strong>
+                </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Zona" name="Zona">
+                    <option value="">Seleccionar</option>
+                    <option value="Rural">Rural</option>
+                    <option value="Urbano">Urbano</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Ocupaciòn<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Tipo Afiliacion<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Tipo Contribucion <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Grupo SISBEN<span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoSisben" name="TipoSisben">
+                    <option value="">Seleccionar</option>
+                    <optgroup label="Grupo A: Pobreza extrema">
+                        <option value="A1">A1</option>
+                        <option value="A2">A2</option>
+                        <option value="A3">A3</option>
+                        <option value="A4">A4</option>
+                        <option value="A5">A5</option>
+                    </optgroup>
+                    <optgroup label="Grupo B: Pobreza moderada">
+                        <option value="B1">B1</option>
+                        <option value="B2">B2</option>
+                        <option value="B3">B3</option>
+                        <option value="B4">B4</option>
+                        <option value="B5">B5</option>
+                        <option value="B6">B6</option>
+                        <option value="B7">B7</option>
+                    </optgroup>
+                    <optgroup label="Grupo C: Vulnerable">
+                        <option value="C1">C1</option>
+                        <option value="C2">C2</option>
+                        <option value="C3">C3</option>
+                        <option value="C4">C4</option>
+                        <option value="C5">C5</option>
+                        <option value="C6">C6</option>
+                        <option value="C7">C7</option>
+                        <option value="C8">C8</option>
+                        <option value="C9">C9</option>
+                        <option value="C10">C10</option>
+                        <option value="C11">C11</option>
+                        <option value="C12">C12</option>
+                        <option value="C13">C13</option>
+                        <option value="C14">C14</option>
+                        <option value="C15">C15</option>
+                        <option value="C16">C16</option>
+                        <option value="C17">C17</option>
+                        <option value="C18">C18</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Fondo Pensiones<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Eps Afiliado<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Institucion Prestadora de Salud<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>CENTRO DE TRABAJO</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+
+<div class="">
+
+    @Html.AntiForgeryToken()
+    <form id="FormPolitica" name="FormPolitica">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+            <div class="col-xs-12 col-sm-12 col-md-">
+                <label><strong>Sector Economico <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8">
+                <label><strong>Actividad Economica<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <label><strong>Tipo de Venta <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="SexoNacimiento" name="SexoNacimiento">
+                    <option value="">Seleccionar</option>
+                    <option value="Hombre">E</option>
+                    <option value="Mujer">S</option>
+                    <option value="Intersexual">A</option>
+                </select>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Direccion<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label><strong>Telefono<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+                <label>
+                    <strong>
+                        zona
+                        <span style="color: red;"> *</span>
+                    </strong>
+                </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Zona" name="Zona">
+                    <option value="">Seleccionar</option>
+                    <option value="Rural">Rural</option>
+                    <option value="Urbano">Urbano</option>
+                </select>
+            </div>
+
+
+        </div>
+
+        <br />
+        <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
+            <strong>
+                DESCRIPCION DEL ACCIDENTE
+
+            </strong>
+        </h1>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
+            @*<label><strong>Descripcion Del Accidente </strong></label>*@
+            <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="12" cols="50" class="form-control" id="DiagnosticoMedicoClinicaFisio"></textarea>
+        </div>
+
+    </form>
+
+</div>
+<br />
+
+<div class="">
+    <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
+        <strong>
+            HUBO PERSONAS QUE PRESENCIARON EL ACCIDENTE?
+
+        </strong>
+    </h1>
+
+    @Html.AntiForgeryToken()
+    <form id="FormPolitica" name="FormPolitica">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                @*<label><strong>hubo personas que presenciaron el accidente?</strong></label>*@
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        NO
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        SI
+                    </label>
+                </div>
+            </div>
+            <br />
+
+            <div id="formularioMenorEdad" style="display: none;">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Tipo Documento <span style="color: red;">*</span></strong> </label>
+                    <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumento" name="TipoDocumento">
+                        <option value="">Seleccionar</option>
+                        <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
+                        <option value="Registro Civil">Registro Civil</option>
+                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                        <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Numero Documento<span style="color: red;"> *</span></strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Apellidos y nombres Completos <span style="color: red;">*</span></strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+                    <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label><strong>Ocupación <span style="color: red;">*</span></strong></label>
+                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite su ocupación" />
+                </div>
+            </div>
+
+
+        </div>
+
+    </form>
+
+</div>
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>PERSONA RESPONSABLE DEL INFORME</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+
+<div class="">
+
+    @Html.AntiForgeryToken()
+    <form id="FormPolitica" name="FormPolitica">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Tipo Documento <span style="color: red;">*</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumento" name="TipoDocumento">
+                    <option value="">Seleccionar</option>
+                    <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
+                    <option value="Registro Civil">Registro Civil</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                    <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Numero Documento<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Apellidos y nombres Completos <span style="color: red;">*</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Ocupación <span style="color: red;">*</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite su ocupación" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Firma <span style="color: red;">*</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite su ocupación" />
+            </div>
+    </form>
+
+</div>
+
+<script>
+    // JavaScript para mostrar u ocultar el formulario para menores de edad
+    document.getElementById("flexRadioDefault1").addEventListener("change", function () {
+        document.getElementById("formularioMenorEdad").style.display = "none";
+    });
+    document.getElementById("flexRadioDefault2").addEventListener("change", function () {
+        document.getElementById("formularioMenorEdad").style.display = "block";
+    });
+</script>
+<br />
+<br />
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" onchange="activarBoton()">
+    <label class="form-check-label" for="inlineCheckbox2">
+        <strong>
+            AVISO DE PRIVACIDAD: la gobernacion del cesar informa que los datos personales por usted suministrados serán tratados de acuerdo con la legislación vigente y nuestra política de protección de datos vigente, la cual está disponible en
+            <a href="https://cesar.gov.co/d/index.php/es/2-uncategorised/2856-artpolpriv" target="_blank">POLÍTICA DE PROTECCIÓN DE DATOS PERSONALES</a>
+        </strong>
+        <br />
+        <br />
+    </label>
+</div>
+
+<div class="col-xs-6 col-sm-6 col-md-6">
+    <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveAccidenteTrabajo" disabled>Guardar</button>
+</div>
+
+<script>
+    function activarBoton() {
+        var checkbox = document.getElementById("inlineCheckbox2");
+        var botonGuardar = document.getElementById("SaveAccidenteTrabajo");
+
+        // Si el checkbox está seleccionado, habilitar el botón; de lo contrario, deshabilitarlo.
+        botonGuardar.disabled = !checkbox.checked;
+    }
+</script>
+
+
+
+<footer id="footer">
+
+    <div class="">
+        <div class="container">
+            <div class="">
+                <div id="copyright">
+
+
+
+                    <!-- BEGIN: Custom advanced (www.pluginaria.com) -->
+                    <div style="text-align: center;">
+                        <hr style="color: #1051eae2;">
+                        <span style="color: #0d3c61;">
+                            <strong>Horario de Atención:</strong>
+                        </span>&nbsp;
+                        <span style="color: #000000;">Lunes a Viernes de 07:45 am - 12:45 pm y 02:45 pm - 05:45 pm</span>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="color: #000000;">
+                            <span style="color: #0d3c61;">
+                                <strong style="text-align: center;">Dirección:</strong>
+                            </span>&nbsp;Calle 16 # 12 - 120 Edificio
+                            Alfonso López Michelsen Valledupar - Cesar - Colombia
+                        </span>
+                    </div>
+                    <div style="text-align: center;">
+                        <span style="color: #000000;"></span>
+                        <span>
+                            <span style="color: #0d3c61;">
+                                <strong>
+                                    Líneas de Atención a la
+                                    Ciudadanía:
+                                </strong>
+                            </span>&nbsp;<span style="color: #000000;">
+                                01 8000 954 099 / (575)
+                                5748230
+                            </span>
+                        </span>
+                    </div>
+                    <div style="text-align: justify;">
+
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <strong>
+                                    <span style="color: #0d3c61;">Correo Institucional:</span>
+                                    &nbsp;
+                                </strong>
+                                <a href="mailto:contactenos@cesar.gov.co" style="color: #000000;">contactenos@cesar.gov.co</a>
+                                &nbsp;
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <span style="color: #0d3c61;">
+                                    <strong>Código Postal:</strong>&nbsp;
+                                </span>200001
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <span style="color: #000000;">
+                                <span style="color: #0d3c61;">
+                                    <strong>Nit:</strong>
+                                    &nbsp;
+                                </span>892399999-1
+                            </span>
+                        </div>
+                        <div style="text-align: center;">
+                            <strong style="color: #0d3c61;">
+                                <a href="https://cesar.gov.co/d/index.php/es/2-uncategorised/2856-artpolpriv"
+                                   style="color: #0d3c61;">
+                                    Políticas
+                                    de Privacidad y Condiciones de Uso de la Información
+                                </a>
+                            </strong>
+                        </div>
+                    </div>
+                    <div>
+                        &nbsp;&nbsp;
+                    </div>
+                    <div style="text-align: center;">
+                        <img src="~/images/banner_28.png" alt="0000 2020 imggbp 01" style="max-width: 100%;" />
+
+                    </div>
+                    <br><br>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+</footer>
+
+
+
+
+<style>
+
+    #footer {
+        text-align: center;
+        width: 100%;
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
+
+        #footer img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #footer div {
+            max-width: 100%;
+        }
+</style>
+

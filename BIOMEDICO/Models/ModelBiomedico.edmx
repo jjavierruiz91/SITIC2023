@@ -5,6 +5,55 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BIOMEDICOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'SITIC.dbo.AmbulanteSemiestacionario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="AmbulanteSemiestacionario">
+          <Key>
+            <PropertyRef Name="IdAmbulanteSemiestacionario" />
+          </Key>
+          <Property Name="IdAmbulanteSemiestacionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaAmbulanteSemiestacionario" Type="date" />
+          <Property Name="FormaTrabajoAmbulanteAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="MunicipicioAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="AmbitoTerritorialAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="NombresAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="ApellidosAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="TipoIdentificacionAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="NumeroIDAmbulanteSemiestacionario" Type="bigint" />
+          <Property Name="FechaNacimientoAmbulanteSemiestacionario" Type="date" />
+          <Property Name="OficioAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="SexoAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="EducacionAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="PoblacionAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="CondicionAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="OrgnizacionSocialAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="SeguridadSocialAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="AntiguedadTrabajoAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="JornadaAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="HorasDiasAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="DiasSemanaAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="DesplazamientoAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="EnfermedadAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="SustaniaAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="AlcoholAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="ActividadFisicaAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="HorasDuermeAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="FrutasVerdurasAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="ComportamientoAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="SintomasAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="AcidenteAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="DiscapacidadAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="SeguridadAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="PeligroFisicoAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="PeligroBiomecanicoAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="PeligroQuimicoAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="PeligroBiologicoAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="PeligroPsicosocialAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="AguaAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="ExcretaAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="ResiduosAmbulanteSemiestacionario" Type="varchar(max)" />
+          <Property Name="CombustibleAmbulanteSemiestacionario" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="ASignarPermisos">
           <Key>
             <PropertyRef Name="IdPermiso" />
@@ -98,6 +147,45 @@
           <Property Name="CodEps" Type="nvarchar(max)" />
           <Property Name="NomEps" Type="varchar(max)" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'SITIC.dbo.Estacionario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Estacionario">
+          <Key>
+            <PropertyRef Name="IdEstacionario" />
+            <PropertyRef Name="PersonaContactoEstacionario" />
+          </Key>
+          <Property Name="IdEstacionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaEstacionario" Type="date" />
+          <Property Name="TrabajadorEstacionario" Type="varchar(max)" />
+          <Property Name="MunicipioEstacionario" Type="varchar(max)" />
+          <Property Name="TerritorioEstacionario" Type="varchar(max)" />
+          <Property Name="NombresEstacionario" Type="varchar(max)" />
+          <Property Name="ApellidosEstacionario" Type="varchar(max)" />
+          <Property Name="TipoIdentificacionEstacionario" Type="varchar(max)" />
+          <Property Name="NumeroIdentificacionEstacionario" Type="bigint" />
+          <Property Name="FechaNacimientoEstacionario" Type="date" />
+          <Property Name="OcupacionEstacionario" Type="varchar(max)" />
+          <Property Name="LugarTrabajoEstacionario" Type="varchar(max)" />
+          <Property Name="PersonaContactoEstacionario" Type="varchar(max)" Nullable="false" />
+          <Property Name="TelefonoEstacionario" Type="varchar(max)" />
+          <Property Name="DireccionTrabajoEstacionario" Type="varchar(max)" />
+          <Property Name="ActividadEconomicaEstacionario" Type="varchar(max)" />
+          <Property Name="AguaConsumoEstacionario" Type="varchar(max)" />
+          <Property Name="TratamientoAguaEstacionario" Type="varchar(max)" />
+          <Property Name="AlmacenamientoAguaEstacionario" Type="varchar(max)" />
+          <Property Name="ExcretaEstacionario" Type="varchar(max)" />
+          <Property Name="ResiduosEstacionario" Type="varchar(max)" />
+          <Property Name="ResiduosSolidosEstacionario" Type="varchar(max)" />
+          <Property Name="AguasResidualesEstacionario" Type="varchar(max)" />
+          <Property Name="CombustibleEstacionario" Type="varchar(max)" />
+          <Property Name="UsoQuimicosEstacionario" Type="varchar(max)" />
+          <Property Name="AlmacenanQuimicosEstacionario" Type="varchar(max)" />
+          <Property Name="GeneranResiduosPeligrososEstacionario" Type="varchar(max)" />
+          <Property Name="DisponenResiduosPeligrososEstacionario" Type="varchar(max)" />
+          <Property Name="PlagasEstacionario" Type="varchar(max)" />
+          <Property Name="AnimalesVenenososEstacionario" Type="varchar(max)" />
+          <Property Name="RiesgosAnimalesVenenososEstacionario" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="EstiloVida">
           <Key>
             <PropertyRef Name="IdEstiloVida" />
@@ -115,50 +203,6 @@
           <Property Name="DietaFrutas" Type="varchar(max)" />
           <Property Name="FrecuenciaFrutas" Type="varchar(max)" />
           <Property Name="IdSitic" Type="int" />
-        </EntityType>
-        <EntityType Name="InformeAccidenteTrabajo">
-          <Key>
-            <PropertyRef Name="IdAccidenteTrabajo" />
-          </Key>
-          <Property Name="IdAccidenteTrabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PrimerNombre" Type="varchar(max)" />
-          <Property Name="SegundoNombre" Type="varchar(max)" />
-          <Property Name="PrimerApellido" Type="varchar(max)" />
-          <Property Name="SegundoApellido" Type="varchar(max)" />
-          <Property Name="TipoIdentificacion" Type="varchar(max)" />
-          <Property Name="NumeroIdentificacion" Type="bigint" />
-          <Property Name="FechaNacimimiento" Type="datetime" />
-          <Property Name="Sexo" Type="varchar(max)" />
-          <Property Name="Direccion" Type="varchar(max)" />
-          <Property Name="Telefono" Type="varchar(max)" />
-          <Property Name="Fax" Type="varchar(max)" />
-          <Property Name="Departamento" Type="varchar(max)" />
-          <Property Name="Municipio" Type="varchar(max)" />
-          <Property Name="Zona" Type="varchar(max)" />
-          <Property Name="Ocupacion" Type="varchar(max)" />
-          <Property Name="TipoAfiliacion" Type="varchar(max)" />
-          <Property Name="Tipocontributivo" Type="varchar(max)" />
-          <Property Name="Sisben" Type="varchar(max)" />
-          <Property Name="FondoPensiones" Type="varchar(max)" />
-          <Property Name="EpsAfiliado" Type="varchar(max)" />
-          <Property Name="InstitucionPrestadoraSalud" Type="varchar(max)" />
-          <Property Name="SectorEconomico" Type="varchar(max)" />
-          <Property Name="ActividadEconomica" Type="varchar(max)" />
-          <Property Name="TipoVenta" Type="varchar(max)" />
-          <Property Name="DireccionEconomica" Type="varchar(max)" />
-          <Property Name="TelefonoEconomica" Type="varchar(max)" />
-          <Property Name="ZonaEconomica" Type="varchar(max)" />
-          <Property Name="DescripcionAccidente" Type="varchar(max)" />
-          <Property Name="PresenciaronAccidente" Type="varchar(max)" />
-          <Property Name="ApellidosNombresAccidente" Type="varchar(max)" />
-          <Property Name="DocumentoIdentidadAccidente" Type="varchar(max)" />
-          <Property Name="NumeroDocumentoAccidente" Type="bigint" />
-          <Property Name="OcupacionAccidente" Type="varchar(max)" />
-          <Property Name="NombresApellidosResponsable" Type="varchar(max)" />
-          <Property Name="TipoDocumentoResponsable" Type="varchar(max)" />
-          <Property Name="NumeroDocumentoResponsable" Type="bigint" />
-          <Property Name="FirmaResponsable" Type="varchar(max)" />
-          <Property Name="FechaResponsable" Type="datetime" />
         </EntityType>
         <EntityType Name="Permisos">
           <Key>
@@ -406,7 +450,6 @@
           <EntitySet Name="CondicionesTrabajo" EntityType="Self.CondicionesTrabajo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Eps" EntityType="Self.Eps" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstiloVida" EntityType="Self.EstiloVida" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="InformeAccidenteTrabajo" EntityType="Self.InformeAccidenteTrabajo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SeguridadSocial" EntityType="Self.SeguridadSocial" Schema="dbo" store:Type="Tables" />
@@ -415,6 +458,87 @@
           <EntitySet Name="SocioEconomicos" EntityType="Self.SocioEconomicos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoPermiso" EntityType="Self.TipoPermiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AmbulanteSemiestacionario" EntityType="Self.AmbulanteSemiestacionario" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AmbulanteSemiestacionario].[IdAmbulanteSemiestacionario] AS [IdAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[FechaAmbulanteSemiestacionario] AS [FechaAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[FormaTrabajoAmbulanteAmbulanteSemiestacionario] AS [FormaTrabajoAmbulanteAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[MunicipicioAmbulanteSemiestacionario] AS [MunicipicioAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[AmbitoTerritorialAmbulanteSemiestacionario] AS [AmbitoTerritorialAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[NombresAmbulanteSemiestacionario] AS [NombresAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[ApellidosAmbulanteSemiestacionario] AS [ApellidosAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[TipoIdentificacionAmbulanteSemiestacionario] AS [TipoIdentificacionAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[NumeroIDAmbulanteSemiestacionario] AS [NumeroIDAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[FechaNacimientoAmbulanteSemiestacionario] AS [FechaNacimientoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[OficioAmbulanteSemiestacionario] AS [OficioAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[SexoAmbulanteSemiestacionario] AS [SexoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[EducacionAmbulanteSemiestacionario] AS [EducacionAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[PoblacionAmbulanteSemiestacionario] AS [PoblacionAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[CondicionAmbulanteSemiestacionario] AS [CondicionAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[OrgnizacionSocialAmbulanteSemiestacionario] AS [OrgnizacionSocialAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[SeguridadSocialAmbulanteSemiestacionario] AS [SeguridadSocialAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[AntiguedadTrabajoAmbulanteSemiestacionario] AS [AntiguedadTrabajoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[JornadaAmbulanteSemiestacionario] AS [JornadaAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[HorasDiasAmbulanteSemiestacionario] AS [HorasDiasAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[DiasSemanaAmbulanteSemiestacionario] AS [DiasSemanaAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[DesplazamientoAmbulanteSemiestacionario] AS [DesplazamientoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[EnfermedadAmbulanteSemiestacionario] AS [EnfermedadAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[SustaniaAmbulanteSemiestacionario] AS [SustaniaAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[AlcoholAmbulanteSemiestacionario] AS [AlcoholAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[ActividadFisicaAmbulanteSemiestacionario] AS [ActividadFisicaAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[HorasDuermeAmbulanteSemiestacionario] AS [HorasDuermeAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[FrutasVerdurasAmbulanteSemiestacionario] AS [FrutasVerdurasAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[ComportamientoAmbulanteSemiestacionario] AS [ComportamientoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[SintomasAmbulanteSemiestacionario] AS [SintomasAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[AcidenteAmbulanteSemiestacionario] AS [AcidenteAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[DiscapacidadAmbulanteSemiestacionario] AS [DiscapacidadAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[SeguridadAmbulanteSemiestacionario] AS [SeguridadAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[PeligroFisicoAmbulanteSemiestacionario] AS [PeligroFisicoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[PeligroBiomecanicoAmbulanteSemiestacionario] AS [PeligroBiomecanicoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[PeligroQuimicoAmbulanteSemiestacionario] AS [PeligroQuimicoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[PeligroBiologicoAmbulanteSemiestacionario] AS [PeligroBiologicoAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[PeligroPsicosocialAmbulanteSemiestacionario] AS [PeligroPsicosocialAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[AguaAmbulanteSemiestacionario] AS [AguaAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[ExcretaAmbulanteSemiestacionario] AS [ExcretaAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[ResiduosAmbulanteSemiestacionario] AS [ResiduosAmbulanteSemiestacionario], 
+    [AmbulanteSemiestacionario].[CombustibleAmbulanteSemiestacionario] AS [CombustibleAmbulanteSemiestacionario]
+    FROM [dbo].[AmbulanteSemiestacionario] AS [AmbulanteSemiestacionario]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Estacionario" EntityType="Self.Estacionario" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Estacionario].[IdEstacionario] AS [IdEstacionario], 
+    [Estacionario].[FechaEstacionario] AS [FechaEstacionario], 
+    [Estacionario].[TrabajadorEstacionario] AS [TrabajadorEstacionario], 
+    [Estacionario].[MunicipioEstacionario] AS [MunicipioEstacionario], 
+    [Estacionario].[TerritorioEstacionario] AS [TerritorioEstacionario], 
+    [Estacionario].[NombresEstacionario] AS [NombresEstacionario], 
+    [Estacionario].[ApellidosEstacionario] AS [ApellidosEstacionario], 
+    [Estacionario].[TipoIdentificacionEstacionario] AS [TipoIdentificacionEstacionario], 
+    [Estacionario].[NumeroIdentificacionEstacionario] AS [NumeroIdentificacionEstacionario], 
+    [Estacionario].[FechaNacimientoEstacionario] AS [FechaNacimientoEstacionario], 
+    [Estacionario].[OcupacionEstacionario] AS [OcupacionEstacionario], 
+    [Estacionario].[LugarTrabajoEstacionario] AS [LugarTrabajoEstacionario], 
+    [Estacionario].[PersonaContactoEstacionario] AS [PersonaContactoEstacionario], 
+    [Estacionario].[TelefonoEstacionario] AS [TelefonoEstacionario], 
+    [Estacionario].[DireccionTrabajoEstacionario] AS [DireccionTrabajoEstacionario], 
+    [Estacionario].[ActividadEconomicaEstacionario] AS [ActividadEconomicaEstacionario], 
+    [Estacionario].[AguaConsumoEstacionario] AS [AguaConsumoEstacionario], 
+    [Estacionario].[TratamientoAguaEstacionario] AS [TratamientoAguaEstacionario], 
+    [Estacionario].[AlmacenamientoAguaEstacionario] AS [AlmacenamientoAguaEstacionario], 
+    [Estacionario].[ExcretaEstacionario] AS [ExcretaEstacionario], 
+    [Estacionario].[ResiduosEstacionario] AS [ResiduosEstacionario], 
+    [Estacionario].[ResiduosSolidosEstacionario] AS [ResiduosSolidosEstacionario], 
+    [Estacionario].[AguasResidualesEstacionario] AS [AguasResidualesEstacionario], 
+    [Estacionario].[CombustibleEstacionario] AS [CombustibleEstacionario], 
+    [Estacionario].[UsoQuimicosEstacionario] AS [UsoQuimicosEstacionario], 
+    [Estacionario].[AlmacenanQuimicosEstacionario] AS [AlmacenanQuimicosEstacionario], 
+    [Estacionario].[GeneranResiduosPeligrososEstacionario] AS [GeneranResiduosPeligrososEstacionario], 
+    [Estacionario].[DisponenResiduosPeligrososEstacionario] AS [DisponenResiduosPeligrososEstacionario], 
+    [Estacionario].[PlagasEstacionario] AS [PlagasEstacionario], 
+    [Estacionario].[AnimalesVenenososEstacionario] AS [AnimalesVenenososEstacionario], 
+    [Estacionario].[RiesgosAnimalesVenenososEstacionario] AS [RiesgosAnimalesVenenososEstacionario]
+    FROM [dbo].[Estacionario] AS [Estacionario]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_ASignar permisos_Permisos1" Association="Self.FK_ASignar permisos_Permisos1">
             <End Role="Permisos" EntitySet="Permisos" />
             <End Role="ASignarPermisos" EntitySet="ASignarPermisos" />
@@ -619,7 +743,8 @@
             <End Role="SiTic" EntitySet="SiTic" />
             <End Role="SocioEconomicos" EntitySet="SocioEconomicos" />
           </AssociationSet>
-          <EntitySet Name="InformeAccidenteTrabajo" EntityType="BIOMEDICOModel.InformeAccidenteTrabajo" />
+          <EntitySet Name="AmbulanteSemiestacionario" EntityType="BIOMEDICOModel.AmbulanteSemiestacionario" />
+          <EntitySet Name="Estacionario" EntityType="BIOMEDICOModel.Estacionario" />
           </EntityContainer>
         <EntityType Name="SiTic">
           <Key>
@@ -887,49 +1012,89 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="InformeAccidenteTrabajo">
+        <EntityType Name="AmbulanteSemiestacionario">
           <Key>
-            <PropertyRef Name="IdAccidenteTrabajo" />
+            <PropertyRef Name="IdAmbulanteSemiestacionario" />
           </Key>
-          <Property Name="IdAccidenteTrabajo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PrimerNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SegundoNombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PrimerApellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SegundoApellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TipoIdentificacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NumeroIdentificacion" Type="Int64" />
-          <Property Name="FechaNacimimiento" Type="DateTime" Precision="3" />
-          <Property Name="Sexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Fax" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Departamento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Municipio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Zona" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Ocupacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TipoAfiliacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Tipocontributivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Sisben" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FondoPensiones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="EpsAfiliado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="InstitucionPrestadoraSalud" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SectorEconomico" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ActividadEconomica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TipoVenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DireccionEconomica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TelefonoEconomica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ZonaEconomica" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DescripcionAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PresenciaronAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ApellidosNombresAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DocumentoIdentidadAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NumeroDocumentoAccidente" Type="Int64" />
-          <Property Name="OcupacionAccidente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NombresApellidosResponsable" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TipoDocumentoResponsable" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NumeroDocumentoResponsable" Type="Int64" />
-          <Property Name="FirmaResponsable" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FechaResponsable" Type="DateTime" Precision="3" />
+          <Property Name="IdAmbulanteSemiestacionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaAmbulanteSemiestacionario" Type="DateTime" Precision="0" />
+          <Property Name="FormaTrabajoAmbulanteAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MunicipicioAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AmbitoTerritorialAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombresAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidosAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoIdentificacionAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroIDAmbulanteSemiestacionario" Type="Int64" />
+          <Property Name="FechaNacimientoAmbulanteSemiestacionario" Type="DateTime" Precision="0" />
+          <Property Name="OficioAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SexoAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EducacionAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PoblacionAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CondicionAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrgnizacionSocialAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SeguridadSocialAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AntiguedadTrabajoAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JornadaAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HorasDiasAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DiasSemanaAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DesplazamientoAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EnfermedadAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SustaniaAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AlcoholAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActividadFisicaAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HorasDuermeAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FrutasVerdurasAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ComportamientoAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SintomasAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AcidenteAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DiscapacidadAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SeguridadAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroFisicoAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroBiomecanicoAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroQuimicoAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroBiologicoAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroPsicosocialAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AguaAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExcretaAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ResiduosAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CombustibleAmbulanteSemiestacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Estacionario">
+          <Key>
+            <PropertyRef Name="IdEstacionario" />
+            <PropertyRef Name="PersonaContactoEstacionario" />
+          </Key>
+          <Property Name="IdEstacionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaEstacionario" Type="DateTime" Precision="0" />
+          <Property Name="TrabajadorEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MunicipioEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TerritorioEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombresEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidosEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TipoIdentificacionEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroIdentificacionEstacionario" Type="Int64" />
+          <Property Name="FechaNacimientoEstacionario" Type="DateTime" Precision="0" />
+          <Property Name="OcupacionEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LugarTrabajoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PersonaContactoEstacionario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionTrabajoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActividadEconomicaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AguaConsumoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TratamientoAguaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AlmacenamientoAguaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExcretaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ResiduosEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ResiduosSolidosEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AguasResidualesEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CombustibleEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsoQuimicosEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AlmacenanQuimicosEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GeneranResiduosPeligrososEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DisponenResiduosPeligrososEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PlagasEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AnimalesVenenososEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RiesgosAnimalesVenenososEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1181,48 +1346,88 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="InformeAccidenteTrabajo">
-            <EntityTypeMapping TypeName="BIOMEDICOModel.InformeAccidenteTrabajo">
-              <MappingFragment StoreEntitySet="InformeAccidenteTrabajo">
-                <ScalarProperty Name="FechaResponsable" ColumnName="FechaResponsable" />
-                <ScalarProperty Name="FirmaResponsable" ColumnName="FirmaResponsable" />
-                <ScalarProperty Name="NumeroDocumentoResponsable" ColumnName="NumeroDocumentoResponsable" />
-                <ScalarProperty Name="TipoDocumentoResponsable" ColumnName="TipoDocumentoResponsable" />
-                <ScalarProperty Name="NombresApellidosResponsable" ColumnName="NombresApellidosResponsable" />
-                <ScalarProperty Name="OcupacionAccidente" ColumnName="OcupacionAccidente" />
-                <ScalarProperty Name="NumeroDocumentoAccidente" ColumnName="NumeroDocumentoAccidente" />
-                <ScalarProperty Name="DocumentoIdentidadAccidente" ColumnName="DocumentoIdentidadAccidente" />
-                <ScalarProperty Name="ApellidosNombresAccidente" ColumnName="ApellidosNombresAccidente" />
-                <ScalarProperty Name="PresenciaronAccidente" ColumnName="PresenciaronAccidente" />
-                <ScalarProperty Name="DescripcionAccidente" ColumnName="DescripcionAccidente" />
-                <ScalarProperty Name="ZonaEconomica" ColumnName="ZonaEconomica" />
-                <ScalarProperty Name="TelefonoEconomica" ColumnName="TelefonoEconomica" />
-                <ScalarProperty Name="DireccionEconomica" ColumnName="DireccionEconomica" />
-                <ScalarProperty Name="TipoVenta" ColumnName="TipoVenta" />
-                <ScalarProperty Name="ActividadEconomica" ColumnName="ActividadEconomica" />
-                <ScalarProperty Name="SectorEconomico" ColumnName="SectorEconomico" />
-                <ScalarProperty Name="InstitucionPrestadoraSalud" ColumnName="InstitucionPrestadoraSalud" />
-                <ScalarProperty Name="EpsAfiliado" ColumnName="EpsAfiliado" />
-                <ScalarProperty Name="FondoPensiones" ColumnName="FondoPensiones" />
-                <ScalarProperty Name="Sisben" ColumnName="Sisben" />
-                <ScalarProperty Name="Tipocontributivo" ColumnName="Tipocontributivo" />
-                <ScalarProperty Name="TipoAfiliacion" ColumnName="TipoAfiliacion" />
-                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
-                <ScalarProperty Name="Zona" ColumnName="Zona" />
-                <ScalarProperty Name="Municipio" ColumnName="Municipio" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="FechaNacimimiento" ColumnName="FechaNacimimiento" />
-                <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
-                <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
-                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
-                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
-                <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
-                <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
-                <ScalarProperty Name="IdAccidenteTrabajo" ColumnName="IdAccidenteTrabajo" />
+          <EntitySetMapping Name="AmbulanteSemiestacionario">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.AmbulanteSemiestacionario">
+              <MappingFragment StoreEntitySet="AmbulanteSemiestacionario">
+                <ScalarProperty Name="CombustibleAmbulanteSemiestacionario" ColumnName="CombustibleAmbulanteSemiestacionario" />
+                <ScalarProperty Name="ResiduosAmbulanteSemiestacionario" ColumnName="ResiduosAmbulanteSemiestacionario" />
+                <ScalarProperty Name="ExcretaAmbulanteSemiestacionario" ColumnName="ExcretaAmbulanteSemiestacionario" />
+                <ScalarProperty Name="AguaAmbulanteSemiestacionario" ColumnName="AguaAmbulanteSemiestacionario" />
+                <ScalarProperty Name="PeligroPsicosocialAmbulanteSemiestacionario" ColumnName="PeligroPsicosocialAmbulanteSemiestacionario" />
+                <ScalarProperty Name="PeligroBiologicoAmbulanteSemiestacionario" ColumnName="PeligroBiologicoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="PeligroQuimicoAmbulanteSemiestacionario" ColumnName="PeligroQuimicoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="PeligroBiomecanicoAmbulanteSemiestacionario" ColumnName="PeligroBiomecanicoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="PeligroFisicoAmbulanteSemiestacionario" ColumnName="PeligroFisicoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="SeguridadAmbulanteSemiestacionario" ColumnName="SeguridadAmbulanteSemiestacionario" />
+                <ScalarProperty Name="DiscapacidadAmbulanteSemiestacionario" ColumnName="DiscapacidadAmbulanteSemiestacionario" />
+                <ScalarProperty Name="AcidenteAmbulanteSemiestacionario" ColumnName="AcidenteAmbulanteSemiestacionario" />
+                <ScalarProperty Name="SintomasAmbulanteSemiestacionario" ColumnName="SintomasAmbulanteSemiestacionario" />
+                <ScalarProperty Name="ComportamientoAmbulanteSemiestacionario" ColumnName="ComportamientoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="FrutasVerdurasAmbulanteSemiestacionario" ColumnName="FrutasVerdurasAmbulanteSemiestacionario" />
+                <ScalarProperty Name="HorasDuermeAmbulanteSemiestacionario" ColumnName="HorasDuermeAmbulanteSemiestacionario" />
+                <ScalarProperty Name="ActividadFisicaAmbulanteSemiestacionario" ColumnName="ActividadFisicaAmbulanteSemiestacionario" />
+                <ScalarProperty Name="AlcoholAmbulanteSemiestacionario" ColumnName="AlcoholAmbulanteSemiestacionario" />
+                <ScalarProperty Name="SustaniaAmbulanteSemiestacionario" ColumnName="SustaniaAmbulanteSemiestacionario" />
+                <ScalarProperty Name="EnfermedadAmbulanteSemiestacionario" ColumnName="EnfermedadAmbulanteSemiestacionario" />
+                <ScalarProperty Name="DesplazamientoAmbulanteSemiestacionario" ColumnName="DesplazamientoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="DiasSemanaAmbulanteSemiestacionario" ColumnName="DiasSemanaAmbulanteSemiestacionario" />
+                <ScalarProperty Name="HorasDiasAmbulanteSemiestacionario" ColumnName="HorasDiasAmbulanteSemiestacionario" />
+                <ScalarProperty Name="JornadaAmbulanteSemiestacionario" ColumnName="JornadaAmbulanteSemiestacionario" />
+                <ScalarProperty Name="AntiguedadTrabajoAmbulanteSemiestacionario" ColumnName="AntiguedadTrabajoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="SeguridadSocialAmbulanteSemiestacionario" ColumnName="SeguridadSocialAmbulanteSemiestacionario" />
+                <ScalarProperty Name="OrgnizacionSocialAmbulanteSemiestacionario" ColumnName="OrgnizacionSocialAmbulanteSemiestacionario" />
+                <ScalarProperty Name="CondicionAmbulanteSemiestacionario" ColumnName="CondicionAmbulanteSemiestacionario" />
+                <ScalarProperty Name="PoblacionAmbulanteSemiestacionario" ColumnName="PoblacionAmbulanteSemiestacionario" />
+                <ScalarProperty Name="EducacionAmbulanteSemiestacionario" ColumnName="EducacionAmbulanteSemiestacionario" />
+                <ScalarProperty Name="SexoAmbulanteSemiestacionario" ColumnName="SexoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="OficioAmbulanteSemiestacionario" ColumnName="OficioAmbulanteSemiestacionario" />
+                <ScalarProperty Name="FechaNacimientoAmbulanteSemiestacionario" ColumnName="FechaNacimientoAmbulanteSemiestacionario" />
+                <ScalarProperty Name="NumeroIDAmbulanteSemiestacionario" ColumnName="NumeroIDAmbulanteSemiestacionario" />
+                <ScalarProperty Name="TipoIdentificacionAmbulanteSemiestacionario" ColumnName="TipoIdentificacionAmbulanteSemiestacionario" />
+                <ScalarProperty Name="ApellidosAmbulanteSemiestacionario" ColumnName="ApellidosAmbulanteSemiestacionario" />
+                <ScalarProperty Name="NombresAmbulanteSemiestacionario" ColumnName="NombresAmbulanteSemiestacionario" />
+                <ScalarProperty Name="AmbitoTerritorialAmbulanteSemiestacionario" ColumnName="AmbitoTerritorialAmbulanteSemiestacionario" />
+                <ScalarProperty Name="MunicipicioAmbulanteSemiestacionario" ColumnName="MunicipicioAmbulanteSemiestacionario" />
+                <ScalarProperty Name="FormaTrabajoAmbulanteAmbulanteSemiestacionario" ColumnName="FormaTrabajoAmbulanteAmbulanteSemiestacionario" />
+                <ScalarProperty Name="FechaAmbulanteSemiestacionario" ColumnName="FechaAmbulanteSemiestacionario" />
+                <ScalarProperty Name="IdAmbulanteSemiestacionario" ColumnName="IdAmbulanteSemiestacionario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estacionario">
+            <EntityTypeMapping TypeName="BIOMEDICOModel.Estacionario">
+              <MappingFragment StoreEntitySet="Estacionario">
+                <ScalarProperty Name="RiesgosAnimalesVenenososEstacionario" ColumnName="RiesgosAnimalesVenenososEstacionario" />
+                <ScalarProperty Name="AnimalesVenenososEstacionario" ColumnName="AnimalesVenenososEstacionario" />
+                <ScalarProperty Name="PlagasEstacionario" ColumnName="PlagasEstacionario" />
+                <ScalarProperty Name="DisponenResiduosPeligrososEstacionario" ColumnName="DisponenResiduosPeligrososEstacionario" />
+                <ScalarProperty Name="GeneranResiduosPeligrososEstacionario" ColumnName="GeneranResiduosPeligrososEstacionario" />
+                <ScalarProperty Name="AlmacenanQuimicosEstacionario" ColumnName="AlmacenanQuimicosEstacionario" />
+                <ScalarProperty Name="UsoQuimicosEstacionario" ColumnName="UsoQuimicosEstacionario" />
+                <ScalarProperty Name="CombustibleEstacionario" ColumnName="CombustibleEstacionario" />
+                <ScalarProperty Name="AguasResidualesEstacionario" ColumnName="AguasResidualesEstacionario" />
+                <ScalarProperty Name="ResiduosSolidosEstacionario" ColumnName="ResiduosSolidosEstacionario" />
+                <ScalarProperty Name="ResiduosEstacionario" ColumnName="ResiduosEstacionario" />
+                <ScalarProperty Name="ExcretaEstacionario" ColumnName="ExcretaEstacionario" />
+                <ScalarProperty Name="AlmacenamientoAguaEstacionario" ColumnName="AlmacenamientoAguaEstacionario" />
+                <ScalarProperty Name="TratamientoAguaEstacionario" ColumnName="TratamientoAguaEstacionario" />
+                <ScalarProperty Name="AguaConsumoEstacionario" ColumnName="AguaConsumoEstacionario" />
+                <ScalarProperty Name="ActividadEconomicaEstacionario" ColumnName="ActividadEconomicaEstacionario" />
+                <ScalarProperty Name="DireccionTrabajoEstacionario" ColumnName="DireccionTrabajoEstacionario" />
+                <ScalarProperty Name="TelefonoEstacionario" ColumnName="TelefonoEstacionario" />
+                <ScalarProperty Name="PersonaContactoEstacionario" ColumnName="PersonaContactoEstacionario" />
+                <ScalarProperty Name="LugarTrabajoEstacionario" ColumnName="LugarTrabajoEstacionario" />
+                <ScalarProperty Name="OcupacionEstacionario" ColumnName="OcupacionEstacionario" />
+                <ScalarProperty Name="FechaNacimientoEstacionario" ColumnName="FechaNacimientoEstacionario" />
+                <ScalarProperty Name="NumeroIdentificacionEstacionario" ColumnName="NumeroIdentificacionEstacionario" />
+                <ScalarProperty Name="TipoIdentificacionEstacionario" ColumnName="TipoIdentificacionEstacionario" />
+                <ScalarProperty Name="ApellidosEstacionario" ColumnName="ApellidosEstacionario" />
+                <ScalarProperty Name="NombresEstacionario" ColumnName="NombresEstacionario" />
+                <ScalarProperty Name="TerritorioEstacionario" ColumnName="TerritorioEstacionario" />
+                <ScalarProperty Name="MunicipioEstacionario" ColumnName="MunicipioEstacionario" />
+                <ScalarProperty Name="TrabajadorEstacionario" ColumnName="TrabajadorEstacionario" />
+                <ScalarProperty Name="FechaEstacionario" ColumnName="FechaEstacionario" />
+                <ScalarProperty Name="IdEstacionario" ColumnName="IdEstacionario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

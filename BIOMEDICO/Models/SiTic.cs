@@ -57,6 +57,6 @@ namespace BIOMEDICO.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SocioDemograficos> SocioDemograficos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SocioEconomicos> SocioEconomicos { get; set; } 
+        public virtual ICollection<SocioEconomicos> SocioEconomicos { get; set; }
     }
 }

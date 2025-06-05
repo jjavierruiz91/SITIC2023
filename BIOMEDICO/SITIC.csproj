@@ -167,10 +167,12 @@
     <Compile Include="Clases\Encriptardor.cs" />
     <Compile Include="Clases\Utilidades.cs" />
     <Compile Include="Controllers\AfpController.cs" />
+    <Compile Include="Controllers\AmbulanteSemiestacionarioController.cs" />
     <Compile Include="Controllers\ASignarPermisosController.cs" />
     <Compile Include="Controllers\BiomedicoController.cs" />
     <Compile Include="Controllers\CerrarSesionController.cs" />
     <Compile Include="Controllers\EpsController.cs" />
+    <Compile Include="Controllers\EstacionarioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformeAccidenteTrabajoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -182,6 +184,9 @@
     <Compile Include="Filters\Verificaciones.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AmbulanteSemiestacionario.cs">
+      <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ASignarPermisos.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
@@ -198,10 +203,10 @@
     <Compile Include="Models\Eps.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\EstiloVida.cs">
+    <Compile Include="Models\Estacionario.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\InformeAccidenteTrabajo.cs">
+    <Compile Include="Models\EstiloVida.cs">
       <DependentUpon>ModelBiomedico.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelBiomedico.Context.cs">
@@ -2925,6 +2930,10 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\InformeAccidenteTrabajo\ListaInformeAccidenteTrabajo.cshtml" />
     <Content Include="Views\InformeAccidenteTrabajo\Agregar.cshtml" />
+    <Content Include="Views\AmbulanteSemiestacionario\ListaInformeAmbulanteSemiestacionario.cshtml" />
+    <Content Include="Views\AmbulanteSemiestacionario\Agregar.cshtml" />
+    <Content Include="Views\Estacionario\Agregar.cshtml" />
+    <Content Include="Views\Estacionario\ListaInformeEstacionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

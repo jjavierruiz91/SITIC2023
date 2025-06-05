@@ -198,14 +198,41 @@
                                 </li>
                             }
                         }
+
+                        @*@{
+            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "ENCUESTADOR") != null)
+            {
+                <li id="C0001" class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>ACCIDENTE TRABAJO</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                        <li class="nav-item"><a href="/InformeAccidenteTrabajo/Agregar" class="nav-link">REGISTRAR ACCIDENTE DE TRABAJO</a></li>
+                        <li class="nav-item"><a href="/InformeAccidenteTrabajo/ListaInformeAccidenteTrabajo" class="nav-link">LISTADO</a></li>
+
+                    </ul>
+                </li>
+            }
+        }*@
                         @{
                             if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "ENCUESTADOR") != null)
                             {
                                 <li id="C0001" class="nav-item nav-item-submenu">
-                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>ACCIDENTE TRABAJO</span></a>
+                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>AMBULANTE - SEMIESTACIONARIO</span></a>
                                     <ul class="nav nav-group-sub" data-submenu-title="Layouts">
-                                        <li class="nav-item"><a href="/InformeAccidenteTrabajo/Agregar" class="nav-link">REGISTRAR ACCIDENTE DE TRABAJO</a></li>
-                                        <li class="nav-item"><a href="/InformeAccidenteTrabajo/ListaInformeAccidenteTrabajo" class="nav-link">LISTADO</a></li>
+                                        <li class="nav-item"><a href="/AmbulanteSemiestacionario/Agregar" class="nav-link">REGISTRAR AMBULANTE - SEMIESTACIONARIO</a></li>
+                                        <li class="nav-item"><a href="/AmbulanteSemiestacionario/ListaInformeAmbulanteSemiestacionario" class="nav-link">LISTADO</a></li>
+
+                                    </ul>
+                                </li>
+                            }
+                        }
+                        @{
+                            if (listapermisosasignados.FirstOrDefault(w => w.Permisos.NomPermiso == "ENCUESTADOR") != null)
+                            {
+                                <li id="C0001" class="nav-item nav-item-submenu">
+                                    <a href="#" class="nav-link"><i class="icon-windows2"></i> <span>AMBULANTE - ESTACIONARIO</span></a>
+                                    <ul class="nav nav-group-sub" data-submenu-title="Layouts">
+                                        <li class="nav-item"><a href="/Estacionario/Agregar" class="nav-link">REGISTRAR - ESTACIONARIO</a></li>
+                                        <li class="nav-item"><a href="/Estacionario/ListaInformeEstacionario" class="nav-link">LISTADO</a></li>
 
                                     </ul>
                                 </li>

@@ -2572,6 +2572,8 @@
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\APP\Afp\Afp.js" />
     <Content Include="Scripts\APP\Afp\ListaAfp.js" />
+    <Content Include="Scripts\APP\AmbulanteSemiestacionario\AmbulanteSemiestacionario.js" />
+    <Content Include="Scripts\APP\AmbulanteSemiestacionario\ListaAmbulanteSemiestacionarioInforme.js" />
     <Content Include="Scripts\APP\Eps\Eps.js" />
     <Content Include="Scripts\APP\Eps\ListaEps.js" />
     <Content Include="Scripts\APP\InformeAccidenteTrabajo\ListaInformeAccidenteTrabajo.js" />

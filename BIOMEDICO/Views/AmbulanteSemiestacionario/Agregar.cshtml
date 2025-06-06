@@ -9,130 +9,90 @@
 
 
 
-<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>
-    INSTRUMENTO PARA LA CARACTERIZACIÓN DE LOS TRABAJADORES DE LA ECONOMÍA POPULAR Y COMUNITARIA - AMBULANTE Y SEMIESTACIONARIO
-</strong></h1>
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
+    <strong>
+        INSTRUMENTO PARA LA CARACTERIZACIÓN DE LOS TRABAJADORES DE LA ECONOMÍA POPULAR Y COMUNITARIA - AMBULANTE Y SEMIESTACIONARIO
+    </strong>
+</h1>
 <hr width=100% align="right" size=200 color="black">
 
-<div class="row m-0">
+<!-- Modal centrado -->
+<div class="modal fade" id="modalTipoTrabajo" tabindex="-1" aria-labelledby="modalTipoTrabajoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTipoTrabajoLabel">Seleccione el tipo de trabajo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Qué tipo de trabajo desarrollas?</p>
+                <button type="button" class="btn btn-primary w-100 mb-2" onclick="redirigir('ambulante')">Ambulante</button>
+                <button type="button" class="btn btn-success w-100 mb-2" onclick="redirigir('semiestacionario')">Semiestacionario</button>
+                <button type="button" class="btn btn-secondary w-100" onclick="redirigir('estacionario')">Estacionario</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let modalTipoTrabajoInstance; // Guardar instancia del modal
+
+    function redirigir(tipo) {
+        let ruta = "";
+        switch (tipo) {
+            case "ambulante":
+            case "semiestacionario":
+                ruta = "https://localhost:44379/AmbulanteSemiestacionario/Agregar";
+                break;
+            case "estacionario":
+                ruta = "https://localhost:44379/Estacionario/Agregar";
+                break;
+        }
+
+        if (window.location.href !== ruta) {
+            window.location.href = ruta;
+        } else {
+            // Usar la instancia guardada
+            if (modalTipoTrabajoInstance) {
+                modalTipoTrabajoInstance.hide();
+            }
+        }
+    }
+
+    window.onload = function () {
+        const modalElement = document.getElementById('modalTipoTrabajo');
+        modalTipoTrabajoInstance = new bootstrap.Modal(modalElement);
+        modalTipoTrabajoInstance.show();
+    };
+</script>
+
+
+
+<div class="">
 
     @Html.AntiForgeryToken()
     <form id="FormPolitica" name="FormPolitica">
         <div asp-validation-summar="ModelOnly" class="text-danger"></div>
 
         <div class="row m-0">
+
+
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Documento <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                <label><strong>1. Fecha de Caracterizacion<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>2. Forma en la que el trabajador desarrolla su ocupación u oficio<span style="color: red;">*</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumento" name="TipoDocumento">
                     <option value="">Seleccionar</option>
-                    <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
-                    <option value="Registro Civil">Registro Civil</option>
-                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
-                    <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
-                    <option value="Pasaporte">Pasaporte</option>
-                    <option value="Otro">Otro</option>
-                </select>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Numero Documento <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumeroIdentificacion" name="NumeroIdentificacion" placeholder="Digite su numero de documento" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Primer Nombres <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PrimerNombre" name="PrimerNombre" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Segundo Nombre<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="SegundoNombre" name="SegundoNombre" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Primer Apellido <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PrimerApellido" name="PrimerApellido" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Segundo Apellido<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="SegundoApellido" name="SegundoApellido" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Fecha Nacimiento<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" placeholder="Digite la fecha de nacimiento" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Edad<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="EdadPolitica" name="EdadPolitica" placeholder="Digite su edad" disabled />
-            </div>
-
-            <script>
-                // Obtener los elementos del DOM
-                const fechaNacimientoInput = document.getElementById('FechaNacimiento');
-                const edadPoliticaInput = document.getElementById('EdadPolitica');
-
-                // Agregar un evento de escucha al cambio en el campo de fecha de nacimiento
-                fechaNacimientoInput.addEventListener('change', function () {
-                    // Obtener la fecha seleccionada
-                    const fechaNacimiento = new Date(this.value);
-
-                    // Obtener la fecha actual
-                    const fechaActual = new Date();
-
-                    // Calcular la edad en años
-                    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
-
-                    // Verificar si el cumpleaños aún no ha pasado este año
-                    if (fechaNacimiento.getMonth() > fechaActual.getMonth() || (fechaNacimiento.getMonth() === fechaActual.getMonth() && fechaNacimiento.getDate() > fechaActual.getDate())) {
-                        edad--;
-                    }
-
-                    // Actualizar el valor del campo de edad
-                    edadPoliticaInput.value = edad;
-                });
-            </script>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Sexo Nacimiento <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="SexoNacimiento" name="SexoNacimiento">
-                    <option value="">Seleccionar</option>
-                    <option value="Hombre">Hombre</option>
-                    <option value="Mujer">Mujer</option>
-                    <option value="Intersexual">Intersexual</option>
-                    <option value="Prefiero no Decirlo">Prefiero no Decirlo</option>
-                </select>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Direcciòn<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Telefono<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Fax<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label>
-                    <strong>
-                        Departamento
-                        <span style="color: red;"> *</span>
-                    </strong>
-                </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Municipios" name="Municipios">
-                    <option value="">Seleccionar</option>
-                    <option value="Cesar">Cesar</option>
+                    <option value="Ambulante">Ambulante</option>
+                    <option value="Semiestacionario">Semiestacionario</option>
 
                 </select>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label>
-                    <strong>
-                        Municipio
-                        <span style="color: red;"> *</span>
-                    </strong>
-                </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Municipios" name="Municipios">
+                <label><strong>3. Municipio donde se desarrolla la ocupación u oficio<span style="color: red;">*</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumento" name="TipoDocumento">
                     <option value="">Seleccionar</option>
                     <option value="Valledupar">Valledupar</option>
                     <option value="Aguachica">Aguachica</option>
@@ -163,96 +123,23 @@
                 </select>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label>
-                    <strong>
-                        zona
-                        <span style="color: red;"> *</span>
-                    </strong>
-                </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Zona" name="Zona">
+                <label><strong>4. Ámbito Territorial<span style="color: red;">*</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumento" name="TipoDocumento">
                     <option value="">Seleccionar</option>
                     <option value="Rural">Rural</option>
                     <option value="Urbano">Urbano</option>
+                    <option value="Rural Disperso">Rural Disperso</option>
                 </select>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Ocupaciòn<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Afiliacion<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Contribucion <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Grupo SISBEN<span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoSisben" name="TipoSisben">
-                    <option value="">Seleccionar</option>
-                    <optgroup label="Grupo A: Pobreza extrema">
-                        <option value="A1">A1</option>
-                        <option value="A2">A2</option>
-                        <option value="A3">A3</option>
-                        <option value="A4">A4</option>
-                        <option value="A5">A5</option>
-                    </optgroup>
-                    <optgroup label="Grupo B: Pobreza moderada">
-                        <option value="B1">B1</option>
-                        <option value="B2">B2</option>
-                        <option value="B3">B3</option>
-                        <option value="B4">B4</option>
-                        <option value="B5">B5</option>
-                        <option value="B6">B6</option>
-                        <option value="B7">B7</option>
-                    </optgroup>
-                    <optgroup label="Grupo C: Vulnerable">
-                        <option value="C1">C1</option>
-                        <option value="C2">C2</option>
-                        <option value="C3">C3</option>
-                        <option value="C4">C4</option>
-                        <option value="C5">C5</option>
-                        <option value="C6">C6</option>
-                        <option value="C7">C7</option>
-                        <option value="C8">C8</option>
-                        <option value="C9">C9</option>
-                        <option value="C10">C10</option>
-                        <option value="C11">C11</option>
-                        <option value="C12">C12</option>
-                        <option value="C13">C13</option>
-                        <option value="C14">C14</option>
-                        <option value="C15">C15</option>
-                        <option value="C16">C16</option>
-                        <option value="C17">C17</option>
-                        <option value="C18">C18</option>
-                    </optgroup>
-                </select>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Fondo Pensiones<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Eps Afiliado<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Institucion Prestadora de Salud<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
+
         </div>
-
-
     </form>
 
 </div>
-
 <br />
-<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>CENTRO DE TRABAJO</strong></h1>
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>INFORMACIÓN BÁSICA DEL O LOS TRABAJADORES</strong></h1>
 @*<hr width=100% align="right" size=200 color="black">*@
-
-<div class="">
+<div>
 
     @Html.AntiForgeryToken()
     <form id="FormPolitica" name="FormPolitica">
@@ -260,137 +147,412 @@
 
         <div class="row m-0">
 
-            <div class="col-xs-12 col-sm-12 col-md-">
-                <label><strong>Sector Economico <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>5. Nombre Completo <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PrimerNombre" name="PrimerNombre" placeholder="Digite sus nombre completo" />
                 <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
             </div>
-            <div class="col-xs-8 col-sm-8 col-md-8">
-                <label><strong>Actividad Economica<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>6. Apellido Completo <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PrimerApellido" name="PrimerApellido" placeholder="Digite sus apellidos completo" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Tipo de Venta <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="SexoNacimiento" name="SexoNacimiento">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>7. Tipo Documento <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
                     <option value="">Seleccionar</option>
-                    <option value="Hombre">E</option>
-                    <option value="Mujer">S</option>
-                    <option value="Intersexual">A</option>
+                    <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
+                    <option value="Registro Civil">Registro Civil</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                    <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="Otro">Otro</option>
                 </select>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Direccion<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+                <label><strong>8. Numero Identificacion<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="FechaNacimiento" name="FechaNacimiento" placeholder="Digite la fecha de nacimiento" />
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <label><strong>Telefono<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <label>
-                    <strong>
-                        zona
-                        <span style="color: red;"> *</span>
-                    </strong>
-                </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Zona" name="Zona">
-                    <option value="">Seleccionar</option>
-                    <option value="Rural">Rural</option>
-                    <option value="Urbano">Urbano</option>
-                </select>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>Fecha Nacimiento<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" placeholder="Digite la fecha de nacimiento" />
             </div>
 
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>9. Ocupación u oficio<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+            </div>
 
         </div>
 
-        <br />
-        <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
-            <strong>
-                DESCRIPCION DEL ACCIDENTE
 
-            </strong>
-        </h1>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            @*<label><strong>Descripcion Del Accidente </strong></label>*@
-            <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="12" cols="50" class="form-control" id="DiagnosticoMedicoClinicaFisio"></textarea>
-        </div>
 
     </form>
 
 </div>
 <br />
-
-<div class="">
-    <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
-        <strong>
-            HUBO PERSONAS QUE PRESENCIARON EL ACCIDENTE?
-
-        </strong>
-    </h1>
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>DATOS SOCIODEMOGRÁFICOS</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+<div>
 
     @Html.AntiForgeryToken()
     <form id="FormPolitica" name="FormPolitica">
         <div asp-validation-summar="ModelOnly" class="text-danger"></div>
 
-        <div class="">
+        <div class="row m-0">
+
             <div class="col-xs-6 col-sm-6 col-md-6">
-                @*<label><strong>hubo personas que presenciaron el accidente?</strong></label>*@
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        NO
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        SI
-                    </label>
-                </div>
+                <label><strong>10. ¿Cuál es el sexo biológico del trabajador? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    @*<option value="Otro">Otro</option>*@
+                </select>
             </div>
-            <br />
-
-            <div id="formularioMenorEdad" style="display: none;">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label><strong>Tipo Documento <span style="color: red;">*</span></strong> </label>
-                    <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumento" name="TipoDocumento">
-                        <option value="">Seleccionar</option>
-                        <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
-                        <option value="Registro Civil">Registro Civil</option>
-                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
-                        <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
-                        <option value="Pasaporte">Pasaporte</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label><strong>Numero Documento<span style="color: red;"> *</span></strong></label>
-                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label><strong>Apellidos y nombres Completos <span style="color: red;">*</span></strong></label>
-                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
-                    <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label><strong>Ocupación <span style="color: red;">*</span></strong></label>
-                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite su ocupación" />
-                </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>11. ¿Cuál es el nivel educativo del trabajador? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+                    <option value="Básica Secundaria incompleta">Básica Secundaria incompleta</option>
+                    <option value="Básica Secundaria completa">Básica Secundaria completa</option>
+                    <option value="Media incompleta">Media incompleta</option>
+                    <option value="Media completa">Media completa</option>
+                    <option value="Pregrado incompleto">Pregrado incompleto</option>
+                    <option value="Pregrado completo">Pregrado completo</option>
+                    <option value="Posgrado incompleto">Posgrado incompleto</option>
+                    <option value="Posgrado completo">Posgrado completo</option>
+                    <option value="Formación para el desarrollo y el trabajo">Formación para el desarrollo y el trabajo</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>12. ¿A que grupo de población pertenece el trabajador?  <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Indígena">Indígena</option>
+                    <option value="Negros, Afros, Raizales y Palenqueros (NARP)">Negros, Afros, Raizales y Palenqueros (NARP)</option>
+                    <option value="Población Gitana (Rrom)">Población Gitana (Rrom)</option>
+                    <option value="Campesino">Campesino</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>13. ¿El trabajador presenta alguna de estas condiciones? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="LGBTIQ+">LGBTIQ+</option>
+                    <option value="Desplazado">Desplazado</option>
+                    <option value="Migrante">Migrante</option>
+                    <option value="Desmovilizado">Desmovilizado</option>
+                    <option value="Víctima de violencia o conflicto armado">Víctima de violencia o conflicto armado</option>
+                    <option value="Mujer trabajadora rural">Mujer trabajadora rural</option>
+                    <option value="Mujer cabeza de familia">Mujer cabeza de familia</option>
+                    <option value="Adulto mayor">Adulto mayor</option>
+                    <option value="Población Privada de la Libertad">Población Privada de la Libertad</option>
+                    <option value="No pertenece a ninguno">No pertenece a ninguno</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>14. ¿El trabajador pertenece a alguna organización social? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Grupo organizado de trabajadores informales">Grupo organizado de trabajadores informales</option>
+                    <option value="Redes Barriales comunitarios">Redes Barriales comunitarios</option>
+                    <option value="Grupo de mujer y género">Grupo de mujer y género</option>
+                    <option value="Grupo religioso">Grupo religioso</option>
+                    <option value="Grupos de migrantes">Grupos de migrantes</option>
+                    <option value="Grupos étnicos">Grupos étnicos</option>
+                    <option value="No pertenece a ninguno">No pertenece a ninguno</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>15. ¿A cuál de los sistemas de la Seguridad Social Integral se encuentra afiliado el trabajador?<span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Salud (Régimen contributivo o Régimen Subsidiado)">Salud (Régimen contributivo o Régimen Subsidiado)</option>
+                    <option value="Riesgos Laborales">Riesgos Laborales</option>
+                    <option value="Pensiones">Pensiones</option>
+                    <option value="BEPS">BEPS</option>
+                    <option value="Cajas de Compensación Familiar">Cajas de Compensación Familiar</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
             </div>
 
 
         </div>
 
+
+
+    </form>
+
+</div>
+
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong> DATOS SOCIOECONÓMICOS</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+<div>
+
+    @Html.AntiForgeryToken()
+    <form id="FormPolitica" name="FormPolitica">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>16. ¿Cuánto tiempo de antigüedad lleva el trabajador realizando la ocupación u oficio? <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="marcar en años" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>17. ¿En que jornada realiza la ocupación u oficio el trabajador? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    @*<option value="Otro">Otro</option>*@
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>18. ¿Cuántas horas al día dedica el trabajador a la ocupación u oficio? <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="marcar en años" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>19. ¿Cuántos días a la semana dedica el trabajador a la ocupación u oficio? <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="marcar en años" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>20. ¿Cuál es la forma de desplazamiento más frecuente que utiliza el trabajador hacia el lugar donde realiza su oficio u ocupación?<span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+                    <option value="Básica Secundaria incompleta">Básica Secundaria incompleta</option>
+                    <option value="Básica Secundaria completa">Básica Secundaria completa</option>
+                    <option value="Media incompleta">Media incompleta</option>
+                    <option value="Media completa">Media completa</option>
+                    <option value="Pregrado incompleto">Pregrado incompleto</option>
+                    <option value="Pregrado completo">Pregrado completo</option>
+                    <option value="Posgrado incompleto">Posgrado incompleto</option>
+                    <option value="Posgrado completo">Posgrado completo</option>
+                    <option value="Formación para el desarrollo y el trabajo">Formación para el desarrollo y el trabajo</option>
+                </select>
+            </div>
+
+
+
+        </div>
+
+
+
+    </form>
+
+</div>
+
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong> CONDICIONES DE SALUD REFERIDAS POR LOS TRABAJADORES</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+<div>
+
+    @Html.AntiForgeryToken()
+    <form id="FormPolitica" name="FormPolitica">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>21. ¿Le han diagnosticado algunas de estas enfermedades o condiciones al trabajador? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    @*<option value="Otro">Otro</option>*@
+                </select>
+            </div>
+
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>22. ¿El trabajador consume alguna de estas sustancias?  <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>23. ¿Con que frecuencia el trabajador consume bebidas alcohólicas?<span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>24. ¿Cuantó tiempo a la semana realiza actividad física el trabajador? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>25. ¿Cuántas horas al día duerme el trabajador? <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="marcar en años" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>26. ¿Con que frecuencia el trabajador consume frutas y verduras?<span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>27. En el último mes, ¿el trabajador ha presentado alguna de las siguientes manifestaciones o comportamientos?<span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>28. En el último mes, durante la realización del oficio u ocupación ¿el trabajador ha presenta alguno de estos síntomas?   <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>29. En el último mes, ¿el trabajador ha tenido algún accidente relacionado con su ocupación u oficio?   <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>30. ¿El trabajador presenta algún tipo de discapacidad? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+        </div>
+
+
+
     </form>
 
 </div>
 <br />
-<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>PERSONA RESPONSABLE DEL INFORME</strong></h1>
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong> CONDICIONES DE TRABAJO</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+<div>
+
+    @Html.AntiForgeryToken()
+    <form id="FormPolitica" name="FormPolitica">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>31.Durante la realización del oficio ¿el trabajador se encuentra expuesto a los siguientes Peligros por Condiciones de Seguridad?<span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    @*<option value="Otro">Otro</option>*@
+                </select>
+            </div>
+
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>32. Durante la realización del oficio ¿el trabajador se encuentra expuesto a los siguientes Peligros Físicos?  <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>33. Durante la realización del oficio ¿el trabajador se encuentra expuesto a los siguientes Peligros Biomecánicos?<span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>34. Durante la realización del oficio ¿el trabajador se encuentra expuesto a los siguientes Peligros Químicos? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>35. Durante la realización del oficio ¿el trabajador se encuentra expuesto a los siguientes Peligros Biológicos?<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="marcar en años" />
+                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>36. Durante la realización del oficio ¿el trabajador se encuentra expuesto a los siguientes Peligros Psicosociales?<span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                    <option value="">Seleccionar</option>
+                    <option value="Sin estudios">Sin estudios</option>
+                    <option value="Básica Primaria incompleta">Básica Primaria incompleta</option>
+                    <option value="Básica Primaria completa">Básica Primaria completa</option>
+
+                </select>
+            </div>
+
+        </div>
+
+
+
+    </form>
+
+</div>
+
+
+
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>AGUA Y SANEAMIENTO (Solo para trabajadores ambulantes y semiestacionarios)</strong></h1>
 @*<hr width=100% align="right" size=200 color="black">*@
 
 <div class="">
@@ -430,6 +592,7 @@
                 <label><strong>Firma <span style="color: red;">*</span></strong></label>
                 <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite su ocupación" />
             </div>
+        </div>
     </form>
 
 </div>

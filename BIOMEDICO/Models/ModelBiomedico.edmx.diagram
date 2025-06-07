@@ -29,8 +29,8 @@
         <EntityTypeShape EntityType="BIOMEDICOModel.SocioEconomicos" Width="1.5" PointX="7.625" PointY="14.375" />
         <AssociationConnector Association="BIOMEDICOModel.FK_SocioDemograficos_SiTic" />
         <AssociationConnector Association="BIOMEDICOModel.FK_SocioEconomicos_SiTic" />
-        <EntityTypeShape EntityType="BIOMEDICOModel.AmbulanteSemiestacionario" Width="1.5" PointX="16.5" PointY="0.5" />
-        <EntityTypeShape EntityType="BIOMEDICOModel.Estacionario" Width="1.5" PointX="14.25" PointY="0.5" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.AmbulanteSemiestacionario" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BIOMEDICOModel.Estacionario" Width="1.5" PointX="7.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

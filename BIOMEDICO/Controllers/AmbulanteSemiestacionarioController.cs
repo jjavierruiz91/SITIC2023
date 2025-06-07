@@ -134,7 +134,7 @@ namespace BIOMEDICO.Controllers
                     db.AmbulanteSemiestacionario.Add(a.AmbulanteSemiestacionarioSport);
                     db.SaveChanges();
                     Retorno.Error = false;
-                    Retorno.mensaje = "Oficina Accidente de Trabajo.! ";
+                    Retorno.mensaje = "Oficina comunutaria ambulante y semiestacionario.! ";
 
 
                 }
@@ -144,7 +144,7 @@ namespace BIOMEDICO.Controllers
                 String Error = ex.Message;
                 //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
                 Retorno.Error = true;
-                Retorno.mensaje = "Debes completar todos los registros del formulario!";
+                Retorno.mensaje = "Debes completar todos los registros del formulario ambulante y semiestacionario!";
             }
             return Json(Retorno, JsonRequestBehavior.AllowGet);
         }

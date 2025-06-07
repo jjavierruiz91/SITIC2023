@@ -181,7 +181,7 @@ function Atras() {
     window.history.back();
 }
 
-function Createobj() {
+function CreateobjAmbulanteSemiestacionario() {
 
     
 

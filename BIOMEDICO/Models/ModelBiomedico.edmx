@@ -5,8 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="BIOMEDICOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'SITIC.dbo.AmbulanteSemiestacionario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="AmbulanteSemiestacionario">
           <Key>
             <PropertyRef Name="IdAmbulanteSemiestacionario" />
@@ -147,12 +145,9 @@ advertencia 6002: La tabla o vista 'SITIC.dbo.AmbulanteSemiestacionario' no tien
           <Property Name="CodEps" Type="nvarchar(max)" />
           <Property Name="NomEps" Type="varchar(max)" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'SITIC.dbo.Estacionario' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Estacionario">
           <Key>
             <PropertyRef Name="IdEstacionario" />
-            <PropertyRef Name="PersonaContactoEstacionario" />
           </Key>
           <Property Name="IdEstacionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FechaEstacionario" Type="date" />
@@ -444,11 +439,13 @@ advertencia 6002: La tabla o vista 'SITIC.dbo.Estacionario' no tiene definida ni
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="BIOMEDICOModelStoreContainer">
+          <EntitySet Name="AmbulanteSemiestacionario" EntityType="Self.AmbulanteSemiestacionario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ASignarPermisos" EntityType="Self.ASignarPermisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CodigoAFP" EntityType="Self.CodigoAFP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CondicionesSalud" EntityType="Self.CondicionesSalud" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CondicionesTrabajo" EntityType="Self.CondicionesTrabajo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Eps" EntityType="Self.Eps" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estacionario" EntityType="Self.Estacionario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstiloVida" EntityType="Self.EstiloVida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
@@ -458,87 +455,6 @@ advertencia 6002: La tabla o vista 'SITIC.dbo.Estacionario' no tiene definida ni
           <EntitySet Name="SocioEconomicos" EntityType="Self.SocioEconomicos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoPermiso" EntityType="Self.TipoPermiso" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AmbulanteSemiestacionario" EntityType="Self.AmbulanteSemiestacionario" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AmbulanteSemiestacionario].[IdAmbulanteSemiestacionario] AS [IdAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[FechaAmbulanteSemiestacionario] AS [FechaAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[FormaTrabajoAmbulanteAmbulanteSemiestacionario] AS [FormaTrabajoAmbulanteAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[MunicipicioAmbulanteSemiestacionario] AS [MunicipicioAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[AmbitoTerritorialAmbulanteSemiestacionario] AS [AmbitoTerritorialAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[NombresAmbulanteSemiestacionario] AS [NombresAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[ApellidosAmbulanteSemiestacionario] AS [ApellidosAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[TipoIdentificacionAmbulanteSemiestacionario] AS [TipoIdentificacionAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[NumeroIDAmbulanteSemiestacionario] AS [NumeroIDAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[FechaNacimientoAmbulanteSemiestacionario] AS [FechaNacimientoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[OficioAmbulanteSemiestacionario] AS [OficioAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[SexoAmbulanteSemiestacionario] AS [SexoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[EducacionAmbulanteSemiestacionario] AS [EducacionAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[PoblacionAmbulanteSemiestacionario] AS [PoblacionAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[CondicionAmbulanteSemiestacionario] AS [CondicionAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[OrgnizacionSocialAmbulanteSemiestacionario] AS [OrgnizacionSocialAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[SeguridadSocialAmbulanteSemiestacionario] AS [SeguridadSocialAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[AntiguedadTrabajoAmbulanteSemiestacionario] AS [AntiguedadTrabajoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[JornadaAmbulanteSemiestacionario] AS [JornadaAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[HorasDiasAmbulanteSemiestacionario] AS [HorasDiasAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[DiasSemanaAmbulanteSemiestacionario] AS [DiasSemanaAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[DesplazamientoAmbulanteSemiestacionario] AS [DesplazamientoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[EnfermedadAmbulanteSemiestacionario] AS [EnfermedadAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[SustaniaAmbulanteSemiestacionario] AS [SustaniaAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[AlcoholAmbulanteSemiestacionario] AS [AlcoholAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[ActividadFisicaAmbulanteSemiestacionario] AS [ActividadFisicaAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[HorasDuermeAmbulanteSemiestacionario] AS [HorasDuermeAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[FrutasVerdurasAmbulanteSemiestacionario] AS [FrutasVerdurasAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[ComportamientoAmbulanteSemiestacionario] AS [ComportamientoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[SintomasAmbulanteSemiestacionario] AS [SintomasAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[AcidenteAmbulanteSemiestacionario] AS [AcidenteAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[DiscapacidadAmbulanteSemiestacionario] AS [DiscapacidadAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[SeguridadAmbulanteSemiestacionario] AS [SeguridadAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[PeligroFisicoAmbulanteSemiestacionario] AS [PeligroFisicoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[PeligroBiomecanicoAmbulanteSemiestacionario] AS [PeligroBiomecanicoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[PeligroQuimicoAmbulanteSemiestacionario] AS [PeligroQuimicoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[PeligroBiologicoAmbulanteSemiestacionario] AS [PeligroBiologicoAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[PeligroPsicosocialAmbulanteSemiestacionario] AS [PeligroPsicosocialAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[AguaAmbulanteSemiestacionario] AS [AguaAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[ExcretaAmbulanteSemiestacionario] AS [ExcretaAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[ResiduosAmbulanteSemiestacionario] AS [ResiduosAmbulanteSemiestacionario], 
-    [AmbulanteSemiestacionario].[CombustibleAmbulanteSemiestacionario] AS [CombustibleAmbulanteSemiestacionario]
-    FROM [dbo].[AmbulanteSemiestacionario] AS [AmbulanteSemiestacionario]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Estacionario" EntityType="Self.Estacionario" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Estacionario].[IdEstacionario] AS [IdEstacionario], 
-    [Estacionario].[FechaEstacionario] AS [FechaEstacionario], 
-    [Estacionario].[TrabajadorEstacionario] AS [TrabajadorEstacionario], 
-    [Estacionario].[MunicipioEstacionario] AS [MunicipioEstacionario], 
-    [Estacionario].[TerritorioEstacionario] AS [TerritorioEstacionario], 
-    [Estacionario].[NombresEstacionario] AS [NombresEstacionario], 
-    [Estacionario].[ApellidosEstacionario] AS [ApellidosEstacionario], 
-    [Estacionario].[TipoIdentificacionEstacionario] AS [TipoIdentificacionEstacionario], 
-    [Estacionario].[NumeroIdentificacionEstacionario] AS [NumeroIdentificacionEstacionario], 
-    [Estacionario].[FechaNacimientoEstacionario] AS [FechaNacimientoEstacionario], 
-    [Estacionario].[OcupacionEstacionario] AS [OcupacionEstacionario], 
-    [Estacionario].[LugarTrabajoEstacionario] AS [LugarTrabajoEstacionario], 
-    [Estacionario].[PersonaContactoEstacionario] AS [PersonaContactoEstacionario], 
-    [Estacionario].[TelefonoEstacionario] AS [TelefonoEstacionario], 
-    [Estacionario].[DireccionTrabajoEstacionario] AS [DireccionTrabajoEstacionario], 
-    [Estacionario].[ActividadEconomicaEstacionario] AS [ActividadEconomicaEstacionario], 
-    [Estacionario].[AguaConsumoEstacionario] AS [AguaConsumoEstacionario], 
-    [Estacionario].[TratamientoAguaEstacionario] AS [TratamientoAguaEstacionario], 
-    [Estacionario].[AlmacenamientoAguaEstacionario] AS [AlmacenamientoAguaEstacionario], 
-    [Estacionario].[ExcretaEstacionario] AS [ExcretaEstacionario], 
-    [Estacionario].[ResiduosEstacionario] AS [ResiduosEstacionario], 
-    [Estacionario].[ResiduosSolidosEstacionario] AS [ResiduosSolidosEstacionario], 
-    [Estacionario].[AguasResidualesEstacionario] AS [AguasResidualesEstacionario], 
-    [Estacionario].[CombustibleEstacionario] AS [CombustibleEstacionario], 
-    [Estacionario].[UsoQuimicosEstacionario] AS [UsoQuimicosEstacionario], 
-    [Estacionario].[AlmacenanQuimicosEstacionario] AS [AlmacenanQuimicosEstacionario], 
-    [Estacionario].[GeneranResiduosPeligrososEstacionario] AS [GeneranResiduosPeligrososEstacionario], 
-    [Estacionario].[DisponenResiduosPeligrososEstacionario] AS [DisponenResiduosPeligrososEstacionario], 
-    [Estacionario].[PlagasEstacionario] AS [PlagasEstacionario], 
-    [Estacionario].[AnimalesVenenososEstacionario] AS [AnimalesVenenososEstacionario], 
-    [Estacionario].[RiesgosAnimalesVenenososEstacionario] AS [RiesgosAnimalesVenenososEstacionario]
-    FROM [dbo].[Estacionario] AS [Estacionario]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_ASignar permisos_Permisos1" Association="Self.FK_ASignar permisos_Permisos1">
             <End Role="Permisos" EntitySet="Permisos" />
             <End Role="ASignarPermisos" EntitySet="ASignarPermisos" />
@@ -1062,7 +978,6 @@ advertencia 6002: La tabla o vista 'SITIC.dbo.Estacionario' no tiene definida ni
         <EntityType Name="Estacionario">
           <Key>
             <PropertyRef Name="IdEstacionario" />
-            <PropertyRef Name="PersonaContactoEstacionario" />
           </Key>
           <Property Name="IdEstacionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FechaEstacionario" Type="DateTime" Precision="0" />

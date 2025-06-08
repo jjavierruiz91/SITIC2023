@@ -16,16 +16,16 @@ namespace BIOMEDICO.Models
     {
         public int IdEstacionario { get; set; }
         public Nullable<System.DateTime> FechaEstacionario { get; set; }
-        public string TrabajadorEstacionario { get; set; }
+        public string FormaTrabajadorEstacionario { get; set; }
         public string MunicipioEstacionario { get; set; }
-        public string TerritorioEstacionario { get; set; }
+        public string AmbitoTerritorioEstacionario { get; set; }
         public string NombresEstacionario { get; set; }
         public string ApellidosEstacionario { get; set; }
         public string TipoIdentificacionEstacionario { get; set; }
         public Nullable<long> NumeroIdentificacionEstacionario { get; set; }
         public Nullable<System.DateTime> FechaNacimientoEstacionario { get; set; }
         public string OcupacionEstacionario { get; set; }
-        public string LugarTrabajoEstacionario { get; set; }
+        public string LugarTrabajoViviendaEstacionario { get; set; }
         public string PersonaContactoEstacionario { get; set; }
         public string TelefonoEstacionario { get; set; }
         public string DireccionTrabajoEstacionario { get; set; }

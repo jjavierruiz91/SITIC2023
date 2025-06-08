@@ -4,5 +4,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ListaInformeEstacionario</h2>
+<script defer src="~/Scripts/APP/Estacionario/ListaEstacionario.js"></script>
+<h2>Listado Informe Trabajadores Estacionario</h2>
 
+<div class="table-responsive row col-xl-12 ">
+    @*<button class="btn btn-primary btn-sm active" type="button" onclick="PDFBLANK()">Formulario</button>*@
+    @*<a href="~/Descargar/COMPONENTE II INST.  CARACTERIZACIÓN DEMOGRÁFICA EPIDEMIOL_ESTE.pdf" target="_blank"><h1><strong>Formulario.pdf</strong></h1></a>*@
+
+    @*<*@<!--a href="~/Descargar/COMPONENTE II INST.  CARACTERIZACIÓN DEMOGRÁFICA EPIDEMIOL_ESTE (1).pdf" target="_blank"><h1><strong>Formulario.pdf</strong></h1></a>-->
+    <table class="table" id="datatable-Estacionario">
+
+        <thead>
+            <tr class="ColorTabla">
+                <th>NOMBRES</th>
+                <th>APELLIDOS </th>
+                <th>MUNICIPIO</th>
+                <th>FORMA TRABAJO</th>
+                <th>TIPO IDENTIFICACION </th>
+                <th>NUMERO IDENTIFICACION</th>
+
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+</div>

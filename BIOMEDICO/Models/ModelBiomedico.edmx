@@ -151,17 +151,17 @@
           </Key>
           <Property Name="IdEstacionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FechaEstacionario" Type="date" />
-          <Property Name="TrabajadorEstacionario" Type="varchar(max)" />
+          <Property Name="FormaTrabajadorEstacionario" Type="varchar(max)" />
           <Property Name="MunicipioEstacionario" Type="varchar(max)" />
-          <Property Name="TerritorioEstacionario" Type="varchar(max)" />
+          <Property Name="AmbitoTerritorioEstacionario" Type="varchar(max)" />
           <Property Name="NombresEstacionario" Type="varchar(max)" />
           <Property Name="ApellidosEstacionario" Type="varchar(max)" />
           <Property Name="TipoIdentificacionEstacionario" Type="varchar(max)" />
           <Property Name="NumeroIdentificacionEstacionario" Type="bigint" />
           <Property Name="FechaNacimientoEstacionario" Type="date" />
           <Property Name="OcupacionEstacionario" Type="varchar(max)" />
-          <Property Name="LugarTrabajoEstacionario" Type="varchar(max)" />
-          <Property Name="PersonaContactoEstacionario" Type="varchar(max)" Nullable="false" />
+          <Property Name="LugarTrabajoViviendaEstacionario" Type="varchar(max)" />
+          <Property Name="PersonaContactoEstacionario" Type="varchar(max)" />
           <Property Name="TelefonoEstacionario" Type="varchar(max)" />
           <Property Name="DireccionTrabajoEstacionario" Type="varchar(max)" />
           <Property Name="ActividadEconomicaEstacionario" Type="varchar(max)" />
@@ -981,17 +981,17 @@
           </Key>
           <Property Name="IdEstacionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FechaEstacionario" Type="DateTime" Precision="0" />
-          <Property Name="TrabajadorEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FormaTrabajadorEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MunicipioEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TerritorioEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AmbitoTerritorioEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NombresEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ApellidosEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TipoIdentificacionEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="NumeroIdentificacionEstacionario" Type="Int64" />
           <Property Name="FechaNacimientoEstacionario" Type="DateTime" Precision="0" />
           <Property Name="OcupacionEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="LugarTrabajoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PersonaContactoEstacionario" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LugarTrabajoViviendaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PersonaContactoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TelefonoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="DireccionTrabajoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ActividadEconomicaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1331,16 +1331,16 @@
                 <ScalarProperty Name="DireccionTrabajoEstacionario" ColumnName="DireccionTrabajoEstacionario" />
                 <ScalarProperty Name="TelefonoEstacionario" ColumnName="TelefonoEstacionario" />
                 <ScalarProperty Name="PersonaContactoEstacionario" ColumnName="PersonaContactoEstacionario" />
-                <ScalarProperty Name="LugarTrabajoEstacionario" ColumnName="LugarTrabajoEstacionario" />
+                <ScalarProperty Name="LugarTrabajoViviendaEstacionario" ColumnName="LugarTrabajoViviendaEstacionario" />
                 <ScalarProperty Name="OcupacionEstacionario" ColumnName="OcupacionEstacionario" />
                 <ScalarProperty Name="FechaNacimientoEstacionario" ColumnName="FechaNacimientoEstacionario" />
                 <ScalarProperty Name="NumeroIdentificacionEstacionario" ColumnName="NumeroIdentificacionEstacionario" />
                 <ScalarProperty Name="TipoIdentificacionEstacionario" ColumnName="TipoIdentificacionEstacionario" />
                 <ScalarProperty Name="ApellidosEstacionario" ColumnName="ApellidosEstacionario" />
                 <ScalarProperty Name="NombresEstacionario" ColumnName="NombresEstacionario" />
-                <ScalarProperty Name="TerritorioEstacionario" ColumnName="TerritorioEstacionario" />
+                <ScalarProperty Name="AmbitoTerritorioEstacionario" ColumnName="AmbitoTerritorioEstacionario" />
                 <ScalarProperty Name="MunicipioEstacionario" ColumnName="MunicipioEstacionario" />
-                <ScalarProperty Name="TrabajadorEstacionario" ColumnName="TrabajadorEstacionario" />
+                <ScalarProperty Name="FormaTrabajadorEstacionario" ColumnName="FormaTrabajadorEstacionario" />
                 <ScalarProperty Name="FechaEstacionario" ColumnName="FechaEstacionario" />
                 <ScalarProperty Name="IdEstacionario" ColumnName="IdEstacionario" />
               </MappingFragment>

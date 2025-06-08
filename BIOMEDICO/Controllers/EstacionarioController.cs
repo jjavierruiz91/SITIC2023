@@ -134,7 +134,7 @@ namespace BIOMEDICO.Controllers
                     db.Estacionario.Add(a.EstacionarioSport);
                     db.SaveChanges();
                     Retorno.Error = false;
-                    Retorno.mensaje = "Oficina Accidente de Trabajo.! ";
+                    Retorno.mensaje = "Oficina Trabajadores Estacionarios.! ";
 
 
                 }

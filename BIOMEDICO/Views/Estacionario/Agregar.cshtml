@@ -6,136 +6,113 @@
 
 
 <link href="~/Content/css/layout.css" rel="stylesheet" />
-<script defer src="~/Scripts/APP/InformeAccidenteTrabajo/InformeAccidenteTrabajo.js"></script>
-
+<script defer src="~/Scripts/APP/Estacionario/Estacionario.js"></script>
 
 
 <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
     <strong>
-        INSTRUMENTO PARA LA CARACTERIZACIÓN DE LOS TRABAJADORES DE LA ECONOMÍA POPULAR Y COMUNITARIA - ESTACIONARIO 
+        INSTRUMENTO PARA LA CARACTERIZACIÓN DE LOS TRABAJADORES DE LA ECONOMÍA POPULAR Y COMUNITARIA - ESTACIONARIO
     </strong>
 </h1>
 <hr width=100% align="right" size=200 color="black">
+<!-- Modal centrado -->
+<div class="modal fade" id="modalTipoTrabajo" tabindex="-1" aria-labelledby="modalTipoTrabajoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTipoTrabajoLabel">Seleccione el tipo de trabajo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Qué tipo de trabajo desarrollas?</p>
+                <button type="button" class="btn btn-primary w-100 mb-2" onclick="redirigir('ambulante')">Ambulante</button>
+                <button type="button" class="btn btn-success w-100 mb-2" onclick="redirigir('semiestacionario')">Semiestacionario</button>
+                <button type="button" class="btn btn-secondary w-100" onclick="redirigir('estacionario')">Estacionario</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div class="row m-0">
+<script>
+    let modalTipoTrabajoInstance; // Guardar instancia del modal
+
+    function redirigir(tipo) {
+        let ruta = "";
+        switch (tipo) {
+            case "ambulante":
+            case "semiestacionario":
+                ruta = "https://localhost:44379/AmbulanteSemiestacionario/Agregar";
+                break;
+            case "estacionario":
+                ruta = "https://localhost:44379/Estacionario/Agregar";
+                break;
+        }
+
+        if (window.location.href !== ruta) {
+            window.location.href = ruta;
+        } else {
+            // Usar la instancia guardada
+            if (modalTipoTrabajoInstance) {
+                modalTipoTrabajoInstance.hide();
+            }
+        }
+    }
+
+    window.onload = function () {
+        const modalElement = document.getElementById('modalTipoTrabajo');
+        modalTipoTrabajoInstance = new bootstrap.Modal(modalElement);
+        modalTipoTrabajoInstance.show();
+    };
+</script>
+<div class="">
 
     @Html.AntiForgeryToken()
     <form id="FormAmbulante" name="FormAmbulante">
         <div asp-validation-summar="ModelOnly" class="text-danger"></div>
 
         <div class="row m-0">
+
+
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Documento <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacion" name="TipoIdentificacion">
+                <label><strong>1. Fecha de Caracterizacion<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaEstacionario" name="FechaEstacionario" placeholder="" />
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>2. Lugar de Trabajo compartido con vivienda<span style="color: red;">*</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="LugarTrabajoViviendaEstacionario" name="LugarTrabajoViviendaEstacionario">
                     <option value="">Seleccionar</option>
-                    <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
-                    <option value="Registro Civil">Registro Civil</option>
-                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
-                    <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
-                    <option value="Pasaporte">Pasaporte</option>
-                    <option value="Otro">Otro</option>
+                    <option value="Si">Si</option>
+                    <option value="No">No</option>
                 </select>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Numero Documento <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumeroIdentificacion" name="NumeroIdentificacion" placeholder="Digite su numero de documento" />
+                <label><strong>3. Persona de contacto del lugar de trabajo <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PersonaContactoEstacionario" name="PersonaContactoEstacionario" placeholder="Digite la persona de contacto" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Primer Nombres <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PrimerNombre" name="PrimerNombre" placeholder="Digite su nombre completo" />
+                <label><strong>4. Telefono <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="TelefonoEstacionario" name="TelefonoEstacionario" placeholder="Digite su numero de telefono" />
                 <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Segundo Nombre<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="SegundoNombre" name="SegundoNombre" placeholder="Digite sus apellidos completos" />
+                <label><strong>5. Dirección del Lugar de Trabajo <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="DireccionTrabajoEstacionario" name="DireccionTrabajoEstacionario" placeholder="Digite su direccion de trabajo" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Primer Apellido <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="PrimerApellido" name="PrimerApellido" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+                <label><strong>6. Actividad Económica <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ActividadEconomicaEstacionario" name="ActividadEconomicaEstacionario" placeholder="Digite su actividad economica" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Segundo Apellido<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="SegundoApellido" name="SegundoApellido" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Fecha Nacimiento<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" placeholder="Digite la fecha de nacimiento" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Edad<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="EdadPolitica" name="EdadPolitica" placeholder="Digite su edad" disabled />
-            </div>
-
-            <script>
-                // Obtener los elementos del DOM
-                const fechaNacimientoInput = document.getElementById('FechaNacimiento');
-                const edadPoliticaInput = document.getElementById('EdadPolitica');
-
-                // Agregar un evento de escucha al cambio en el campo de fecha de nacimiento
-                fechaNacimientoInput.addEventListener('change', function () {
-                    // Obtener la fecha seleccionada
-                    const fechaNacimiento = new Date(this.value);
-
-                    // Obtener la fecha actual
-                    const fechaActual = new Date();
-
-                    // Calcular la edad en años
-                    let edad = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
-
-                    // Verificar si el cumpleaños aún no ha pasado este año
-                    if (fechaNacimiento.getMonth() > fechaActual.getMonth() || (fechaNacimiento.getMonth() === fechaActual.getMonth() && fechaNacimiento.getDate() > fechaActual.getDate())) {
-                        edad--;
-                    }
-
-                    // Actualizar el valor del campo de edad
-                    edadPoliticaInput.value = edad;
-                });
-            </script>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Sexo Nacimiento <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="SexoNacimiento" name="SexoNacimiento">
+                <label><strong>7. Forma en la que el trabajador desarrolla su ocupación u oficio<span style="color: red;">*</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="FormaTrabajadorEstacionario" name="FormaTrabajadorEstacionario">
                     <option value="">Seleccionar</option>
-                    <option value="Hombre">Hombre</option>
-                    <option value="Mujer">Mujer</option>
-                    <option value="Intersexual">Intersexual</option>
-                    <option value="Prefiero no Decirlo">Prefiero no Decirlo</option>
-                </select>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Direcciòn<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Telefono<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Fax<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label>
-                    <strong>
-                        Departamento
-                        <span style="color: red;"> *</span>
-                    </strong>
-                </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Municipios" name="Municipios">
-                    <option value="">Seleccionar</option>
-                    <option value="Cesar">Cesar</option>
+                    <option value="Estacionario">Estacionario</option>
 
                 </select>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label>
-                    <strong>
-                        Municipio
-                        <span style="color: red;"> *</span>
-                    </strong>
-                </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Municipios" name="Municipios">
+                <label><strong>8. Municipio donde se desarrolla la ocupación u oficio<span style="color: red;">*</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="MunicipioEstacionario" name="MunicipioEstacionario">
                     <option value="">Seleccionar</option>
                     <option value="Valledupar">Valledupar</option>
                     <option value="Aguachica">Aguachica</option>
@@ -166,96 +143,23 @@
                 </select>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label>
-                    <strong>
-                        zona
-                        <span style="color: red;"> *</span>
-                    </strong>
-                </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Zona" name="Zona">
+                <label><strong>9. Ámbito Territorial<span style="color: red;">*</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AmbitoTerritorioEstacionario" name="AmbitoTerritorioEstacionario">
                     <option value="">Seleccionar</option>
                     <option value="Rural">Rural</option>
                     <option value="Urbano">Urbano</option>
+                    <option value="Rural Disperso">Rural Disperso</option>
                 </select>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Ocupaciòn<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Afiliacion<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Contribucion <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Grupo SISBEN<span style="color: red;"> *</span></strong></label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoSisben" name="TipoSisben">
-                    <option value="">Seleccionar</option>
-                    <optgroup label="Grupo A: Pobreza extrema">
-                        <option value="A1">A1</option>
-                        <option value="A2">A2</option>
-                        <option value="A3">A3</option>
-                        <option value="A4">A4</option>
-                        <option value="A5">A5</option>
-                    </optgroup>
-                    <optgroup label="Grupo B: Pobreza moderada">
-                        <option value="B1">B1</option>
-                        <option value="B2">B2</option>
-                        <option value="B3">B3</option>
-                        <option value="B4">B4</option>
-                        <option value="B5">B5</option>
-                        <option value="B6">B6</option>
-                        <option value="B7">B7</option>
-                    </optgroup>
-                    <optgroup label="Grupo C: Vulnerable">
-                        <option value="C1">C1</option>
-                        <option value="C2">C2</option>
-                        <option value="C3">C3</option>
-                        <option value="C4">C4</option>
-                        <option value="C5">C5</option>
-                        <option value="C6">C6</option>
-                        <option value="C7">C7</option>
-                        <option value="C8">C8</option>
-                        <option value="C9">C9</option>
-                        <option value="C10">C10</option>
-                        <option value="C11">C11</option>
-                        <option value="C12">C12</option>
-                        <option value="C13">C13</option>
-                        <option value="C14">C14</option>
-                        <option value="C15">C15</option>
-                        <option value="C16">C16</option>
-                        <option value="C17">C17</option>
-                        <option value="C18">C18</option>
-                    </optgroup>
-                </select>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Fondo Pensiones<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Eps Afiliado<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Institucion Prestadora de Salud<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
+
         </div>
-
-
     </form>
 
 </div>
-
 <br />
-<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>CENTRO DE TRABAJO</strong></h1>
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>INFORMACIÓN BÁSICA DEL TRABAJADOR</strong></h1>
 @*<hr width=100% align="right" size=200 color="black">*@
-
-<div class="">
+<div>
 
     @Html.AntiForgeryToken()
     <form id="FormAmbulante" name="FormAmbulante">
@@ -263,150 +167,21 @@
 
         <div class="row m-0">
 
-            <div class="col-xs-12 col-sm-12 col-md-">
-                <label><strong>Sector Economico <span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>10. Nombre Completo <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresEstacionario" name="NombresEstacionario" placeholder="Digite sus nombre completo" />
                 <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-            </div>
-            <div class="col-xs-8 col-sm-8 col-md-8">
-                <label><strong>Actividad Economica<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4">
-                <label><strong>Tipo de Venta <span style="color: red;"> *</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="SexoNacimiento" name="SexoNacimiento">
-                    <option value="">Seleccionar</option>
-                    <option value="Hombre">E</option>
-                    <option value="Mujer">S</option>
-                    <option value="Intersexual">A</option>
-                </select>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Direccion<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
+                <label><strong>11. Apellido Completo <span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosEstacionario" name="ApellidosEstacionario" placeholder="Digite sus apellidos completo" />
                 <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <label><strong>Telefono<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-                <label>
-                    <strong>
-                        zona
-                        <span style="color: red;"> *</span>
-                    </strong>
-                </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="Zona" name="Zona">
-                    <option value="">Seleccionar</option>
-                    <option value="Rural">Rural</option>
-                    <option value="Urbano">Urbano</option>
-                </select>
-            </div>
-
-
-        </div>
-
-        <br />
-        <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
-            <strong>
-                DESCRIPCION DEL ACCIDENTE
-
-            </strong>
-        </h1>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            @*<label><strong>Descripcion Del Accidente </strong></label>*@
-            <textarea style="border: black; border-width: 1px; border-style: solid;" name="textarea" rows="12" cols="50" class="form-control" id="DiagnosticoMedicoClinicaFisio"></textarea>
-        </div>
-
-    </form>
-
-</div>
-<br />
-
-<div class="">
-    <h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; ">
-        <strong>
-            HUBO PERSONAS QUE PRESENCIARON EL ACCIDENTE?
-
-        </strong>
-    </h1>
-
-    @Html.AntiForgeryToken()
-    <form id="FormAmbulante" name="FormAmbulante">
-        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
-
-        <div class="">
             <div class="col-xs-6 col-sm-6 col-md-6">
-                @*<label><strong>hubo personas que presenciaron el accidente?</strong></label>*@
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        NO
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        SI
-                    </label>
-                </div>
-            </div>
-            <br />
-
-            <div id="formularioMenorEdad" style="display: none;">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label><strong>Tipo Documento <span style="color: red;">*</span></strong> </label>
-                    <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumento" name="TipoDocumento">
-                        <option value="">Seleccionar</option>
-                        <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
-                        <option value="Registro Civil">Registro Civil</option>
-                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
-                        <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
-                        <option value="Pasaporte">Pasaporte</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label><strong>Numero Documento<span style="color: red;"> *</span></strong></label>
-                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label><strong>Apellidos y nombres Completos <span style="color: red;">*</span></strong></label>
-                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
-                    <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label><strong>Ocupación <span style="color: red;">*</span></strong></label>
-                    <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite su ocupación" />
-                </div>
-            </div>
-
-
-        </div>
-
-    </form>
-
-</div>
-<br />
-<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>PERSONA RESPONSABLE DEL INFORME</strong></h1>
-@*<hr width=100% align="right" size=200 color="black">*@
-
-<div class="">
-
-    @Html.AntiForgeryToken()
-    <form id="FormAmbulante" name="FormAmbulante">
-        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
-
-        <div class="row m-0">
-
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Tipo Documento <span style="color: red;">*</span></strong> </label>
-                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoDocumento" name="TipoDocumento">
+                <label><strong>12. Tipo Documento <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TipoIdentificacionEstacionario" name="TipoIdentificacionEstacionario">
                     <option value="">Seleccionar</option>
                     <option value="Ducumento de Ciudadania">Cedula de Ciudadania</option>
                     <option value="Registro Civil">Registro Civil</option>
@@ -416,26 +191,339 @@
                     <option value="Otro">Otro</option>
                 </select>
             </div>
+
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Numero Documento<span style="color: red;"> *</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite sus apellidos completos" />
+                <label><strong>13. Numero Identificacion<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="number" class="form-control" id="NumeroIdentificacionEstacionario" name="NumeroIdentificacionEstacionario" placeholder="Digite la fecha de nacimiento" />
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Apellidos y nombres Completos <span style="color: red;">*</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="NombresPolitica" name="NombresPolitica" placeholder="Digite su nombre completo" />
-                <span asp-validation-for="NombresPasaporte" class="text-danger"></span>
+                <label><strong>14. Fecha Nacimiento<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="date" class="form-control" id="FechaNacimientoEstacionario" name="FechaNacimientoEstacionario" placeholder="Digite la fecha de nacimiento" />
             </div>
+
             <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Ocupación <span style="color: red;">*</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite su ocupación" />
+                <label><strong>15. Ocupación u oficio<span style="color: red;"> *</span></strong></label>
+                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="OcupacionEstacionario" name="OcupacionEstacionario" placeholder="Digite sus apellidos completos" />
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <label><strong>Firma <span style="color: red;">*</span></strong></label>
-                <input style="border: black; border-width: 1px; border-style: solid;" type="text" class="form-control" id="ApellidosPolitica" name="ApellidosPolitica" placeholder="Digite su ocupación" />
-            </div>
+
+        </div>
+
+
+
     </form>
 
 </div>
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>COMPONENTES SALUD AMBIENTAL</strong></h1>
+<div>
+
+    @Html.AntiForgeryToken()
+    <form id="FormAmbulante" name="FormAmbulante">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>16. ¿De donde proviene el agua para el consumo humano en el lugar de trabajo? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AguaConsumoEstacionario" name="AguaConsumoEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Acueducto comunal o veredal">Acueducto comunal o veredal</option>
+                    <option value="Acueducto público">Acueducto público</option>
+                    <option value="Carrocisterna">Carrocisterna</option>
+                    <option value="Agua embotellada o en bolsa">Agua embotellada o en bolsa</option>
+                    <option value="Abasto">Abasto</option>
+                    <option value="Pila pública">Pila pública</option>
+                    <option value="Pozo profundo o aljibe">Pozo profundo o aljibe</option>
+                    <option value="Laguna o Jagüey">Laguna o Jagüey</option>
+                    <option value="Quebrada o Manantial">Quebrada o Manantial</option>
+                    <option value="Aguas lluvias">Aguas lluvias</option>
+                    <option value="Ninguna">Ninguna (Pase a la pregunta 10)</option>
+                </select>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>17. ¿Qué tipo de tratamiento se realiza al agua antes del consumo humano?<span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="TratamientoAguaEstacionario" name="TratamientoAguaEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Se hierve">Se hierve</option>
+                    <option value="Se filtra">Se filtra</option>
+                    <option value="Se desinfecta">Se desinfecta</option>
+                    <option value="No se trata">No se trata</option>
+                </select>
+            </div>
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>18. ¿Dónde se realiza el almacenamiento de agua para consumo humano en el lugar de trabajo?<span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AlmacenamientoAguaEstacionario" name="AlmacenamientoAguaEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Recipiente o tanque con tapa">Recipiente o tanque con tapa</option>
+                    <option value="Recipiente o tanque sin tapa">Recipiente o tanque sin tapa</option>
+                    <option value="Pimpinas">Pimpinas</option>
+                    <option value="Ollas">Ollas</option>
+                    <option value="Canecas">Canecas</option>
+                    <option value="Tanque">Tanque</option>
+                    <option value="Envases que han contenido otro producto">Envases que han contenido otro producto</option>
+                    <option value="Bolsas">Bolsas</option>
+                    <option value="No se almacena">No se almacena</option>
+                </select>
+            </div>
+
+        </div>
+
+
+
+    </form>
+
+</div>
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>SANEAMIENTO BÁSICO</strong></h1>
+<div class="row m-0">
+
+    @Html.AntiForgeryToken()
+    <form id="FormAmbulante" name="FormAmbulante">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>19. ¿En el lugar de trabajo, dónde se evacuan y disponen las excretas? <span style="color: red;"> *</span></strong> </label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ExcretaEstacionario" name="ExcretaEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Campo abierto">Campo abierto</option>
+                    <option value="En letrina tipo zanja o tipo trinchera">En letrina tipo zanja o tipo trinchera</option>
+                    <option value="En letrinas sanitarias de fosa simple">En letrinas sanitarias de fosa simple</option>
+                    <option value="Inodoro conectado a alcantarillado">Inodoro conectado a alcantarillado</option>
+                    <option value="Inodoro conectado a pozo séptico o sumidero">Inodoro conectado a pozo séptico o sumidero</option>
+                    <option value="Inodoro con descarga al aire libre">Inodoro con descarga al aire libre</option>
+                    <option value="Espacio Público">Espacio Público</option>
+                    <option value="Fuentes hídricas">Fuentes hídricas</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>20. ¿Qué clase de residuos se generan producto de la actividad? <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ResiduosEstacionario" name="ResiduosEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Recipientes y bolsas plásticas">Recipientes y bolsas plásticas</option>
+                    <option value="Vidrio">Vidrio</option>
+                    <option value="Papel y Cartón">Papel y Cartón</option>
+                    <option value="Orgánico Biodegradable">Orgánico Biodegradable (residuos de comida, cortes y podas de materiales vegetales, hojarasca)</option>
+                    <option value="Residuos metálicos">Residuos metálicos (chatarra, viruta, tapas, envases)</option>
+                    <option value="Residuos de madera">Residuos de madera</option>
+                    <option value="Residuos peligrosos">Residuos peligrosos</option>
+                    <option value="Aguas residuales">Aguas residuales</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>21. ¿En el lugar donde realiza la ocupación u oficio cómo disponen los residuos sólidos? <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="ResiduosSolidosEstacionario" name="ResiduosSolidosEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Quema a campo abierto">Quema a campo abierto</option>
+                    <option value="Se utilizan como abono">Se utilizan como abono</option>
+                    <option value="Lo arrojan a campo abierto">Lo arrojan a campo abierto</option>
+                    <option value="Lo arrojan a fuentes de agua">Lo arrojan a fuentes de agua</option>
+                    <option value="Lo entierran">Lo entierran</option>
+                    <option value="Lo recoge un operador">Lo recoge un operador</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>22. ¿Dónde disponen las aguas residuales que se generan producto de la ocupación u oficio? <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AguasResidualesEstacionario" name="AguasResidualesEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Campo abierto">Campo abierto</option>
+                    <option value="Cuerpos de agua">Cuerpos de agua</option>
+                    <option value="Alcantarillado">Alcantarillado</option>
+                    <option value="Sistema de Tratamiento">Sistema de Tratamiento</option>
+                    <option value="No se generan">No se generan</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>23. En la ocupación u ofico que desarrolla, ¿se utilizan algunos de estos combustibles? <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="CombustibleEstacionario" name="CombustibleEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Gas Licuado del Petroleo">Gas Licuado del Petroleo</option>
+                    <option value="Gas natural conectado a red pública">Gas natural conectado a red pública</option>
+                    <option value="Leña, madera o carbón de leña">Leña, madera o carbón de leña</option>
+                    <option value="Petróleo, gasolina, kerosén, alcohol">Petróleo, gasolina, kerosén, alcohol</option>
+                    <option value="Carbón Mineral">Carbón Mineral</option>
+                    <option value="Residuo sólido o desecho">Residuo sólido o desecho</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+
+        </div>
+
+
+    </form>
+
+</div>
+
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>SEGURIDAD QUÍMICA</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+
+<div class="">
+
+    @Html.AntiForgeryToken()
+    <form id="FormAmbulante" name="FormAmbulante">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>24. En la ocupación u oficio, ¿se usan algunas de las siguientes sustancias o productos químicos? <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="UsoQuimicosEstacionario" name="UsoQuimicosEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Gasolina, aceite lubricante">Gasolina, aceite lubricante</option>
+                    <option value="Plaguicidas">Plaguicidas</option>
+                    <option value="Thinner, varsol, removedores">Thinner, varsol, removedores</option>
+                    <option value="Aceite usado">Aceite usado</option>
+                    <option value="Ácidos">Ácidos</option>
+                    <option value="Pegantes">Pegantes</option>
+                    <option value="Pinturas">Pinturas</option>
+                    <option value="Cemento">Cemento</option>
+                    <option value="Mercurio">Mercurio</option>
+                    <option value="Colorantes o tintas">Colorantes o tintas</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>25. ¿Dónde se almacenan los productos químicos?<span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AlmacenanQuimicosEstacionario" name="AlmacenanQuimicosEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="En un lugar compartido con la vivienda">En un lugar compartido con la vivienda (habitación, baño, cocina, etc)</option>
+                    <option value="En áreas externas a la vivienda">En áreas externas a la vivienda</option>
+                    <option value="En un área independiente en el mismo lugar de trabajo">En un área independiente en el mismo lugar de trabajo</option>
+                    <option value="En el mismo lugar de trabajo sin área específica">En el mismo lugar de trabajo sin área específica</option>
+                    <option value="A la interperie">A la interperie</option>
+                    <option value="No los almacena">No los almacena</option>
+                </select>
+            </div>
+
+        </div>
+
+
+
+
+    </form>
+
+</div>
+<br />
+<br />
+
+
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong> RESIDUOS PELIGROSOS</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+
+<div class="">
+
+    @Html.AntiForgeryToken()
+    <form id="FormAmbulante" name="FormAmbulante">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>28. En la ocupación u oficio, ¿se generan algunos de los siguientes residuos peligros? <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="GeneranResiduosPeligrososEstacionario" name="GeneranResiduosPeligrososEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Medicamentos vencidos">Medicamentos vencidos</option>
+                    <option value="Bombillas y luminarias">Bombillas y luminarias</option>
+                    <option value="Llantas usadas">Llantas usadas</option>
+                    <option value="Envases que almacenaron sustancias químicas">Envases que almacenaron sustancias químicas</option>
+                    <option value="RAEES">RAEES (residuos de aparatos electricos y electrónicos)</option>
+                    <option value="Plaguicidas">Plaguicidas</option>
+                    <option value="Pilas">Pilas</option>
+                    <option value="Baterías plomo ácido">Baterías plomo ácido</option>
+                    <option value="Aceites usados">Aceites usados</option>
+                    <option value="No se generan">No se generan (Pase a la pregunta 19)</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>29. ¿En el lugar donde realiza la ocupación u oficio cómo se disponen los residuos peligrosos?<span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="DisponenResiduosPeligrososEstacionario" name="DisponenResiduosPeligrososEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Quema a campo abierto">Quema a campo abierto</option>
+                    <option value="Se utilizan como abono">Se utilizan como abono</option>
+                    <option value="Lo arrojan a campo abierto">Lo arrojan a campo abierto</option>
+                    <option value="Lo arrojan a fuentes de agua">Lo arrojan a fuentes de agua</option>
+                    <option value="Lo entierran">Lo entierran</option>
+                    <option value="Lo recoge un operador">Lo recoge un operador</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+
+        </div>
+
+
+
+
+    </form>
+
+</div>
+<br />
+<h1 class="p-1 mb-2 text-white" style="background-color: #006068; text-align: center; "><strong>VECTORES / ANIMALES PONZOÑOSOS Y VENENOSOS</strong></h1>
+@*<hr width=100% align="right" size=200 color="black">*@
+
+<div class="">
+
+    @Html.AntiForgeryToken()
+    <form id="FormAmbulante" name="FormAmbulante">
+        <div asp-validation-summar="ModelOnly" class="text-danger"></div>
+
+        <div class="row m-0">
+
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>30. ¿Se han identificado las siguientes plagas o vectores en el lugar de trabajo? <span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="PlagasEstacionario" name="PlagasEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Zancudos">Zancudos</option>
+                    <option value="Garrapatas">Garrapatas</option>
+                    <option value="Pito">Pito</option>
+                    <option value="Ratas">Ratas</option>
+                    <option value="Cucarachas">Cucarachas</option>
+                    <option value="Pulgas">Pulgas</option>
+                    <option value="Caracol">Caracol</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>31. ¿Se han identificado alguno de los siguientes animales ponzoñosos o venenosos?<span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="AnimalesVenenososEstacionario" name="AnimalesVenenososEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Escorpiones">Escorpiones</option>
+                    <option value="Abejas/Avispas">Abejas/Avispas</option>
+                    <option value="Arañas">Arañas</option>
+                    <option value="Serpientes">Serpientes</option>
+                    <option value="Ninguno">Ninguno </option>
+                </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+                <label><strong>32. ¿Que medidas se implementan en el lugar donde se desarrolla la ocupación u oficio para control de vectores o reducir el riesgo de incidentes con animales ponzoñosos y venenosos?<span style="color: red;"> *</span></strong></label>
+                <select style="border: black; border-width: 1px; border-style: solid;" class="select2 form-control" id="RiesgosAnimalesVenenososEstacionario" name="RiesgosAnimalesVenenososEstacionario">
+                    <option value="">Seleccionar</option>
+                    <option value="Eliminación de los lugares de crianza">Eliminación de los lugares de crianza</option>
+                    <option value="Uso de toldillos">Uso de toldillos</option>
+                    <option value="Instalación de mallas, rejas, cauchos o trampas">Instalación de mallas, rejas, cauchos o trampas que impidan el ingreso de animales por puertas, ventanas y desagües</option>
+                    <option value="Uso de herbicidas, insecticidas, rodenticidas">Uso de herbicidas, insecticidas, rodenticidas</option>
+                    <option value="Uso de biopreparados">Uso de biopreparados (productos extraidos de las plantas)</option>
+                    <option value="Uso de elementos de protección personal">Uso de elementos de protección personal</option>
+                    <option value="Mantener un buen estado de orden y limpieza">Mantener un buen estado de orden y limpieza el lugar de trabajo</option>
+                    <option value="Ninguno">Ninguno</option>
+                </select>
+            </div>
+        </div>
+
+
+
+
+    </form>
+
+</div>
+
 
 <script>
     // JavaScript para mostrar u ocultar el formulario para menores de edad
@@ -461,13 +549,13 @@
 </div>
 
 <div class="col-xs-6 col-sm-6 col-md-6">
-    <button type="button" onclick="Createobj()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveAccidenteTrabajo" disabled>Guardar</button>
+    <button type="button" onclick="CreateObjEstacionario()" class="btn btn-block btn-outline-primary btn-rounded btn-outline mt-4" id="SaveCreateObjEstacionario" disabled>Guardar</button>
 </div>
 
 <script>
     function activarBoton() {
         var checkbox = document.getElementById("inlineCheckbox2");
-        var botonGuardar = document.getElementById("SaveAccidenteTrabajo");
+        var botonGuardar = document.getElementById("SaveCreateObjEstacionario");
 
         // Si el checkbox está seleccionado, habilitar el botón; de lo contrario, deshabilitarlo.
         botonGuardar.disabled = !checkbox.checked;

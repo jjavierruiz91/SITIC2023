@@ -151,6 +151,11 @@
           </Key>
           <Property Name="IdEstacionario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FechaEstacionario" Type="date" />
+          <Property Name="LugarTrabajoViviendaEstacionario" Type="varchar(max)" />
+          <Property Name="PersonaContactoEstacionario" Type="varchar(max)" />
+          <Property Name="TelefonoEstacionario" Type="varchar(max)" />
+          <Property Name="DireccionTrabajoEstacionario" Type="varchar(max)" />
+          <Property Name="ActividadEconomicaEstacionario" Type="varchar(max)" />
           <Property Name="FormaTrabajadorEstacionario" Type="varchar(max)" />
           <Property Name="MunicipioEstacionario" Type="varchar(max)" />
           <Property Name="AmbitoTerritorioEstacionario" Type="varchar(max)" />
@@ -160,11 +165,6 @@
           <Property Name="NumeroIdentificacionEstacionario" Type="bigint" />
           <Property Name="FechaNacimientoEstacionario" Type="date" />
           <Property Name="OcupacionEstacionario" Type="varchar(max)" />
-          <Property Name="LugarTrabajoViviendaEstacionario" Type="varchar(max)" />
-          <Property Name="PersonaContactoEstacionario" Type="varchar(max)" />
-          <Property Name="TelefonoEstacionario" Type="varchar(max)" />
-          <Property Name="DireccionTrabajoEstacionario" Type="varchar(max)" />
-          <Property Name="ActividadEconomicaEstacionario" Type="varchar(max)" />
           <Property Name="AguaConsumoEstacionario" Type="varchar(max)" />
           <Property Name="TratamientoAguaEstacionario" Type="varchar(max)" />
           <Property Name="AlmacenamientoAguaEstacionario" Type="varchar(max)" />
@@ -180,6 +180,33 @@
           <Property Name="PlagasEstacionario" Type="varchar(max)" />
           <Property Name="AnimalesVenenososEstacionario" Type="varchar(max)" />
           <Property Name="RiesgosAnimalesVenenososEstacionario" Type="varchar(max)" />
+          <Property Name="SexoEstacionario" Type="varchar(max)" />
+          <Property Name="EducacionEstacionario" Type="varchar(max)" />
+          <Property Name="PoblacionEstacionario" Type="varchar(max)" />
+          <Property Name="CondicionEstacionario" Type="varchar(max)" />
+          <Property Name="OrgnizacionSocialEstacionario" Type="varchar(max)" />
+          <Property Name="SeguridadSocialEstacionario" Type="varchar(max)" />
+          <Property Name="AntiguedadTrabajoEstacionario" Type="varchar(max)" />
+          <Property Name="JornadaEstacionario" Type="varchar(max)" />
+          <Property Name="HorasDiasEstacionario" Type="varchar(max)" />
+          <Property Name="DiasSemanaEstacionario" Type="varchar(max)" />
+          <Property Name="DesplazamientoEstacionario" Type="varchar(max)" />
+          <Property Name="EnfermedadEstacionario" Type="varchar(max)" />
+          <Property Name="SustaniaEstacionario" Type="varchar(max)" />
+          <Property Name="AlcoholEstacionario" Type="varchar(max)" />
+          <Property Name="ActividadFisicaEstacionario" Type="varchar(max)" />
+          <Property Name="HorasDuermeEstacionario" Type="varchar(max)" />
+          <Property Name="FrutasVerdurasEstacionario" Type="varchar(max)" />
+          <Property Name="ComportamientoEstacionario" Type="varchar(max)" />
+          <Property Name="SintomasEstacionario" Type="varchar(max)" />
+          <Property Name="AcidenteEstacionario" Type="varchar(max)" />
+          <Property Name="DiscapacidadEstacionario" Type="varchar(max)" />
+          <Property Name="SeguridadEstacionario" Type="varchar(max)" />
+          <Property Name="PeligroFisicoEstacionario" Type="varchar(max)" />
+          <Property Name="PeligroBiomecanicoEstacionario" Type="varchar(max)" />
+          <Property Name="PeligroQuimicoEstacionario" Type="varchar(max)" />
+          <Property Name="PeligroBiologicoEstacionario" Type="varchar(max)" />
+          <Property Name="PeligroPsicosocialEstacionario" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="EstiloVida">
           <Key>
@@ -981,6 +1008,11 @@
           </Key>
           <Property Name="IdEstacionario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FechaEstacionario" Type="DateTime" Precision="0" />
+          <Property Name="LugarTrabajoViviendaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PersonaContactoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionTrabajoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActividadEconomicaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FormaTrabajadorEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MunicipioEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AmbitoTerritorioEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -990,11 +1022,6 @@
           <Property Name="NumeroIdentificacionEstacionario" Type="Int64" />
           <Property Name="FechaNacimientoEstacionario" Type="DateTime" Precision="0" />
           <Property Name="OcupacionEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="LugarTrabajoViviendaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PersonaContactoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TelefonoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DireccionTrabajoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ActividadEconomicaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AguaConsumoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TratamientoAguaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AlmacenamientoAguaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1010,6 +1037,33 @@
           <Property Name="PlagasEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AnimalesVenenososEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="RiesgosAnimalesVenenososEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SexoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EducacionEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PoblacionEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CondicionEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrgnizacionSocialEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SeguridadSocialEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AntiguedadTrabajoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="JornadaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HorasDiasEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DiasSemanaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DesplazamientoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EnfermedadEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SustaniaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AlcoholEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ActividadFisicaEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HorasDuermeEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FrutasVerdurasEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ComportamientoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SintomasEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AcidenteEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DiscapacidadEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SeguridadEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroFisicoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroBiomecanicoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroQuimicoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroBiologicoEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PeligroPsicosocialEstacionario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1312,6 +1366,33 @@
           <EntitySetMapping Name="Estacionario">
             <EntityTypeMapping TypeName="BIOMEDICOModel.Estacionario">
               <MappingFragment StoreEntitySet="Estacionario">
+                <ScalarProperty Name="PeligroPsicosocialEstacionario" ColumnName="PeligroPsicosocialEstacionario" />
+                <ScalarProperty Name="PeligroBiologicoEstacionario" ColumnName="PeligroBiologicoEstacionario" />
+                <ScalarProperty Name="PeligroQuimicoEstacionario" ColumnName="PeligroQuimicoEstacionario" />
+                <ScalarProperty Name="PeligroBiomecanicoEstacionario" ColumnName="PeligroBiomecanicoEstacionario" />
+                <ScalarProperty Name="PeligroFisicoEstacionario" ColumnName="PeligroFisicoEstacionario" />
+                <ScalarProperty Name="SeguridadEstacionario" ColumnName="SeguridadEstacionario" />
+                <ScalarProperty Name="DiscapacidadEstacionario" ColumnName="DiscapacidadEstacionario" />
+                <ScalarProperty Name="AcidenteEstacionario" ColumnName="AcidenteEstacionario" />
+                <ScalarProperty Name="SintomasEstacionario" ColumnName="SintomasEstacionario" />
+                <ScalarProperty Name="ComportamientoEstacionario" ColumnName="ComportamientoEstacionario" />
+                <ScalarProperty Name="FrutasVerdurasEstacionario" ColumnName="FrutasVerdurasEstacionario" />
+                <ScalarProperty Name="HorasDuermeEstacionario" ColumnName="HorasDuermeEstacionario" />
+                <ScalarProperty Name="ActividadFisicaEstacionario" ColumnName="ActividadFisicaEstacionario" />
+                <ScalarProperty Name="AlcoholEstacionario" ColumnName="AlcoholEstacionario" />
+                <ScalarProperty Name="SustaniaEstacionario" ColumnName="SustaniaEstacionario" />
+                <ScalarProperty Name="EnfermedadEstacionario" ColumnName="EnfermedadEstacionario" />
+                <ScalarProperty Name="DesplazamientoEstacionario" ColumnName="DesplazamientoEstacionario" />
+                <ScalarProperty Name="DiasSemanaEstacionario" ColumnName="DiasSemanaEstacionario" />
+                <ScalarProperty Name="HorasDiasEstacionario" ColumnName="HorasDiasEstacionario" />
+                <ScalarProperty Name="JornadaEstacionario" ColumnName="JornadaEstacionario" />
+                <ScalarProperty Name="AntiguedadTrabajoEstacionario" ColumnName="AntiguedadTrabajoEstacionario" />
+                <ScalarProperty Name="SeguridadSocialEstacionario" ColumnName="SeguridadSocialEstacionario" />
+                <ScalarProperty Name="OrgnizacionSocialEstacionario" ColumnName="OrgnizacionSocialEstacionario" />
+                <ScalarProperty Name="CondicionEstacionario" ColumnName="CondicionEstacionario" />
+                <ScalarProperty Name="PoblacionEstacionario" ColumnName="PoblacionEstacionario" />
+                <ScalarProperty Name="EducacionEstacionario" ColumnName="EducacionEstacionario" />
+                <ScalarProperty Name="SexoEstacionario" ColumnName="SexoEstacionario" />
                 <ScalarProperty Name="RiesgosAnimalesVenenososEstacionario" ColumnName="RiesgosAnimalesVenenososEstacionario" />
                 <ScalarProperty Name="AnimalesVenenososEstacionario" ColumnName="AnimalesVenenososEstacionario" />
                 <ScalarProperty Name="PlagasEstacionario" ColumnName="PlagasEstacionario" />
@@ -1327,11 +1408,6 @@
                 <ScalarProperty Name="AlmacenamientoAguaEstacionario" ColumnName="AlmacenamientoAguaEstacionario" />
                 <ScalarProperty Name="TratamientoAguaEstacionario" ColumnName="TratamientoAguaEstacionario" />
                 <ScalarProperty Name="AguaConsumoEstacionario" ColumnName="AguaConsumoEstacionario" />
-                <ScalarProperty Name="ActividadEconomicaEstacionario" ColumnName="ActividadEconomicaEstacionario" />
-                <ScalarProperty Name="DireccionTrabajoEstacionario" ColumnName="DireccionTrabajoEstacionario" />
-                <ScalarProperty Name="TelefonoEstacionario" ColumnName="TelefonoEstacionario" />
-                <ScalarProperty Name="PersonaContactoEstacionario" ColumnName="PersonaContactoEstacionario" />
-                <ScalarProperty Name="LugarTrabajoViviendaEstacionario" ColumnName="LugarTrabajoViviendaEstacionario" />
                 <ScalarProperty Name="OcupacionEstacionario" ColumnName="OcupacionEstacionario" />
                 <ScalarProperty Name="FechaNacimientoEstacionario" ColumnName="FechaNacimientoEstacionario" />
                 <ScalarProperty Name="NumeroIdentificacionEstacionario" ColumnName="NumeroIdentificacionEstacionario" />
@@ -1341,6 +1417,11 @@
                 <ScalarProperty Name="AmbitoTerritorioEstacionario" ColumnName="AmbitoTerritorioEstacionario" />
                 <ScalarProperty Name="MunicipioEstacionario" ColumnName="MunicipioEstacionario" />
                 <ScalarProperty Name="FormaTrabajadorEstacionario" ColumnName="FormaTrabajadorEstacionario" />
+                <ScalarProperty Name="ActividadEconomicaEstacionario" ColumnName="ActividadEconomicaEstacionario" />
+                <ScalarProperty Name="DireccionTrabajoEstacionario" ColumnName="DireccionTrabajoEstacionario" />
+                <ScalarProperty Name="TelefonoEstacionario" ColumnName="TelefonoEstacionario" />
+                <ScalarProperty Name="PersonaContactoEstacionario" ColumnName="PersonaContactoEstacionario" />
+                <ScalarProperty Name="LugarTrabajoViviendaEstacionario" ColumnName="LugarTrabajoViviendaEstacionario" />
                 <ScalarProperty Name="FechaEstacionario" ColumnName="FechaEstacionario" />
                 <ScalarProperty Name="IdEstacionario" ColumnName="IdEstacionario" />
               </MappingFragment>

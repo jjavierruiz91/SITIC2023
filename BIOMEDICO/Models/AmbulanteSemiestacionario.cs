@@ -11,50 +11,92 @@ namespace BIOMEDICO.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AmbulanteSemiestacionario
     {
         public int IdAmbulanteSemiestacionario { get; set; }
+        [Required]
         public Nullable<System.DateTime> FechaAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string FormaTrabajoAmbulanteAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string MunicipicioAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string AmbitoTerritorialAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string NombresAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string ApellidosAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string TipoIdentificacionAmbulanteSemiestacionario { get; set; }
+        [Required]
         public Nullable<long> NumeroIDAmbulanteSemiestacionario { get; set; }
+        [Required]
         public Nullable<System.DateTime> FechaNacimientoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string OficioAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string SexoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string EducacionAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string PoblacionAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string CondicionAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string OrgnizacionSocialAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string SeguridadSocialAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string AntiguedadTrabajoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string JornadaAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string HorasDiasAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string DiasSemanaAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string DesplazamientoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string EnfermedadAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string SustaniaAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string AlcoholAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string ActividadFisicaAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string HorasDuermeAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string FrutasVerdurasAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string ComportamientoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string SintomasAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string AcidenteAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string DiscapacidadAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string SeguridadAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string PeligroFisicoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string PeligroBiomecanicoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string PeligroQuimicoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string PeligroBiologicoAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string PeligroPsicosocialAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string AguaAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string ExcretaAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string ResiduosAmbulanteSemiestacionario { get; set; }
+        [Required]
         public string CombustibleAmbulanteSemiestacionario { get; set; }
     }
 }

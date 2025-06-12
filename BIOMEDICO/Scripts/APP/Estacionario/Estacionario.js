@@ -230,7 +230,36 @@ function CreateObjEstacionario() {
                     PlagasEstacionario: $('#PlagasEstacionario').val(),
                     AnimalesVenenososEstacionario: $('#AnimalesVenenososEstacionario').val(),
                     RiesgosAnimalesVenenososEstacionario: $('#RiesgosAnimalesVenenososEstacionario').val(),
-                    
+
+
+
+                    SexoEstacionario: $('#SexoEstacionario').val(),
+                    EducacionEstacionario: $('#EducacionEstacionario').val(),
+                    PoblacionEstacionario: $('#PoblacionEstacionario').val(),
+                    CondicionEstacionario: $('#CondicionEstacionario').val(),
+                    OrgnizacionSocialEstacionario: $('#OrgnizacionSocialEstacionario').val(),
+                    SeguridadSocialEstacionario: $('#SeguridadSocialEstacionario').val(),
+                    AntiguedadTrabajoEstacionario: $('#AntiguedadTrabajoEstacionario').val(),
+                    JornadaEstacionario: $('#JornadaEstacionario').val(),
+                    HorasDiasEstacionario: $('#HorasDiasEstacionario').val(),
+                    DiasSemanaEstacionario: $('#DiasSemanaEstacionario').val(),
+                    DesplazamientoEstacionario: $('#DesplazamientoEstacionario').val(),
+                    EnfermedadEstacionario: $('#EnfermedadEstacionario').val(),
+                    SustaniaEstacionario: $('#SustaniaEstacionario').val(),
+                    AlcoholEstacionario: $('#AlcoholEstacionario').val(),
+                    ActividadFisicaEstacionario: $('#ActividadFisicaEstacionario').val(),
+                    HorasDuermeEstacionario: $('#HorasDuermeEstacionario').val(),
+                    FrutasVerdurasEstacionario: $('#FrutasVerdurasEstacionario').val(),
+                    ComportamientoEstacionario: $('#ComportamientoEstacionario').val(),
+                    SintomasEstacionario: $('#SintomasEstacionario').val(),
+                    AcidenteEstacionario: $('#AcidenteEstacionario').val(),
+                    DiscapacidadEstacionario: $('#DiscapacidadEstacionario').val(),
+                    SeguridadEstacionario: $('#SeguridadEstacionario').val(),
+                    PeligroFisicoEstacionario: $('#PeligroFisicoEstacionario').val(),
+                    PeligroBiomecanicoEstacionario: $('#PeligroBiomecanicoEstacionario').val(),
+                    PeligroQuimicoEstacionario: $('#PeligroQuimicoEstacionario').val(),
+                    PeligroBiologicoEstacionario: $('#PeligroBiologicoEstacionario').val(),
+                    PeligroPsicosocialEstacionario: $('#PeligroPsicosocialEstacionario').val(),
 
        
         

@@ -10,21 +10,79 @@
 <div class="table-responsive row col-xl-12 ">
     @*<button class="btn btn-primary btn-sm active" type="button" onclick="PDFBLANK()">Formulario</button>*@
     @*<a href="~/Descargar/COMPONENTE II INST.  CARACTERIZACIÓN DEMOGRÁFICA EPIDEMIOL_ESTE.pdf" target="_blank"><h1><strong>Formulario.pdf</strong></h1></a>*@
-
     @*<*@<!--a href="~/Descargar/COMPONENTE II INST.  CARACTERIZACIÓN DEMOGRÁFICA EPIDEMIOL_ESTE (1).pdf" target="_blank"><h1><strong>Formulario.pdf</strong></h1></a>-->
     <table class="table" id="datatable-Estacionario">
-
         <thead>
             <tr class="ColorTabla">
+                <!-- Columnas visibles (0-5) -->
                 <th>NOMBRES</th>
-                <th>APELLIDOS </th>
+                <th>APELLIDOS</th>
                 <th>MUNICIPIO</th>
                 <th>FORMA TRABAJO</th>
-                <th>TIPO IDENTIFICACION </th>
+                <th>TIPO IDENTIFICACION</th>
                 <th>NUMERO IDENTIFICACION</th>
 
-                <th></th>
+                <!-- Columnas ocultas originales (6-37) -->
+                <th>FECHA NACIMIENTO</th>
+                <th>OFICIO</th>
+                <th>SEXO</th>
+                <th>EDUCACION</th>
+                <th>POBLACION</th>
+                <th>CONDICION</th>
+                <th>ORGANIZACION SOCIAL</th>
+                <th>SEGURIDAD SOCIAL</th>
+                <th>ANTIGUEDAD TRABAJO</th>
+                <th>JORNADA</th>
+                <th>HORAS DIAS</th>
+                <th>DIAS SEMANA</th>
+                <th>DESPLAZAMIENTO</th>
+                <th>ENFERMEDAD</th>
+                <th>SUSTANCIA</th>
+                <th>ALCOHOL</th>
+                <th>ACTIVIDAD FISICA</th>
+                <th>HORAS DUERME</th>
+                <th>FRUTAS VERDURAS</th>
+                <th>COMPORTAMIENTO</th>
+                <th>SINTOMAS</th>
+                <th>ACCIDENTE</th>
+                <th>DISCAPACIDAD</th>
+                <th>SEGURIDAD</th>
+                <th>PELIGRO FISICO</th>
+                <th>PELIGRO BIOMECANICO</th>
+                <th>PELIGRO QUIMICO</th>
+                <th>PELIGRO BIOLOGICO</th>
+                <th>PELIGRO PSICOSOCIAL</th>
+                <th>AGUA</th>
+                <th>EXCRETA</th>
+                <th>RESIDUOS</th>
+                <th>COMBUSTIBLE</th>
+
+                <!-- Nuevas columnas ocultas (38-55) -->
+                <th>OCUPACION</th>
+                <th>LUGAR TRABAJO VIVIENDA</th>
+                <th>PERSONA CONTACTO</th>
+                <th>TELEFONO</th>
+                <th>DIRECCION TRABAJO</th>
+                <th>ACTIVIDAD ECONOMICA</th>
+                <th>AGUA CONSUMO</th>
+                <th>TRATAMIENTO AGUA</th>
+                <th>ALMACENAMIENTO AGUA</th>
+                <th>RESIDUOS SOLIDOS</th>
+                <th>AGUAS RESIDUALES</th>
+                <th>USO QUIMICOS</th>
+                <th>ALMACENAN QUIMICOS</th>
+                <th>GENERAN RESIDUOS PELIGROSOS</th>
+                <th>DISPONEN RESIDUOS PELIGROSOS</th>
+                <th>PLAGAS</th>
+                <th>ANIMALES VENENOSOS</th>
+                <th>RIESGOS ANIMALES VENENOSOS</th>
+
+                <!-- Columna de acciones (56) -->
+                <th>ACCIONES</th>
             </tr>
         </thead>
+        <tbody>
+            <!-- Los datos se cargan dinámicamente con JavaScript -->
+        </tbody>
     </table>
 </div>

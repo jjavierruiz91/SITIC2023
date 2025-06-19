@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static BIOMEDICO.Controllers.AmbulanteSemiestacionarioController;
 
 namespace BIOMEDICO.Controllers
 {
@@ -104,59 +105,169 @@ namespace BIOMEDICO.Controllers
             return Json(respuesta, JsonRequestBehavior.AllowGet);
         }
 
+        //[HttpGet]
+        //public ActionResult Agregar(bool ViewFree = false)
+        //{
+        //    ViewBag.ViewFree = ViewFree;
+        //    return View();
+
+        //}
+
+        //[HttpPost]
+        ////[ValidateAntiForgeryToken]
+        //public JsonResult Agregar(ObjAmbulanteSemiestacionario a)
+        //{
+        //    Respuesta Retorno = new Respuesta();
+
+        //    if (!ModelState.IsValid)
+        //        Retorno.mensaje = "Datos invalidos";
+
+
+
+        //    try
+        //    {
+
+        //        using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+
+        //        {
+
+        //            //a.PoliticaSocialsport.FechaRegistro = DateTime.Now;
+        //            db.AmbulanteSemiestacionario.Add(a.AmbulanteSemiestacionarioSport);
+        //            db.SaveChanges();
+        //            Retorno.Error = false;
+        //            Retorno.mensaje = "Oficina comunutaria ambulante y semiestacionario.! ";
+
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        String Error = ex.Message;
+        //        //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
+        //        Retorno.Error = true;
+        //        Retorno.mensaje = "Debes completar todos los registros del formulario ambulante y semiestacionario!";
+        //    }
+        //    return Json(Retorno, JsonRequestBehavior.AllowGet);
+        //}
+
+
+        //[HttpGet]
+        //public ActionResult EditarPoliticaSocial(bool ViewFree = false)
+        //{
+        //    ViewBag.ViewFree = ViewFree;
+        //    return View();
+
+        //}
+        [HttpGet]
+        public JsonResult ValidarCedula(long? cedula) // ¡TIPO DE DATO CAMBIADO A long? !
+        {
+            Respuesta Retorno = new Respuesta();
+
+            // Validar si la cédula es null o cero (si cero no es válido para ti)
+            if (!cedula.HasValue || cedula.Value == 0) // Agregamos .HasValue para long?
+            {
+                Retorno.Error = true;
+                Retorno.mensaje = "El número de identificación no puede estar vacío o ser cero.";
+                return Json(Retorno, JsonRequestBehavior.AllowGet);
+            }
+
+            try
+            {
+                using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+                {
+                    // Asegúrate de que 'x.NumeroIDAmbulanteSemiestacionario' es la propiedad correcta
+                    // y que el tipo de dato en la base de datos también es compatible con 'long'.
+                    bool cedulaYaExiste = db.AmbulanteSemiestacionario.Any(x => x.NumeroIDAmbulanteSemiestacionario == cedula.Value);
+
+                    if (cedulaYaExiste)
+                    {
+                        Retorno.Error = true;
+                        Retorno.mensaje = "¡Error! Este número de identificación ya está registrado.";
+                    }
+                    else
+                    {
+                        Retorno.Error = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Retorno.Error = true;
+                Retorno.mensaje = "Ocurrió un error al verificar el número de identificación.";
+            }
+
+            return Json(Retorno, JsonRequestBehavior.AllowGet);
+        }
+
+
         [HttpGet]
         public ActionResult Agregar(bool ViewFree = false)
         {
             ViewBag.ViewFree = ViewFree;
             return View();
-
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        // [ValidateAntiForgeryToken] // Si decides habilitarlo, asegúrate de manejarlo en tu vista
         public JsonResult Agregar(ObjAmbulanteSemiestacionario a)
         {
             Respuesta Retorno = new Respuesta();
 
             if (!ModelState.IsValid)
-                Retorno.mensaje = "Datos invalidos";
-
-
+            {
+                Retorno.mensaje = "Datos inválidos. Por favor, revisa todos los campos del formulario.";
+                Retorno.Error = true; // Asegúrate de que el error se marque como true
+                return Json(Retorno, JsonRequestBehavior.AllowGet);
+            }
 
             try
             {
-
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
-
                 {
+                    // *** VALIDACIÓN DE CÉDULA DUPLICADA ***
+                    // Asumiendo que 'a.AmbulanteSemiestacionarioSport' contiene una propiedad 'Cedula'
+                    // Reemplaza 'Cedula' con el nombre real de tu propiedad de cédula en tu modelo AmbulanteSemiestacionario
+                    var cedulaABuscar = a.AmbulanteSemiestacionarioSport.NumeroIDAmbulanteSemiestacionario; // <-- Asume que existe una propiedad Cedula
 
-                    //a.PoliticaSocialsport.FechaRegistro = DateTime.Now;
+                    // Busca si ya existe un registro con la misma cédula
+                    bool cedulaYaExiste = db.AmbulanteSemiestacionario.Any(x => x.NumeroIDAmbulanteSemiestacionario == cedulaABuscar);
+
+                    if (cedulaYaExiste)
+                    {
+                        Retorno.Error = true;
+                        Retorno.mensaje = "¡Error! Ya existe un usuario registrado con esta cédula. No se permiten duplicados.";
+                        return Json(Retorno, JsonRequestBehavior.AllowGet);
+                    }
+
+                    // Si la cédula no existe, procede a guardar el nuevo registro
                     db.AmbulanteSemiestacionario.Add(a.AmbulanteSemiestacionarioSport);
                     db.SaveChanges();
+
                     Retorno.Error = false;
-                    Retorno.mensaje = "Oficina comunutaria ambulante y semiestacionario.! ";
-
-
+                    Retorno.mensaje = "Oficina comunitaria ambulante y semiestacionario registrada exitosamente.";
                 }
             }
             catch (Exception ex)
             {
-                String Error = ex.Message;
-                //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
+                // Es buena práctica loggear el error completo (ex) para depuración.
+                // String Error = ex.Message; // Esto solo te da el mensaje, no la pila de llamadas.
+                // ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message); // Considera si quieres mostrar esto directamente al usuario.
+
                 Retorno.Error = true;
-                Retorno.mensaje = "Debes completar todos los registros del formulario ambulante y semiestacionario!";
+                // Un mensaje más genérico para el usuario final, y si necesitas depurar, loggea 'ex.ToString()'
+                Retorno.mensaje = "Ocurrió un error al intentar guardar el registro. Por favor, verifica los datos e intenta de nuevo. Si el problema persiste, contacta al soporte técnico.";
             }
             return Json(Retorno, JsonRequestBehavior.AllowGet);
         }
-
 
         [HttpGet]
         public ActionResult EditarPoliticaSocial(bool ViewFree = false)
         {
             ViewBag.ViewFree = ViewFree;
             return View();
-
         }
+
 
         [HttpPost]
         //[ValidateAntiForgeryToken]

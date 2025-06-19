@@ -105,6 +105,49 @@ namespace BIOMEDICO.Controllers
         }
 
         [HttpGet]
+        public JsonResult ValidarCedula(long? cedula) // ¡TIPO DE DATO CAMBIADO A long? !
+        {
+            Respuesta Retorno = new Respuesta();
+
+            // Validar si la cédula es null o cero (si cero no es válido para ti)
+            if (!cedula.HasValue || cedula.Value == 0) // Agregamos .HasValue para long?
+            {
+                Retorno.Error = true;
+                Retorno.mensaje = "El número de identificación no puede estar vacío o ser cero.";
+                return Json(Retorno, JsonRequestBehavior.AllowGet);
+            }
+
+            try
+            {
+                using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
+                {
+                    // Asegúrate de que 'x.NumeroIDAmbulanteSemiestacionario' es la propiedad correcta
+                    // y que el tipo de dato en la base de datos también es compatible con 'long'.
+                    bool cedulaYaExiste = db.Estacionario.Any(x => x.NumeroIdentificacionEstacionario == cedula.Value);
+
+                    if (cedulaYaExiste)
+                    {
+                        Retorno.Error = true;
+                        Retorno.mensaje = "¡Error! Este número de identificación ya está registrado.";
+                    }
+                    else
+                    {
+                        Retorno.Error = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Retorno.Error = true;
+                Retorno.mensaje = "Ocurrió un error al verificar el número de identificación.";
+            }
+
+            return Json(Retorno, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
         public ActionResult Agregar(bool ViewFree = false)
         {
             ViewBag.ViewFree = ViewFree;
@@ -117,38 +160,50 @@ namespace BIOMEDICO.Controllers
         public JsonResult Agregar(ObjEstacionario a)
         {
             Respuesta Retorno = new Respuesta();
-
             if (!ModelState.IsValid)
-                Retorno.mensaje = "Datos invalidos";
-
-
-
+            {
+                Retorno.mensaje = "Datos inválidos. Por favor, revisa todos los campos del formulario.";
+                Retorno.Error = true; // Asegúrate de que el error se marque como true
+                return Json(Retorno, JsonRequestBehavior.AllowGet);
+            }
             try
             {
-
                 using (Models.BIOMEDICOEntities5 db = new Models.BIOMEDICOEntities5())
-
                 {
+                    // *** VALIDACIÓN DE CÉDULA DUPLICADA ***
+                    // Asumiendo que existe una propiedad para identificar la cédula en el modelo Estacionario
+                    // Reemplaza con el nombre real de la propiedad de cédula en tu modelo
+                    var cedulaABuscar = a.EstacionarioSport.NumeroIdentificacionEstacionario; // <-- Ajusta según tu modelo
 
-                    //a.PoliticaSocialsport.FechaRegistro = DateTime.Now;
+                    // Busca si ya existe un registro con la misma cédula
+                    bool cedulaYaExiste = db.Estacionario.Any(x => x.NumeroIdentificacionEstacionario == cedulaABuscar);
+
+                    if (cedulaYaExiste)
+                    {
+                        Retorno.Error = true;
+                        Retorno.mensaje = "¡Error! Ya existe un trabajador estacionario registrado con esta cédula. No se permiten duplicados.";
+                        return Json(Retorno, JsonRequestBehavior.AllowGet);
+                    }
+
+                    // Si la cédula no existe, procede a guardar el nuevo registro
+                    //a.EstacionarioSport.FechaRegistro = DateTime.Now; // Descomenta si necesitas esta línea
                     db.Estacionario.Add(a.EstacionarioSport);
                     db.SaveChanges();
                     Retorno.Error = false;
-                    Retorno.mensaje = "Oficina Trabajadores Estacionarios.! ";
-
-
+                    Retorno.mensaje = "Oficina de Trabajadores Estacionarios registrada exitosamente.";
                 }
             }
             catch (Exception ex)
             {
-                String Error = ex.Message;
-                //ModelState.AddModelError("", "Error al agregar deportistas" + ex.Message);
+                // Es buena práctica loggear el error completo (ex) para depuración.
+                // String Error = ex.Message; // Esto solo te da el mensaje, no la pila de llamadas.
+                // ModelState.AddModelError("", "Error al agregar trabajadores estacionarios" + ex.Message); // Considera si quieres mostrar esto directamente al usuario.
                 Retorno.Error = true;
-                Retorno.mensaje = "Debes completar todos los registros del formulario!";
+                // Un mensaje más genérico para el usuario final, y si necesitas depurar, loggea 'ex.ToString()'
+                Retorno.mensaje = "Ocurrió un error al intentar guardar el registro. Por favor, verifica los datos e intenta de nuevo. Si el problema persiste, contacta al soporte técnico.";
             }
             return Json(Retorno, JsonRequestBehavior.AllowGet);
         }
-
 
         [HttpGet]
         public ActionResult EditarPoliticaSocial(bool ViewFree = false)
